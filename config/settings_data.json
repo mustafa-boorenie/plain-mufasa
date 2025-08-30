@@ -9,7 +9,21 @@
  */
 {
   "current": {
+    "show_music": false,
     "custom_cursor_img": "shopify://shop_images/icons8-cursor-60.png",
+    "enter_screen_logo": "shopify://shop_images/PRNTD_Logo.png",
+    "collection_screen_logo": "shopify://shop_images/LOGO_2x_30af059b-ab47-4ee5-8601-f2dd3093ecce.png",
+    "product_screen_logo": "shopify://shop_images/PRNTD_Logo_a0e79848-87d8-461d-8601-5053ea04e12c.png",
+    "footer_logo": "shopify://shop_images/LOGO_2x_30af059b-ab47-4ee5-8601-f2dd3093ecce.png",
+    "footer_links_title": "links...",
+    "footer_email_header": "Join our newsletter.",
+    "footer_copyright_text": "@2025 plain mufasa.",
+    "footer_background_color": "#ffffff",
+    "footer_links_title_color": "#000",
+    "footer_text_color": "#000",
+    "footer_input_color": "#9E9E9E",
+    "footer_input_placeholder_color": "#000",
+    "show_email_footer_signup": false,
     "sections": {
       "homepage-background": {
         "type": "homepage-background",
@@ -41,7 +55,7 @@
       "nav-link": {
         "type": "nav-link",
         "settings": {
-          "nav_link_color": "#000000",
+          "nav_link_color": "#000",
           "navlink_hover_color": "#ffffff",
           "navlink_background_color": "#fe0100",
           "link-alignment": "left",
@@ -69,12 +83,12 @@
           "tumblr_link": "",
           "discord_link": "",
           "show_instagram": true,
-          "show_twitter": false,
+          "show_twitter": true,
           "show_facebook": false,
-          "show_youtube": true,
-          "show_tik_tok": true,
+          "show_youtube": false,
+          "show_tik_tok": false,
           "show_tumblr": false,
-          "show_discord": false,
+          "show_discord": true,
           "show_applemusic": false,
           "show_spotify": false,
           "show_tidal": false,
@@ -88,6 +102,167 @@
       "other-footer": {
         "type": "other-footer",
         "settings": {}
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {}
+      },
+      "shop-background": {
+        "type": "shop-background",
+        "settings": {
+          "show_background_image": false,
+          "show_background_image_mobile": false,
+          "video_url": "",
+          "show_background_video": false,
+          "bg_color": "#ffffff",
+          "bg_color_mobile": "#ffffff",
+          "overlay_top_color": "#000000",
+          "overlay_top_opacity": 0,
+          "overlay_bottom_color": "#000000",
+          "overlay_bottom_opacity": 0,
+          "overlay_top_color_mobile": "#000000",
+          "overlay_top_opacity_mobile": 0,
+          "overlay_bottom_color_mobile": "#000000",
+          "overlay_bottom_opacity_mobile": 0
+        }
+      },
+      "collection-products-display-2": {
+        "type": "collection-products-display-2",
+        "settings": {
+          "sidebar_nav_color": "#171717",
+          "sidebar_nav_opacity": 1,
+          "flip_side_navbar": false,
+          "make_side_navbar_fixed": true,
+          "enable_sidebar_box_shadow": true,
+          "show_date_time": true,
+          "index_date_color": "#ffffff",
+          "index_time_color": "#ffffff",
+          "mobile_index_date_color": "#000000",
+          "mobile_index_time_color": "#000000",
+          "cart_text_color": "#ffffff",
+          "cart_number_color": "#000000",
+          "cart_number_bg_color": "#ffffff",
+          "mobile_cart_text_color": "#000000",
+          "mobile_cart_number_color": "#ffffff",
+          "mobile_cart_number_bg_color": "#000000",
+          "font-size": 12,
+          "menu-spacing": 16,
+          "menu-link-color": "#ffffff",
+          "navlink_hover_color": "#ffffff",
+          "navlink_background_color": "#ff0100",
+          "whitespace": "nowrap",
+          "mobile-font-size": 16,
+          "mobile-menu-spacing": 0,
+          "bg-color": "#000000",
+          "mobile-menu-link-color": "#000000",
+          "bg_color": "#ffffff",
+          "mobile-navlink_background_color": "#fe0000",
+          "mobile-navlink_hover_color": "#ffffff",
+          "close_button_color": "#000000",
+          "mobile-text-alignment": "left",
+          "show-title": true,
+          "product_title_size": 12,
+          "product_title_color": "#000000",
+          "mobile_product_title_color": "#000000",
+          "show_price": true,
+          "product_price_size": 12,
+          "product_price_color": "#000000",
+          "mobile_product_price_color": "#000000",
+          "currency_format": "without_currency",
+          "show_on_sale": true,
+          "show_oos": true,
+          "on_sale_bg_color": "#000000",
+          "on_sale_text_color": "#ffffff",
+          "oos_bg_color": "#ff0100",
+          "oos_text_color": "#ffffff",
+          "on_sale_text_size": 12,
+          "on_sale_size": 62,
+          "on_sale_size_mobile": 55,
+          "product_border_color": "#000000",
+          "product_border_thickness": 0,
+          "product_bg_transparent": true,
+          "product_bg_color": "#ffffff",
+          "product_bg_radius": 0
+        }
+      },
+      "default-page-background": {
+        "type": "default-page-background",
+        "settings": {
+          "show_background_image": true,
+          "show_background_image_mobile": true,
+          "video_url": "",
+          "show_background_video": false,
+          "bg_color": "#ffffff",
+          "bg_color_mobile": "#ffffff",
+          "overlay_top_color": "#000000",
+          "overlay_top_opacity": 0,
+          "overlay_bottom_color": "#000000",
+          "overlay_bottom_opacity": 0,
+          "overlay_top_color_mobile": "#000000",
+          "overlay_top_opacity_mobile": 0.9,
+          "overlay_bottom_color_mobile": "#000000",
+          "overlay_bottom_opacity_mobile": 0.9
+        }
+      },
+      "default-timezone": {
+        "type": "default-timezone",
+        "settings": {
+          "index_date_color": "#000000",
+          "index_time_color": "#000000"
+        }
+      },
+      "default-home-btn": {
+        "type": "default-home-btn",
+        "settings": {
+          "bg-color": "#000000",
+          "text-color": "#ffffff"
+        }
+      },
+      "lookbook-background": {
+        "type": "lookbook-background",
+        "settings": {
+          "show_background_image": true,
+          "show_background_image_mobile": true,
+          "video_url": "",
+          "show_background_video": false,
+          "bg_color": "#ffffff",
+          "bg_color_mobile": "#ffffff",
+          "overlay_top_color": "#000000",
+          "overlay_top_opacity": 0,
+          "overlay_bottom_color": "#000000",
+          "overlay_bottom_opacity": 0,
+          "overlay_top_color_mobile": "#000000",
+          "overlay_top_opacity_mobile": 0.9,
+          "overlay_bottom_color_mobile": "#000000",
+          "overlay_bottom_opacity_mobile": 0.9
+        }
+      },
+      "lookbook-header": {
+        "type": "lookbook-header",
+        "settings": {
+          "lookbook_logo": "shopify://shop_images/PRNTD_Logo_a0e79848-87d8-461d-8601-5053ea04e12c.png",
+          "lookbook_logo_size": 120,
+          "lookbook_title": "the loobook...",
+          "title_color": "#000000",
+          "lookbook_description": "a preview of our 2025 fall vault.",
+          "description_color": "#000000",
+          "shop_now_link": "",
+          "shop_now_link_text": "Shop Now",
+          "shop_now_button_color": "#f71500",
+          "shop_now_text_color": "#ffffff",
+          "back_home_button_color": "#000000",
+          "back_home_text_color": "#ffffff",
+          "show_date_time": true,
+          "date_color": "#000000",
+          "time_color": "#000000"
+        }
+      },
+      "lookbook-content": {
+        "type": "lookbook-content",
+        "settings": {
+          "lookbook-columns": "1fr 1fr 1fr",
+          "lookbook-columns-mobile": "1fr 1fr"
+        }
       }
     },
     "content_for_index": []
