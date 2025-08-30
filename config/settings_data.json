@@ -1,0 +1,95 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "custom_cursor_img": "shopify://shop_images/icons8-cursor-60.png",
+    "sections": {
+      "homepage-background": {
+        "type": "homepage-background",
+        "settings": {
+          "show_background_image": false,
+          "show_background_image_mobile": false,
+          "video_url": "",
+          "show_background_video": false,
+          "bg_color": "#ffffff",
+          "bg_color_mobile": "#ffffff",
+          "overlay_top_color": "#000000",
+          "overlay_top_opacity": 0,
+          "overlay_bottom_color": "#000000",
+          "overlay_bottom_opacity": 0,
+          "overlay_top_color_mobile": "#000000",
+          "overlay_top_opacity_mobile": 0,
+          "overlay_bottom_color_mobile": "#000000",
+          "overlay_bottom_opacity_mobile": 0
+        }
+      },
+      "index-timezone": {
+        "type": "index-timezone",
+        "settings": {
+          "show_date_time": true,
+          "index_date_color": "#000000",
+          "index_time_color": "#000000"
+        }
+      },
+      "nav-link": {
+        "type": "nav-link",
+        "settings": {
+          "nav_link_color": "#000000",
+          "navlink_hover_color": "#ffffff",
+          "navlink_background_color": "#fe0100",
+          "link-alignment": "left",
+          "font-size": 14,
+          "menu-spacing": 21,
+          "disable_highlight_effect": false,
+          "enable_nav_scaling": false
+        }
+      },
+      "social-media-links": {
+        "type": "social-media-links",
+        "settings": {
+          "social_media_size": 15,
+          "link-alignment": "left",
+          "invert_social_media_links": false,
+          "instagram_link": "",
+          "twitter_link": "",
+          "facebook_link": "",
+          "youtube_channel_link": "",
+          "tik_tok_link": "",
+          "applemusic_link": "",
+          "spotify_link": "",
+          "tidal_link": "",
+          "soundcloud_link": "",
+          "tumblr_link": "",
+          "discord_link": "",
+          "show_instagram": true,
+          "show_twitter": false,
+          "show_facebook": false,
+          "show_youtube": true,
+          "show_tik_tok": true,
+          "show_tumblr": false,
+          "show_discord": false,
+          "show_applemusic": false,
+          "show_spotify": false,
+          "show_tidal": false,
+          "show_soundcloud": false
+        }
+      },
+      "music-player": {
+        "type": "music-player",
+        "settings": {}
+      },
+      "other-footer": {
+        "type": "other-footer",
+        "settings": {}
+      }
+    },
+    "content_for_index": []
+  }
+}
