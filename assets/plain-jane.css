@@ -4074,6 +4074,10 @@ padding-right: 0px;
   display: block;
 }
 
+.social-link.pinterest {
+  display: block;
+}
+
 .columns {
   width: 75%;
   margin-top: 25px;

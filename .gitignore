@@ -32,3 +32,5 @@ build/
 
 # Local development files
 .local
+
+.shopify

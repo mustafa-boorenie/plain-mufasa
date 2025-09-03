@@ -54,6 +54,52 @@ document.addEventListener('DOMContentLoaded', function() {
   // Handle hover scaling
   let isHovering = false;
 
+  // Function to check if element has dark/black background
+  function hasDarkBackground(element) {
+    if (!element) return false;
+
+    const computedStyle = getComputedStyle(element);
+    const backgroundColor = computedStyle.backgroundColor;
+
+    // Check for transparent or no background
+    if (backgroundColor === 'transparent' || backgroundColor === 'rgba(0, 0, 0, 0)') {
+      return false;
+    }
+
+    // Convert RGB/RGBA to brightness value
+    const rgbMatch = backgroundColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    const rgbaMatch = backgroundColor.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)$/);
+
+    let r, g, b;
+    if (rgbMatch) {
+      r = parseInt(rgbMatch[1]);
+      g = parseInt(rgbMatch[2]);
+      b = parseInt(rgbMatch[3]);
+    } else if (rgbaMatch) {
+      r = parseInt(rgbaMatch[1]);
+      g = parseInt(rgbaMatch[2]);
+      b = parseInt(rgbaMatch[3]);
+    } else {
+      return false;
+    }
+
+    // Calculate brightness (YIQ formula)
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+    // Consider it dark if brightness is below 128 (out of 255)
+    return brightness < 128;
+  }
+
+  // Function to update cursor color inversion
+  function updateCursorInversion(e) {
+    const element = document.elementFromPoint(e.clientX, e.clientY);
+    if (hasDarkBackground(element)) {
+      cursor.style.filter = 'invert(100%)';
+    } else {
+      cursor.style.filter = 'none';
+    }
+  }
+
   document.addEventListener('mouseenter', function(e) {
     if (e.target.matches('a, button, [role="button"], input[type="submit"], input[type="button"], .clickable, [onclick]')) {
       isHovering = true;
@@ -67,6 +113,9 @@ document.addEventListener('DOMContentLoaded', function() {
       cursor.style.transform = 'scale(1)';
     }
   }, true);
+
+  // Add mousemove listener for cursor color inversion
+  document.addEventListener('mousemove', updateCursorInversion);
 
   // Prevent cursor from changing to pointer on any element
   const style = document.createElement('style');
