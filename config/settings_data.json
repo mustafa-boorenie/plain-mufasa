@@ -55,7 +55,7 @@
       "nav-link": {
         "type": "nav-link",
         "settings": {
-          "nav_link_color": "#000",
+          "nav_link_color": "#000000",
           "navlink_hover_color": "#ffffff",
           "navlink_background_color": "#fe0100",
           "link-alignment": "left",
@@ -82,6 +82,7 @@
           "soundcloud_link": "",
           "tumblr_link": "",
           "discord_link": "",
+          "pinterest_link": "",
           "show_instagram": true,
           "show_twitter": true,
           "show_facebook": false,
@@ -92,7 +93,8 @@
           "show_applemusic": false,
           "show_spotify": false,
           "show_tidal": false,
-          "show_soundcloud": false
+          "show_soundcloud": false,
+          "show_pinterest": true
         }
       },
       "music-player": {
