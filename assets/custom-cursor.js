@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const dx = mouseX - cursorX;
     const dy = mouseY - cursorY;
 
-    cursorX += dx * 0.15; // Smooth following factor
-    cursorY += dy * 0.15;
+    cursorX += dx * 0.25; // Smooth following factor
+    cursorY += dy * 0.25;
 
     cursor.style.left = cursorX - 12 + 'px'; // Center the cursor
     cursor.style.top = cursorY - 12 + 'px';
