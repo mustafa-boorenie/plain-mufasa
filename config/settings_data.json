@@ -262,6 +262,66 @@
       },
       "lookbook-content": {
         "type": "lookbook-content",
+        "blocks": {
+          "lookbook_photos_4hK3GG": {
+            "type": "lookbook_photos",
+            "settings": {
+              "image": "shopify://shop_images/3e54c5af-0c27-4506-bea1-80dffe629895_c9284472-93f5-4640-b527-685142bf12fa.jpg"
+            }
+          },
+          "lookbook_photos_MWUqKM": {
+            "type": "lookbook_photos",
+            "settings": {
+              "image": "shopify://shop_images/IMG_1413.jpg"
+            }
+          },
+          "lookbook_photos_wNhmEh": {
+            "type": "lookbook_photos",
+            "settings": {
+              "image": "shopify://shop_images/product_photo_two.jpg"
+            }
+          },
+          "lookbook_photos_qeJFxJ": {
+            "type": "lookbook_photos",
+            "settings": {
+              "image": "shopify://shop_images/79a3049a-cc30-4303-8b67-72a8d747a1b0.png"
+            }
+          },
+          "lookbook_photos_bBaEzX": {
+            "type": "lookbook_photos",
+            "settings": {
+              "image": "shopify://shop_images/IMG_1416.jpg"
+            }
+          },
+          "lookbook_photos_Gb6mwD": {
+            "type": "lookbook_photos",
+            "settings": {
+              "image": "shopify://shop_images/bc2961ec-2917-4aad-a3ed-932eeedb9e12.jpg"
+            }
+          },
+          "lookbook_photos_FhnUgY": {
+            "type": "lookbook_photos",
+            "settings": {
+              "image": "shopify://shop_images/b799c97c-bcf7-4990-acba-10d50587c519.jpg"
+            }
+          },
+          "lookbook_photos_xGbjNx": {
+            "type": "lookbook_photos",
+            "settings": {
+              "image": "shopify://shop_images/ae4cb645-e623-49d7-8210-516fcabad5e1.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "lookbook_photos_4hK3GG",
+          "lookbook_photos_MWUqKM",
+          "lookbook_photos_wNhmEh",
+          "lookbook_photos_qeJFxJ",
+          "lookbook_photos_bBaEzX",
+          "lookbook_photos_Gb6mwD",
+          "lookbook_photos_FhnUgY",
+          "lookbook_photos_xGbjNx"
+        ],
         "settings": {
           "lookbook-columns": "1fr 1fr 1fr",
           "lookbook-columns-mobile": "1fr 1fr"
