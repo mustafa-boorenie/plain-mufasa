@@ -13,6 +13,7 @@
     "show_music": false,
     "custom_cursor_img": "shopify://shop_images/icons8-cursor-60.png",
     "enter_screen_logo": "shopify://shop_images/PRNTD_Logo.png",
+    "shop_screen_logo": "shopify://shop_images/LOGO.png",
     "collection_screen_logo": "shopify://shop_images/LOGO_2x_30af059b-ab47-4ee5-8601-f2dd3093ecce.png",
     "product_screen_logo": "shopify://shop_images/PRNTD_Logo_a0e79848-87d8-461d-8601-5053ea04e12c.png",
     "footer_logo": "shopify://shop_images/LOGO_2x_30af059b-ab47-4ee5-8601-f2dd3093ecce.png",
@@ -333,6 +334,51 @@
         "settings": {
           "lookbook-columns": "1fr 1fr 1fr",
           "lookbook-columns-mobile": "1fr 1fr"
+        }
+      },
+      "contact-background": {
+        "type": "contact-background",
+        "settings": {
+          "show_background_image": true,
+          "show_background_image_mobile": true,
+          "video_url": "",
+          "show_background_video": false,
+          "bg_color": "#ffffff",
+          "bg_color_mobile": "#ffffff",
+          "overlay_top_color": "#000000",
+          "overlay_top_opacity": 0,
+          "overlay_bottom_color": "#000000",
+          "overlay_bottom_opacity": 0,
+          "overlay_top_color_mobile": "#000000",
+          "overlay_top_opacity_mobile": 0.9,
+          "overlay_bottom_color_mobile": "#000000",
+          "overlay_bottom_opacity_mobile": 0.9
+        }
+      },
+      "contact-timezone": {
+        "type": "contact-timezone",
+        "settings": {
+          "show_date_time": true,
+          "index_date_color": "#000000",
+          "index_time_color": "#000000"
+        }
+      },
+      "contact-content": {
+        "type": "contact-content",
+        "settings": {
+          "contact-message": "Allow 3-5 business days for a response to your inquiry.",
+          "contact_text_color": "#000000"
+        }
+      },
+      "contact-form": {
+        "type": "contact-form",
+        "settings": {
+          "field-bg-color": "#ffffff",
+          "field-text-color": "#000000",
+          "submit-bg-color": "#000000",
+          "submit-text-color": "#ffffff",
+          "back-home-color": "#000000",
+          "back-home-text-color": "#ffffff"
         }
       }
     },
