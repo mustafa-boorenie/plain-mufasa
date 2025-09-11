@@ -24,6 +24,7 @@
     "footer_text_color": "#000",
     "footer_input_color": "#9E9E9E",
     "footer_input_placeholder_color": "#000",
+    "footer_copyright_color": "#171717",
     "show_email_footer_signup": false,
     "sections": {
       "homepage-background": {
@@ -305,6 +306,12 @@
               "image": "shopify://shop_images/b799c97c-bcf7-4990-acba-10d50587c519.jpg"
             }
           },
+          "lookbook_photos_bDP47F": {
+            "type": "lookbook_photos",
+            "settings": {
+              "image": "shopify://shop_images/0eb9dd0a-80f6-4a26-a616-84538e8a99db.jpg"
+            }
+          },
           "lookbook_photos_xGbjNx": {
             "type": "lookbook_photos",
             "settings": {
@@ -320,6 +327,7 @@
           "lookbook_photos_bBaEzX",
           "lookbook_photos_Gb6mwD",
           "lookbook_photos_FhnUgY",
+          "lookbook_photos_bDP47F",
           "lookbook_photos_xGbjNx"
         ],
         "settings": {
