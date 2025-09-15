@@ -27,6 +27,8 @@
     "footer_input_placeholder_color": "#000",
     "footer_copyright_color": "#171717",
     "show_email_footer_signup": false,
+    "favicon": "shopify://shop_images/LOGO_SQUARE_2x_4e62f139-7634-467c-8bd6-86cb9b8a9556.png",
+    "apple_touch_icon": "shopify://shop_images/LOGO_SQUARE_2x_4e62f139-7634-467c-8bd6-86cb9b8a9556.png",
     "sections": {
       "homepage-background": {
         "type": "homepage-background",
