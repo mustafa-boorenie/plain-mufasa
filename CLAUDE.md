@@ -103,7 +103,7 @@ shopify theme check         # Lint Liquid files
 ### CSS Conventions
 - Inline styles via Liquid settings: `style="color: {{ settings.color }};"`
 - CSS custom properties defined in `:root` in `theme.liquid`
-- Key variables: `--font_body`, `--font_header`, `--custom-cursor`
+- Key variables: `--font_body`, `--font_header`
 
 ## Key Files Reference
 
@@ -116,7 +116,6 @@ shopify theme check         # Lint Liquid files
 | `snippets/__default-head.liquid` | Default `<head>` content |
 | `config/settings_schema.json` | All customizable theme settings |
 | `assets/plain-jane-2.js` | Main JS bundle (minified) |
-| `assets/custom-cursor.js` | Custom cursor functionality |
 | `assets/music-player.js` | Audio player functionality |
 
 ## Theme Settings Categories
@@ -125,20 +124,19 @@ The theme has extensive customization via `config/settings_schema.json`:
 
 1. **Announcement Bar** - Scrolling text, per-page colors
 2. **Music Player** - Custom audio with disk cover
-3. **Cursor Settings** - Custom cursor image
-4. **Typography** - 5 font families (header, body, nav, button, countdown)
-5. **Enter Screen Layout** - Homepage menu positioning
-6. **Clock Settings** - Timezone picker (80+ timezones)
-7. **Scrollbar Settings** - Custom scrollbar styling
-8. **Logo** - Per-page logo configuration
-9. **Shop Layout** - Grid columns (1-6), gaps, product hover
-10. **Password Page** - Two style variants
-11. **Footer Settings** - Colors, visibility, sizing
-12. **Email Popup** - Modal signup configuration
-13. **SEO Settings** - Favicon, rich snippets
-14. **Search Page** - Results styling
-15. **Cart Settings** - Upper/middle/lower sections
-16. **Misc. Settings** - Animations, lazy loading
+3. **Typography** - 5 font families (header, body, nav, button, countdown)
+4. **Enter Screen Layout** - Homepage menu positioning
+5. **Clock Settings** - Timezone picker (80+ timezones)
+6. **Scrollbar Settings** - Custom scrollbar styling
+7. **Logo** - Per-page logo configuration
+8. **Shop Layout** - Grid columns (1-6), gaps, product hover
+9. **Password Page** - Two style variants
+10. **Footer Settings** - Colors, visibility, sizing
+11. **Email Popup** - Modal signup configuration
+12. **SEO Settings** - Favicon, rich snippets
+13. **Search Page** - Results styling
+14. **Cart Settings** - Upper/middle/lower sections
+15. **Misc. Settings** - Animations, lazy loading
 
 ## External Dependencies
 
@@ -172,7 +170,7 @@ The theme has extensive customization via `config/settings_schema.json`:
 ### Asset URLs
 Always use Shopify filters for asset paths:
 ```liquid
-{{ 'custom-cursor.js' | asset_url }}
+{{ 'music-player.js' | asset_url }}
 {{ 'logo.png' | asset_url }}
 {{ product.featured_image | img_url: '500x' }}
 ```
@@ -228,6 +226,5 @@ Settings often have desktop/mobile variants:
 - Test across templates: index, collection, product, page, blog, article
 - Verify mobile responsiveness (check `mobile-layout` settings)
 - Test with announcement bar on/off
-- Test custom cursor on various background colors
 - Verify timezone display with different `settings.timezone` values
 - Check footer visibility settings per page type

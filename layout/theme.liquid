@@ -84,7 +84,7 @@
     {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
   {% endif %}
   <body
-    style="min-height: 100vh; display: flex; flex-direction: column; --scrollbar-thumb-radius:{{ settings.thumb_radius }}px; --scrollbar-track-color:{{ settings.track_color }}; --scrollbar-thumb-color:{{ settings.thumb_color }};   --custom-cursor: {{ settings.custom_cursor_img | img_url}};"
+    style="min-height: 100vh; display: flex; flex-direction: column; --scrollbar-thumb-radius:{{ settings.thumb_radius }}px; --scrollbar-track-color:{{ settings.track_color }}; --scrollbar-thumb-color:{{ settings.thumb_color }};"
     class="{{ bodyClasses }} {{ "template-" | append: request.page_type | handle }}"
     d3503khivhk343="{{ settings.3593809343bfibhiddsfh_relfe3252_fdfg }}"
   >
@@ -112,7 +112,6 @@
       {% endcase %}
     {% endif %}
     <script src="{{ 'music-player.js' | asset_url }}" type="text/javascript"></script>
-    <script src="{{ 'custom-cursor.js' | asset_url }}" type="text/javascript"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const timezone = '{{settings.timezone}}';
