@@ -1,20 +1,21 @@
 {% comment %}
   PRNTD — Immersive Homepage
-  Rebrand v3 — February 2026
-  Inspired by: Juun.J Persona, Acne Studios, The Row
+  Rebrand v4 — February 2026
+  Inspired by: Juun.J Persona campaign page
   
   Structure:
-  1. Full-screen hero with circular reveal interaction
-  2. Campaign statement — massive typography
-  3. Highlights — asymmetric editorial grid
-  4. Brand manifesto
-  5. All Looks — horizontal scroll collection preview
-  6. Archive — previous collections
-  7. Full footer
+  1. Full-screen hero with circular reveal interaction (UNTOUCHED)
+  2. Campaign statement — massive typography, clean editorial
+  3. Full-bleed editorial image with overlaid text
+  4. Collection highlights — asymmetric editorial grid
+  5. Brand manifesto — text over texture/detail image
+  6. All Looks — horizontal scroll lookbook
+  7. Archive — previous collections
+  8. Full footer
 {% endcomment %}
 
 {% comment %} ============================================================
-   SECTION 1: IMMERSIVE HERO
+   SECTION 1: IMMERSIVE HERO (unchanged)
    ============================================================ {% endcomment %}
 
 <section id="prntd-hero">
@@ -63,20 +64,55 @@
    ============================================================ {% endcomment %}
 
 <section class="campaign-statement">
-  <div class="campaign-statement__inner">
-    <div class="campaign-statement__label" data-animate="fade-up">
-      <span class="prntd-ui-text">Fall / Winter 2026</span>
-    </div>
-    <h2 class="campaign-statement__title" data-animate="fade-up">
+  <div class="campaign-statement__inner" data-animate="fade-up">
+    <span class="campaign-statement__label prntd-ui-text">Fall / Winter 2026</span>
+    <h2 class="campaign-statement__title">
       <span class="campaign-statement__line">Roots</span>
       <span class="campaign-statement__line campaign-statement__line--indent">Reimagined</span>
     </h2>
-    <p class="campaign-statement__body" data-animate="fade-up">Where heritage meets the avant-garde. Season Two draws from Levantine textile traditions — tatriz embroidery, keffiyeh weaves, ancient pattern languages — and reframes them for a new generation.</p>
+    <p class="campaign-statement__body">Where heritage meets the avant-garde. Season Two draws from Levantine textile traditions — tatriz embroidery, keffiyeh weaves, ancient pattern languages — and reframes them for a new generation.</p>
   </div>
 </section>
 
 {% comment %} ============================================================
-   SECTION 3: HIGHLIGHTS — Asymmetric Editorial Grid
+   SECTION 3: FULL-BLEED EDITORIAL IMAGE
+   ============================================================ {% endcomment %}
+
+<section class="editorial-fullbleed" data-animate="fade-in">
+  <div class="editorial-fullbleed__image">
+    <img 
+      src="{{ 'campaign-editorial-wide-01.png' | asset_url }}" 
+      alt="PRNTD Season Two Campaign"
+      loading="lazy"
+    >
+  </div>
+  <div class="editorial-fullbleed__caption">
+    <span class="prntd-ui-text">Season Two — Campaign</span>
+  </div>
+</section>
+
+{% comment %} ============================================================
+   SECTION 4: EDITORIAL SPLIT — Image + Text
+   ============================================================ {% endcomment %}
+
+<section class="editorial-split">
+  <div class="editorial-split__image" data-animate="fade-up">
+    <img 
+      src="{{ 'campaign-editorial-01.png' | asset_url }}" 
+      alt="PRNTD Heritage Craft"
+      loading="lazy"
+    >
+  </div>
+  <div class="editorial-split__text" data-animate="fade-up">
+    <span class="prntd-ui-text">The Craft</span>
+    <h3 class="editorial-split__title prntd-brand-text">Every stitch<br>a conversation<br>across centuries</h3>
+    <p class="editorial-split__body">Tatriz embroidery has carried identity across generations — village to village, mother to daughter. We take these ancestral patterns and place them where they belong: on the streets of now.</p>
+    <a href="/collections/all" class="prntd-btn">Explore Collection</a>
+  </div>
+</section>
+
+{% comment %} ============================================================
+   SECTION 5: HIGHLIGHTS — Product Grid
    ============================================================ {% endcomment %}
 
 <section class="highlights-section">
@@ -96,7 +132,7 @@
             >
           {% endif %}
         </div>
-        <div class="highlights-item__overlay">
+        <div class="highlights-item__info">
           <span class="highlights-item__name">{{ product.title }}</span>
           <span class="highlights-item__price">{{ product.price | money }}</span>
         </div>
@@ -106,10 +142,18 @@
 </section>
 
 {% comment %} ============================================================
-   SECTION 4: BRAND MANIFESTO
+   SECTION 6: BRAND MANIFESTO — Text over Texture Image
    ============================================================ {% endcomment %}
 
 <section class="brand-manifesto">
+  <div class="brand-manifesto__bg">
+    <img 
+      src="{{ 'campaign-texture-01.png' | asset_url }}" 
+      alt=""
+      loading="lazy"
+      aria-hidden="true"
+    >
+  </div>
   <div class="brand-manifesto__inner" data-animate="fade-in">
     <p class="brand-manifesto__text">
       Every thread carries a memory.<br>
@@ -122,7 +166,7 @@
 </section>
 
 {% comment %} ============================================================
-   SECTION 5: ALL LOOKS — Horizontal Scroll
+   SECTION 7: ALL LOOKS — Horizontal Scroll
    ============================================================ {% endcomment %}
 
 <section class="all-looks">
@@ -150,7 +194,7 @@
 </section>
 
 {% comment %} ============================================================
-   SECTION 6: ARCHIVE — Previous Collections
+   SECTION 8: ARCHIVE — Previous Collections
    ============================================================ {% endcomment %}
 
 <section class="archive-section">
@@ -161,27 +205,27 @@
   <div class="archive-scroll" data-animate="fade-up">
     <div class="archive-item">
       <span class="archive-item__number prntd-ui-text">01</span>
-      <span class="archive-item__name">Elementics</span>
+      <span class="archive-item__name prntd-brand-text">Elementics</span>
       <span class="archive-item__year prntd-ui-text">Fall/Winter 2024</span>
     </div>
     <div class="archive-item">
       <span class="archive-item__number prntd-ui-text">02</span>
-      <span class="archive-item__name">Neolithium</span>
+      <span class="archive-item__name prntd-brand-text">Neolithium</span>
       <span class="archive-item__year prntd-ui-text">Spring/Summer 2024</span>
     </div>
     <div class="archive-item">
       <span class="archive-item__number prntd-ui-text">03</span>
-      <span class="archive-item__name">Forsan</span>
+      <span class="archive-item__name prntd-brand-text">Forsan</span>
       <span class="archive-item__year prntd-ui-text">Fall/Winter 2023</span>
     </div>
     <div class="archive-item">
       <span class="archive-item__number prntd-ui-text">04</span>
-      <span class="archive-item__name">Genesis</span>
+      <span class="archive-item__name prntd-brand-text">Genesis</span>
       <span class="archive-item__year prntd-ui-text">Spring/Summer 2023</span>
     </div>
     <div class="archive-item">
       <span class="archive-item__number prntd-ui-text">05</span>
-      <span class="archive-item__name">Gilgamesh</span>
+      <span class="archive-item__name prntd-brand-text">Gilgamesh</span>
       <span class="archive-item__year prntd-ui-text">Fall/Winter 2022</span>
     </div>
   </div>
@@ -194,7 +238,11 @@
 <footer class="prntd-footer-full">
   <div class="prntd-footer-full__inner">
     <div class="prntd-footer-full__col prntd-footer-full__brand">
-      <span class="prntd-footer-full__logo prntd-brand-text">P.</span>
+      {% if settings.enter_screen_logo %}
+        <img src="{{ settings.enter_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-footer-logo-img">
+      {% else %}
+        <span class="prntd-footer-full__logo prntd-brand-text">PRNTD</span>
+      {% endif %}
       <p class="prntd-footer-full__tagline">Heritage woven into the modern world.</p>
     </div>
     <div class="prntd-footer-full__col">
