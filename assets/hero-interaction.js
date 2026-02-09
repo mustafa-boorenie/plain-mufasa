@@ -25,15 +25,15 @@
   // --- Configuration ---
   const CONFIG = {
     spotlight: {
-      radius: 100,
-      smoothing: 0.1,
-      edgeSoftness: 50,
+      radius: 160,            // Core visible radius
+      smoothing: 0.08,        // Lower = more lag/smoothness
+      edgeSoftness: 80,       // Feather beyond radius
     },
     echoes: {
-      maxCount: 10,
-      fadeSpeed: 0.025,
-      minVelocity: 6,
-      spawnInterval: 50,
+      maxCount: 12,
+      fadeSpeed: 0.018,        // Slower fade = longer trails
+      minVelocity: 5,
+      spawnInterval: 40,
     },
     grid: {
       size: 60,
@@ -44,10 +44,10 @@
       amount: 10,
     },
     inversion: {
-      threshold: 0.6, // 0-1, how close cursor needs to be to trigger inversion
+      threshold: 0.6,
     },
     mobile: {
-      spotlightRadius: 70,
+      spotlightRadius: 100,
     }
   };
 
@@ -265,8 +265,8 @@
       echoes.push({
         x: smoothMouse.x,
         y: smoothMouse.y,
-        opacity: 0.4,
-        radius: (isTouch ? CONFIG.mobile.spotlightRadius : CONFIG.spotlight.radius) * 0.7
+        opacity: 0.5,
+        radius: (isTouch ? CONFIG.mobile.spotlightRadius : CONFIG.spotlight.radius) * 0.85
       });
       if (echoes.length > CONFIG.echoes.maxCount) {
         echoes.shift();
@@ -311,31 +311,40 @@
     // Step 1: Draw soft spotlight circles as white-on-transparent (alpha mask)
     // We'll draw the alpha shapes first, then use 'source-in' to composite layer 2
 
-    // Draw main spotlight
+    // Draw main spotlight with multi-stop gradient for premium soft edge
     if (active || smoothMouse.x > -1000) {
+      var outerR = radius + soft;
       var grad = revealCtx.createRadialGradient(
         smoothMouse.x, smoothMouse.y, 0,
-        smoothMouse.x, smoothMouse.y, radius + soft
+        smoothMouse.x, smoothMouse.y, outerR
       );
-      grad.addColorStop(0, 'rgba(255,255,255,1)');
-      grad.addColorStop(radius / (radius + soft), 'rgba(255,255,255,0.95)');
-      grad.addColorStop(1, 'rgba(255,255,255,0)');
+      // Multi-stop for smooth, cinematic falloff
+      grad.addColorStop(0,    'rgba(255,255,255,1)');
+      grad.addColorStop(0.35, 'rgba(255,255,255,1)');
+      grad.addColorStop(0.5,  'rgba(255,255,255,0.85)');
+      grad.addColorStop(0.65, 'rgba(255,255,255,0.55)');
+      grad.addColorStop(0.8,  'rgba(255,255,255,0.2)');
+      grad.addColorStop(0.92, 'rgba(255,255,255,0.05)');
+      grad.addColorStop(1,    'rgba(255,255,255,0)');
       revealCtx.fillStyle = grad;
       revealCtx.beginPath();
-      revealCtx.arc(smoothMouse.x, smoothMouse.y, radius + soft, 0, Math.PI * 2);
+      revealCtx.arc(smoothMouse.x, smoothMouse.y, outerR, 0, Math.PI * 2);
       revealCtx.fill();
     }
 
-    // Draw echo trails
+    // Draw echo trails with smooth falloff
     for (var i = 0; i < echoes.length; i++) {
       var echo = echoes[i];
       var echoGrad = revealCtx.createRadialGradient(
         echo.x, echo.y, 0,
         echo.x, echo.y, echo.radius
       );
-      echoGrad.addColorStop(0, 'rgba(255,255,255,' + echo.opacity + ')');
-      echoGrad.addColorStop(0.6, 'rgba(255,255,255,' + (echo.opacity * 0.5) + ')');
-      echoGrad.addColorStop(1, 'rgba(255,255,255,0)');
+      var a = echo.opacity;
+      echoGrad.addColorStop(0,    'rgba(255,255,255,' + a + ')');
+      echoGrad.addColorStop(0.3,  'rgba(255,255,255,' + (a * 0.8) + ')');
+      echoGrad.addColorStop(0.6,  'rgba(255,255,255,' + (a * 0.35) + ')');
+      echoGrad.addColorStop(0.85, 'rgba(255,255,255,' + (a * 0.08) + ')');
+      echoGrad.addColorStop(1,    'rgba(255,255,255,0)');
       revealCtx.fillStyle = echoGrad;
       revealCtx.beginPath();
       revealCtx.arc(echo.x, echo.y, echo.radius, 0, Math.PI * 2);
