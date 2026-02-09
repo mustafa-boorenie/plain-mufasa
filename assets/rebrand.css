@@ -448,7 +448,7 @@ body.klaviyo-prevent-body-scrolling {
   height: 100%;
   min-height: 300px;
   overflow: hidden;
-  background: #111;
+  background: #ffffff;
 }
 
 .highlights-item--0 .highlights-item__image {
@@ -466,12 +466,10 @@ body.klaviyo-prevent-body-scrolling {
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-  filter: brightness(0.75) contrast(1.15);
 }
 
 .highlights-item:hover .highlights-item__image img {
   transform: scale(1.04);
-  filter: brightness(0.88) contrast(1.1);
 }
 
 .highlights-item__overlay {
@@ -650,7 +648,7 @@ body.klaviyo-prevent-body-scrolling {
 .all-looks__image {
   aspect-ratio: 3/4;
   overflow: hidden;
-  background: #111;
+  background: #ffffff;
   margin-bottom: 0.8rem;
 }
 
@@ -659,12 +657,10 @@ body.klaviyo-prevent-body-scrolling {
   height: 100%;
   object-fit: cover;
   transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
-  filter: brightness(0.75) contrast(1.15);
 }
 
 .all-looks__item:hover .all-looks__image img {
   transform: scale(1.04);
-  filter: brightness(0.88) contrast(1.1);
 }
 
 .all-looks__name {
@@ -1176,16 +1172,16 @@ body.klaviyo-prevent-body-scrolling {
 }
 
 .collection-editorial--dark .collection-product-image {
-  background: #111;
+  background: #ffffff;
 }
 
 .collection-editorial--dark .collection-product-image img {
-  filter: brightness(0.75) contrast(1.15);
-  transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.5s ease;
+  filter: none;
+  transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .collection-editorial--dark .collection-product:hover .collection-product-image img {
-  filter: brightness(0.88) contrast(1.1);
+  transform: scale(1.04);
 }
 
 .collection-editorial--dark .collection-product-info h3 {
