@@ -1,0 +1,610 @@
+/* ============================================================
+   PRNTD Rebrand — Design System
+   ============================================================ */
+
+/* --- Reset & Base --- */
+:root {
+  --prntd-black: #0a0a0a;
+  --prntd-white: #f5f5f3;
+  --prntd-gray: #e5e5e5;
+  --prntd-gray-dark: #888;
+  --prntd-gray-subtle: #ccc;
+  --prntd-bg: #0a0a0a;
+  --prntd-text: #f5f5f3;
+  --prntd-font-brand: 'Playfair Display', 'Georgia', serif;
+  --prntd-font-ui: 'Inter', 'Helvetica Neue', sans-serif;
+  --prntd-transition: 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* --- Typography --- */
+.prntd-brand-text {
+  font-family: var(--prntd-font-brand);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.prntd-ui-text {
+  font-family: var(--prntd-font-ui);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+#prntd-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--prntd-black);
+  cursor: none;
+}
+
+/* On mobile, keep default cursor */
+@media (hover: none) {
+  #prntd-hero {
+    cursor: default;
+  }
+}
+
+.hero-layer-1,
+.hero-layer-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Layer 2 is beneath layer 1 */
+.hero-layer-2 {
+  z-index: 1;
+}
+
+/* Layer 1 sits on top — the reveal canvas masks parts of this to show layer 2 */
+.hero-layer-1 {
+  z-index: 2;
+}
+
+/* The reveal canvas composites on top */
+.hero-reveal-canvas {
+  z-index: 3;
+  mix-blend-mode: multiply;
+}
+
+/* Grid canvas */
+.hero-grid-canvas {
+  z-index: 4;
+}
+
+/* --- Hero UI Elements --- */
+.hero-ui {
+  position: absolute;
+  z-index: 10;
+  transition: color var(--prntd-transition), filter var(--prntd-transition);
+  will-change: transform;
+}
+
+.hero-ui.hero-inverted {
+  color: var(--prntd-white) !important;
+  filter: invert(0);
+}
+
+/* Logo — top left */
+.hero-logo {
+  top: 2rem;
+  left: 2rem;
+}
+
+.hero-logo a {
+  font-family: var(--prntd-font-brand);
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--prntd-white);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  transition: color var(--prntd-transition);
+}
+
+.hero-logo.hero-inverted a {
+  color: var(--prntd-black);
+}
+
+/* Nav — top right */
+.hero-nav {
+  top: 2rem;
+  right: 2rem;
+}
+
+.hero-nav a {
+  font-family: var(--prntd-font-ui);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--prntd-white);
+  text-decoration: none;
+  transition: color var(--prntd-transition);
+}
+
+.hero-nav.hero-inverted a {
+  color: var(--prntd-black);
+}
+
+/* Social — bottom right */
+.hero-social {
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.hero-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--prntd-transition);
+}
+
+.hero-social svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--prntd-white);
+  transition: fill var(--prntd-transition);
+}
+
+.hero-social.hero-inverted svg {
+  fill: var(--prntd-black);
+}
+
+/* Scroll indicator — bottom center */
+.hero-scroll-hint {
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.5;
+  animation: hero-scroll-pulse 2s ease-in-out infinite;
+}
+
+.hero-scroll-hint span {
+  font-family: var(--prntd-font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--prntd-white);
+}
+
+@keyframes hero-scroll-pulse {
+  0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.6; transform: translateX(-50%) translateY(4px); }
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 768px) {
+  .hero-logo {
+    top: 1.2rem;
+    left: 1.2rem;
+  }
+  .hero-logo a {
+    font-size: 1.4rem;
+  }
+  .hero-nav {
+    top: 1.2rem;
+    right: 1.2rem;
+  }
+  .hero-social {
+    bottom: 1.2rem;
+    right: 1.2rem;
+  }
+}
+
+/* ============================================================
+   EDITORIAL PRODUCTS (Below Fold)
+   ============================================================ */
+
+.editorial-section {
+  background: var(--prntd-bg);
+  color: var(--prntd-text);
+  padding: 8rem 2rem;
+}
+
+.editorial-header {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.editorial-header h2 {
+  font-family: var(--prntd-font-brand);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+}
+
+.editorial-header p {
+  font-family: var(--prntd-font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--prntd-gray-dark);
+  margin: 0;
+}
+
+/* Product Grid — Editorial Layout */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.editorial-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.editorial-item:nth-child(even) {
+  direction: rtl;
+}
+
+.editorial-item:nth-child(even) > * {
+  direction: ltr;
+}
+
+.editorial-item-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: #111;
+}
+
+.editorial-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.editorial-item:hover .editorial-item-image img {
+  transform: scale(1.03);
+}
+
+.editorial-item-content {
+  padding: 2rem 0;
+}
+
+.editorial-item-content h3 {
+  font-family: var(--prntd-font-brand);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  font-style: italic;
+  margin: 0 0 1rem;
+  letter-spacing: -0.01em;
+}
+
+.editorial-item-content .item-collection {
+  font-family: var(--prntd-font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--prntd-gray-dark);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.editorial-item-content .item-description {
+  font-family: var(--prntd-font-ui);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--prntd-gray-subtle);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.editorial-item-content .item-price {
+  font-family: var(--prntd-font-ui);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--prntd-text);
+  margin-bottom: 2rem;
+}
+
+/* CTA Button */
+.prntd-btn {
+  display: inline-block;
+  font-family: var(--prntd-font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--prntd-text);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.9rem 2.5rem;
+  text-decoration: none;
+  transition: all var(--prntd-transition);
+  background: transparent;
+  cursor: pointer;
+}
+
+.prntd-btn:hover {
+  background: var(--prntd-white);
+  color: var(--prntd-black);
+  border-color: var(--prntd-white);
+}
+
+/* Mobile: stack editorial items */
+@media (max-width: 768px) {
+  .editorial-item,
+  .editorial-item:nth-child(even) {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 1.5rem;
+  }
+
+  .editorial-section {
+    padding: 4rem 1.2rem;
+  }
+
+  .editorial-grid {
+    gap: 4rem;
+  }
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS
+   ============================================================ */
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate="fade-up"] {
+  transform: translateY(40px);
+}
+
+[data-animate="fade-in"] {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   STORYTELLING DIVIDER
+   ============================================================ */
+
+.story-divider {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: var(--prntd-bg);
+}
+
+.story-divider blockquote {
+  font-family: var(--prntd-font-brand);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--prntd-gray-dark);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+.story-divider .story-attribution {
+  font-family: var(--prntd-font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-top: 1.5rem;
+}
+
+/* ============================================================
+   COLLECTION PAGE
+   ============================================================ */
+
+.collection-editorial {
+  background: var(--prntd-bg);
+  color: var(--prntd-text);
+  min-height: 100vh;
+  padding: 8rem 2rem 4rem;
+}
+
+.collection-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.collection-header h1 {
+  font-family: var(--prntd-font-brand);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  font-style: italic;
+  margin: 0;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.collection-product {
+  position: relative;
+  overflow: hidden;
+  background: #111;
+  text-decoration: none;
+  color: var(--prntd-text);
+  display: block;
+}
+
+.collection-product-image {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+.collection-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.collection-product:hover .collection-product-image img {
+  transform: scale(1.05);
+}
+
+.collection-product-info {
+  padding: 1.2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.collection-product-info h3 {
+  font-family: var(--prntd-font-brand);
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  margin: 0;
+}
+
+.collection-product-info .product-price {
+  font-family: var(--prntd-font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--prntd-gray-dark);
+}
+
+/* ============================================================
+   PRODUCT DETAIL PAGE
+   ============================================================ */
+
+.pdp-editorial {
+  background: var(--prntd-bg);
+  color: var(--prntd-text);
+  min-height: 100vh;
+}
+
+.pdp-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  min-height: 100vh;
+}
+
+.pdp-gallery {
+  position: relative;
+  overflow: hidden;
+}
+
+.pdp-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pdp-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.pdp-details h1 {
+  font-family: var(--prntd-font-brand);
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 400;
+  font-style: italic;
+  margin: 0 0 0.5rem;
+}
+
+.pdp-details .pdp-price {
+  font-family: var(--prntd-font-ui);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+  color: var(--prntd-gray-subtle);
+}
+
+.pdp-details .pdp-story {
+  font-family: var(--prntd-font-ui);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--prntd-gray-subtle);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  .pdp-hero {
+    grid-template-columns: 1fr;
+  }
+  .pdp-gallery {
+    aspect-ratio: 3/4;
+  }
+  .pdp-details {
+    padding: 2rem 1.2rem;
+  }
+}
+
+/* ============================================================
+   FOOTER — Minimal
+   ============================================================ */
+
+.prntd-footer {
+  background: var(--prntd-bg);
+  color: var(--prntd-gray-dark);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--prntd-font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.prntd-footer a {
+  color: var(--prntd-gray-dark);
+  text-decoration: none;
+  transition: color var(--prntd-transition);
+}
+
+.prntd-footer a:hover {
+  color: var(--prntd-text);
+}
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
