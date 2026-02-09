@@ -29,14 +29,14 @@
   {% if settings.hero_layer_1 %}
     <img class="hero-layer-1" src="{{ settings.hero_layer_1 | image_url: width: 2000 }}" alt="PRNTD" loading="eager" fetchpriority="high">
   {% else %}
-    <div class="hero-layer-1" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);"></div>
+    <img class="hero-layer-1" src="{{ 'prntd-hero-layer-1.png' | asset_url }}" alt="PRNTD" loading="eager" fetchpriority="high">
   {% endif %}
 
-  {% comment %} Layer 2 — Hidden, loaded by hero-interaction.js for canvas drawing {% endcomment %}
+  {% comment %} Layer 2 — Hidden in DOM, loaded by hero-interaction.js for canvas drawing {% endcomment %}
   {% if settings.hero_layer_2 %}
     <img class="hero-layer-2" src="{{ settings.hero_layer_2 | image_url: width: 2000 }}" alt="" loading="eager" aria-hidden="true">
   {% else %}
-    <div class="hero-layer-2" data-src="" style="background: #111;"></div>
+    <img class="hero-layer-2" src="{{ 'prntd-hero-layer-2.png' | asset_url }}" alt="" loading="eager" aria-hidden="true">
   {% endif %}
 
   {% comment %} UI Elements — positioned absolutely, parallax + inversion {% endcomment %}
