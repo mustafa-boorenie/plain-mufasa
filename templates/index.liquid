@@ -7,14 +7,14 @@
   1. Full-screen hero with circular reveal interaction
   2. Campaign statement — massive typography
   3. Highlights — asymmetric editorial grid
-  4. Brand philosophy — manifesto section
-  5. All Looks — collection preview
-  6. Archive — previous collections carousel
-  7. Footer — full utility footer
+  4. Brand manifesto
+  5. All Looks — horizontal scroll collection preview
+  6. Archive — previous collections
+  7. Full footer
 {% endcomment %}
 
 {% comment %} ============================================================
-   SECTION 1: IMMERSIVE HERO (unchanged)
+   SECTION 1: IMMERSIVE HERO
    ============================================================ {% endcomment %}
 
 <section id="prntd-hero">
@@ -46,14 +46,10 @@
 
   <div class="hero-ui hero-social" data-hero-ui>
     <a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-      </svg>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
     </a>
     <a href="https://x.com/prntdbybdq" target="_blank" rel="noopener" aria-label="X / Twitter">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-      </svg>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     </a>
   </div>
 
@@ -63,21 +59,19 @@
 </section>
 
 {% comment %} ============================================================
-   SECTION 2: CAMPAIGN STATEMENT — Massive Typography
+   SECTION 2: CAMPAIGN STATEMENT
    ============================================================ {% endcomment %}
 
 <section class="campaign-statement">
-  <div class="campaign-statement-inner">
-    <div class="campaign-label" data-animate="fade-up">
+  <div class="campaign-statement__inner">
+    <div class="campaign-statement__label" data-animate="fade-up">
       <span class="prntd-ui-text">Fall / Winter 2026</span>
     </div>
-    <h2 class="campaign-title" data-animate="fade-up">
-      <span class="campaign-title-line">Roots</span>
-      <span class="campaign-title-line">Reimagined</span>
+    <h2 class="campaign-statement__title" data-animate="fade-up">
+      <span class="campaign-statement__line">Roots</span>
+      <span class="campaign-statement__line campaign-statement__line--indent">Reimagined</span>
     </h2>
-    <div class="campaign-desc" data-animate="fade-up">
-      <p>Where heritage meets the avant-garde. Season Two draws from Levantine textile traditions — tatriz embroidery, keffiyeh weaves, ancient pattern languages — and reframes them for a new generation.</p>
-    </div>
+    <p class="campaign-statement__body" data-animate="fade-up">Where heritage meets the avant-garde. Season Two draws from Levantine textile traditions — tatriz embroidery, keffiyeh weaves, ancient pattern languages — and reframes them for a new generation.</p>
   </div>
 </section>
 
@@ -92,8 +86,8 @@
   
   <div class="highlights-grid">
     {% for product in collections['all'].products limit: 4 %}
-      <a href="{{ product.url }}" class="highlights-item highlights-item--{{ forloop.index }}" data-animate="fade-up" data-animate-delay="{{ forloop.index | times: 100 }}">
-        <div class="highlights-item-image">
+      <a href="{{ product.url }}" class="highlights-item highlights-item--{{ forloop.index0 }}" data-animate="fade-up" data-animate-delay="{{ forloop.index | times: 120 }}">
+        <div class="highlights-item__image">
           {% if product.featured_image %}
             <img 
               src="{{ product.featured_image | image_url: width: 900 }}" 
@@ -102,9 +96,9 @@
             >
           {% endif %}
         </div>
-        <div class="highlights-item-info">
-          <h3>{{ product.title }}</h3>
-          <span class="highlights-item-price">{{ product.price | money }}</span>
+        <div class="highlights-item__overlay">
+          <span class="highlights-item__name">{{ product.title }}</span>
+          <span class="highlights-item__price">{{ product.price | money }}</span>
         </div>
       </a>
     {% endfor %}
@@ -112,39 +106,35 @@
 </section>
 
 {% comment %} ============================================================
-   SECTION 4: BRAND PHILOSOPHY — Manifesto
+   SECTION 4: BRAND MANIFESTO
    ============================================================ {% endcomment %}
 
-<section class="philosophy-section">
-  <div class="philosophy-inner" data-animate="fade-in">
-    <p class="philosophy-text">
-      <span class="philosophy-line">Every thread carries</span>
-      <span class="philosophy-line">a memory. Every pattern</span>
-      <span class="philosophy-line">tells a story that was</span>
-      <span class="philosophy-line">never meant to be</span>
-      <span class="philosophy-line philosophy-line--accent">forgotten.</span>
+<section class="brand-manifesto">
+  <div class="brand-manifesto__inner" data-animate="fade-in">
+    <p class="brand-manifesto__text">
+      Every thread carries a memory.<br>
+      Every pattern tells a story<br>
+      that was never meant to be <em>forgotten.</em>
     </p>
-    <div class="philosophy-credit">
-      <span class="prntd-ui-text">Design Philosophy</span>
-      <p>PRNTD channels the spirit of traditional craftsmanship — tatriz cross-stitch, Levantine textile arts, the symbolism woven into every thread — into contemporary silhouettes that refuse to let culture be erased.</p>
-    </div>
+    <span class="brand-manifesto__rule"></span>
+    <p class="brand-manifesto__credit prntd-ui-text">Design Philosophy</p>
   </div>
 </section>
 
 {% comment %} ============================================================
-   SECTION 5: ALL LOOKS — Full Collection Preview
+   SECTION 5: ALL LOOKS — Horizontal Scroll
    ============================================================ {% endcomment %}
 
-<section class="all-looks-section">
-  <div class="all-looks-header" data-animate="fade-up">
-    <h2>All Looks</h2>
-    <a href="/collections/all" class="prntd-btn prntd-btn--light">View Collection</a>
+<section class="all-looks">
+  <div class="all-looks__header" data-animate="fade-up">
+    <h2 class="all-looks__title prntd-brand-text">All Looks</h2>
+    <a href="/collections/all" class="all-looks__link prntd-ui-text">View Collection →</a>
   </div>
   
-  <div class="all-looks-grid">
+  <div class="all-looks__scroll">
     {% for product in collections['all'].products limit: 8 %}
-      <a href="{{ product.url }}" class="all-looks-item" data-animate="fade-up" data-animate-delay="{{ forloop.index | times: 60 }}">
-        <div class="all-looks-item-image">
+      <a href="{{ product.url }}" class="all-looks__item" data-animate="fade-up" data-animate-delay="{{ forloop.index | times: 60 }}">
+        <div class="all-looks__image">
           {% if product.featured_image %}
             <img 
               src="{{ product.featured_image | image_url: width: 600 }}" 
@@ -153,9 +143,7 @@
             >
           {% endif %}
         </div>
-        <div class="all-looks-item-info">
-          <span class="all-looks-item-name">{{ product.title }}</span>
-        </div>
+        <span class="all-looks__name">{{ product.title }}</span>
       </a>
     {% endfor %}
   </div>
@@ -172,35 +160,31 @@
   
   <div class="archive-scroll" data-animate="fade-up">
     <div class="archive-item">
-      <span class="archive-item-name">Elementics</span>
-      <span class="archive-item-season">Fall/Winter 2024</span>
+      <span class="archive-item__number prntd-ui-text">01</span>
+      <span class="archive-item__name">Elementics</span>
+      <span class="archive-item__year prntd-ui-text">Fall/Winter 2024</span>
     </div>
     <div class="archive-item">
-      <span class="archive-item-name">Neolithium</span>
-      <span class="archive-item-season">Spring/Summer 2024</span>
+      <span class="archive-item__number prntd-ui-text">02</span>
+      <span class="archive-item__name">Neolithium</span>
+      <span class="archive-item__year prntd-ui-text">Spring/Summer 2024</span>
     </div>
     <div class="archive-item">
-      <span class="archive-item-name">Forsan</span>
-      <span class="archive-item-season">Fall/Winter 2023</span>
+      <span class="archive-item__number prntd-ui-text">03</span>
+      <span class="archive-item__name">Forsan</span>
+      <span class="archive-item__year prntd-ui-text">Fall/Winter 2023</span>
     </div>
     <div class="archive-item">
-      <span class="archive-item-name">Genesis</span>
-      <span class="archive-item-season">Spring/Summer 2023</span>
+      <span class="archive-item__number prntd-ui-text">04</span>
+      <span class="archive-item__name">Genesis</span>
+      <span class="archive-item__year prntd-ui-text">Spring/Summer 2023</span>
     </div>
     <div class="archive-item">
-      <span class="archive-item-name">Gilgamesh</span>
-      <span class="archive-item-season">Fall/Winter 2022</span>
+      <span class="archive-item__number prntd-ui-text">05</span>
+      <span class="archive-item__name">Gilgamesh</span>
+      <span class="archive-item__year prntd-ui-text">Fall/Winter 2022</span>
     </div>
   </div>
-</section>
-
-{% comment %} ============================================================
-   SECTION 7: CTA
-   ============================================================ {% endcomment %}
-
-<section class="cta-section" data-animate="fade-up">
-  <h2 class="cta-text">Claim Your Style</h2>
-  <a href="/collections/all" class="cta-arrow" aria-label="Shop the collection">→</a>
 </section>
 
 {% comment %} ============================================================
@@ -208,41 +192,40 @@
    ============================================================ {% endcomment %}
 
 <footer class="prntd-footer-full">
-  <div class="footer-marquee">
-    <div class="footer-marquee-inner">
-      <span>From Heritage to Paris</span>
-      <span>·</span>
-      <span>From Heritage to Paris</span>
-      <span>·</span>
-      <span>From Heritage to Paris</span>
-      <span>·</span>
-      <span>From Heritage to Paris</span>
-      <span>·</span>
-      <span>From Heritage to Paris</span>
-      <span>·</span>
+  <div class="prntd-footer-full__inner">
+    <div class="prntd-footer-full__col prntd-footer-full__brand">
+      <span class="prntd-footer-full__logo prntd-brand-text">P.</span>
+      <p class="prntd-footer-full__tagline">Heritage woven into the modern world.</p>
+    </div>
+    <div class="prntd-footer-full__col">
+      <h4 class="prntd-footer-full__heading prntd-ui-text">Navigate</h4>
+      <ul class="prntd-footer-full__list">
+        <li><a href="/collections/all">Shop</a></li>
+        <li><a href="/pages/about">About</a></li>
+        <li><a href="/pages/lookbook">Lookbook</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="prntd-footer-full__col">
+      <h4 class="prntd-footer-full__heading prntd-ui-text">Connect</h4>
+      <ul class="prntd-footer-full__list">
+        <li><a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://x.com/prntdbybdq" target="_blank" rel="noopener">X / Twitter</a></li>
+        <li><a href="mailto:info@prntdbybdq.com">info@prntdbybdq.com</a></li>
+      </ul>
+    </div>
+    <div class="prntd-footer-full__col prntd-footer-full__newsletter">
+      <h4 class="prntd-footer-full__heading prntd-ui-text">Stay in the Loop</h4>
+      <p class="prntd-footer-full__newsletter-text">New drops. Exclusive access. No noise.</p>
+      <form class="prntd-footer-full__form" action="/contact#contact_form" method="post">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email" name="contact[email]" placeholder="Email address" required class="prntd-footer-full__input">
+        <button type="submit" class="prntd-footer-full__submit prntd-ui-text">Subscribe</button>
+      </form>
     </div>
   </div>
-
-  <div class="footer-main">
-    <div class="footer-col">
-      <span class="footer-col-title">Navigate</span>
-      <a href="/collections/all">Shop All</a>
-      <a href="/pages/about">About</a>
-      <a href="/pages/lookbook">Lookbook</a>
-      <a href="/pages/contact">Contact</a>
-    </div>
-    <div class="footer-col">
-      <span class="footer-col-title">Follow Us</span>
-      <a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://x.com/prntdbybdq" target="_blank" rel="noopener">X / Twitter</a>
-    </div>
-    <div class="footer-col">
-      <span class="footer-col-title">Contact</span>
-      <a href="mailto:info@prntdbybdq.com">info@prntdbybdq.com</a>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
+  <div class="prntd-footer-full__bottom">
     <span>© {{ 'now' | date: '%Y' }} PRNTD. All rights reserved.</span>
   </div>
 </footer>

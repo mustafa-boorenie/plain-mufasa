@@ -1169,6 +1169,36 @@ body.klaviyo-prevent-body-scrolling {
   margin-top: 4rem;
 }
 
+/* Dark collection variant */
+.collection-editorial--dark {
+  background: var(--prntd-black);
+  color: var(--prntd-white);
+}
+
+.collection-editorial--dark .collection-header h1 {
+  color: var(--prntd-white);
+}
+
+.collection-editorial--dark .collection-header .collection-description {
+  color: var(--prntd-gray-dark);
+}
+
+.collection-editorial--dark .collection-product {
+  color: var(--prntd-white);
+}
+
+.collection-editorial--dark .collection-product-image {
+  background: #111;
+}
+
+.collection-editorial--dark .collection-product-info h3 {
+  color: var(--prntd-white);
+}
+
+.collection-editorial--dark .collection-product-info .product-price {
+  color: rgba(255,255,255,0.5);
+}
+
 @media (max-width: 768px) {
   .collection-editorial {
     padding: 7rem 1rem 3rem;
