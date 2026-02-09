@@ -258,7 +258,10 @@ The original v1 approach (canvas overlay with `mix-blend-mode: multiply` + `dest
 - [x] **CSS organized** with clear section comments, all new sections in rebrand.css
 - [x] **Klaviyo popup suppressed** on all rebranded pages
 - [x] **No white sections** — entire below-fold is #0a0a0a with generous 10-15vh spacing
+- [x] Product image filters (brightness/contrast) to reduce white-bg product photo clash
+- [x] PDP details top-aligned to bring add-to-cart above the fold
 - [ ] Product page dark theme update
+- [ ] Real campaign photography (current product shots have white backgrounds — #1 remaining issue)
 - [ ] Cross-browser/mobile testing
 
 ### Phase 3: Polish (Week 3)
@@ -300,4 +303,4 @@ The original v1 approach (canvas overlay with `mix-blend-mode: multiply` + `dest
 
 ---
 
-*Last updated: 2026-02-09 18:50 UTC*
+*Last updated: 2026-02-09 20:00 UTC*
