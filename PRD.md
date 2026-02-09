@@ -58,15 +58,31 @@ The current site is a static catalog. The rebrand introduces a **narrative arc**
 
 The homepage hero features a **dual-layer image reveal** that defines the brand's digital identity:
 
-- Full-viewport hero with Image Layer 1 (campaign shot) as background
-- Mouse cursor becomes a circular spotlight (~150px diameter)
-- Spotlight reveals Image Layer 2 beneath (alternate grade / B&W / texture variant)
-- **Motion echoes:** Fast movement leaves soft, fading circular ghosts (premium feel, not gaming UI)
-- **Background grid:** Faint animated grid reacts subtly to cursor position
-- **Dynamic inversion:** All UI elements (logo, nav, social icons) invert color when spotlight passes over them
-- **Light parallax:** UI elements drift 2-10px opposite to cursor movement
-- **Smooth transitions:** 300ms easing on all state changes
+- Full-viewport hero with Image Layer 1 (campaign shot) as the **base layer** (always visible)
+- Mouse cursor becomes a circular spotlight (~200px diameter with 50px soft feather)
+- Spotlight reveals Image Layer 2 **drawn onto a canvas** within spotlight regions (alternate grade / B&W / texture variant)
+- **Motion echoes:** Fast movement leaves soft, fading circular ghosts (premium feel, not gaming UI). Max 10 echoes, spawning at >6px/frame velocity.
+- **Background grid:** Faint animated grid (opacity ~0.035) reacts subtly to cursor position. Grid lines shift proportional to cursor offset from center.
+- **Dynamic inversion:** All UI elements (logo, nav, social icons) invert color when spotlight passes within threshold distance
+- **Light parallax:** UI elements drift up to 10px opposite to cursor movement
+- **Smooth transitions:** 300ms easing on all state changes, cursor position smoothed via lerp (factor 0.1)
 - **Performance target:** 60fps, no jank
+
+#### Technical Architecture of Reveal (v2)
+
+The original v1 approach (canvas overlay with `mix-blend-mode: multiply` + `destination-out` compositing) was **fundamentally broken** — it could not actually reveal Layer 2 through Layer 1 because the canvas sat on top and only affected its own pixels.
+
+**Correct approach (v2):**
+1. **Layer 1** (base image) is a standard `<img>`, always visible (z-index 1)
+2. **Layer 2** is hidden in DOM. JS loads it as an `Image` object.
+3. **Reveal Canvas** (z-index 2) sits between Layer 1 and UI elements. Each frame:
+   - Soft radial gradients are drawn at spotlight + echo positions (white with alpha)
+   - `globalCompositeOperation = 'source-in'` ensures subsequent draw only appears where alpha exists
+   - Layer 2 image is drawn full-canvas, clipped to the spotlight regions
+4. **Grid Canvas** (z-index 3) draws subtle animated grid lines
+5. **UI Elements** (z-index 10) float on top with parallax + inversion
+
+**Touch support:** Tap-and-drag reveals on mobile. Spotlight disappears on touch-end. Reduced spotlight radius (70px vs 100px desktop).
 
 ### 3.3 Visual Language
 - Clean base, near-zero UI chrome
@@ -135,10 +151,12 @@ The homepage hero features a **dual-layer image reveal** that defines the brand'
 ### 5.2 New/Modified Files
 
 **Assets (new):**
-- `assets/hero-interaction.js` — Circular reveal cursor, motion echoes, grid animation, parallax
+- `assets/hero-interaction.js` — v2 circular reveal (source-in compositing), motion echoes, grid animation, parallax, inversion
 - `assets/scroll-animations.js` — Intersection Observer-based fade-ins, parallax scrolling
-- `assets/rebrand.css` — New design system styles
-- `assets/gsap.min.js` — GSAP core (or CDN)
+- `assets/rebrand.css` — New design system styles (full hero, editorial, collection, PDP, footer)
+- `assets/hero/hero-layer-1.png` — AI-generated hero base image (placeholder)
+- `assets/hero/hero-layer-2.png` — AI-generated hero reveal image (placeholder)
+- ~~`assets/gsap.min.js`~~ — **Removed dependency.** All animations are pure vanilla JS (requestAnimationFrame + IntersectionObserver). No GSAP needed.
 
 **Templates (modified):**
 - `templates/index.liquid` — Complete rewrite for immersive hero + editorial scroll
@@ -186,9 +204,14 @@ The homepage hero features a **dual-layer image reveal** that defines the brand'
 - P. logo mark
 - Previous collection design files (Elementics, Neolithium, Forsan, Genesis, Gilgamesh)
 
-### Assets Needed
-- [ ] Hero Image Layer 1 (campaign/lifestyle shot — full resolution)
-- [ ] Hero Image Layer 2 (alternate grade / B&W variant)
+### Assets Generated (AI — Placeholder/Development)
+- [x] Hero Image Layer 1 — Editorial fashion shot, woman in tatriz-embroidered garment, chiaroscuro lighting (1536x1024, GPT Image 1)
+- [x] Hero Image Layer 2 — B&W abstract keffiyeh textile close-up, high contrast (1536x1024, GPT Image 1)
+- Located at: `assets/hero/hero-layer-1.png`, `assets/hero/hero-layer-2.png`
+- **Note:** These are AI-generated placeholders. Final production images should be real campaign photography.
+
+### Assets Still Needed
+- [ ] **Real campaign photography** to replace AI hero placeholders
 - [ ] High-resolution product photography (beyond the carousel mockups)
 - [ ] PRNTD wordmark in SVG
 - [ ] Social icons in SVG (or we generate clean ones)
@@ -200,10 +223,15 @@ The homepage hero features a **dual-layer image reveal** that defines the brand'
 ### Phase 1: Foundation (Week 1) ← CURRENT
 - [x] Download and catalog all assets
 - [x] Write PRD
+- [x] Implement hero interaction v1 (broken — canvas compositing approach incorrect)
+- [x] **Fix hero interaction v2** — Complete rewrite with correct `source-in` compositing
+- [x] New homepage layout (`index.liquid`) with hero + editorial scroll + storytelling
+- [x] New typography (Playfair Display brand + Inter UI) + color system (`rebrand.css`)
+- [x] Generate AI placeholder hero images (Layer 1 + Layer 2) via GPT Image 1
+- [x] Scroll animations (`scroll-animations.js`) — IntersectionObserver-based fade-ins
 - [ ] Set up development branch
-- [ ] Implement hero interaction (circular reveal + echoes + grid + parallax)
-- [ ] New homepage layout with placeholder images
-- [ ] New typography + color system
+- [ ] Test hero interaction in live Shopify dev environment
+- [ ] Mobile touch interaction testing
 
 ### Phase 2: Commerce (Week 2)
 - [ ] Editorial collection page
@@ -250,4 +278,4 @@ The homepage hero features a **dual-layer image reveal** that defines the brand'
 
 ---
 
-*Last updated: 2026-02-08 22:45 UTC*
+*Last updated: 2026-02-09 06:10 UTC*

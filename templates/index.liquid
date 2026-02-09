@@ -15,18 +15,28 @@
    ============================================================ {% endcomment %}
 
 <section id="prntd-hero">
-  {% comment %} Layer 2 (revealed beneath) {% endcomment %}
-  {% if settings.hero_layer_2 %}
-    <img class="hero-layer-2" src="{{ settings.hero_layer_2 | image_url: width: 2000 }}" alt="PRNTD" loading="eager" fetchpriority="high">
-  {% else %}
-    <div class="hero-layer-2" style="background: #111;"></div>
-  {% endif %}
+  {% comment %} 
+    Layer Architecture (v2):
+    - Layer 1 (base): Always visible, z-index 1
+    - Layer 2 (reveal): Hidden in DOM, loaded by JS as Image object, 
+      drawn onto reveal canvas only within spotlight regions
+    - Reveal Canvas: z-index 2, draws Layer 2 pixels in spotlight areas
+    - Grid Canvas: z-index 3, subtle animated grid
+    - UI Elements: z-index 10, parallax + inversion
+  {% endcomment %}
 
-  {% comment %} Layer 1 (on top, masked by reveal canvas) {% endcomment %}
+  {% comment %} Layer 1 — Base image, always visible {% endcomment %}
   {% if settings.hero_layer_1 %}
     <img class="hero-layer-1" src="{{ settings.hero_layer_1 | image_url: width: 2000 }}" alt="PRNTD" loading="eager" fetchpriority="high">
   {% else %}
-    <div class="hero-layer-1" style="background: #1a1a1a;"></div>
+    <div class="hero-layer-1" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);"></div>
+  {% endif %}
+
+  {% comment %} Layer 2 — Hidden, loaded by hero-interaction.js for canvas drawing {% endcomment %}
+  {% if settings.hero_layer_2 %}
+    <img class="hero-layer-2" src="{{ settings.hero_layer_2 | image_url: width: 2000 }}" alt="" loading="eager" aria-hidden="true">
+  {% else %}
+    <div class="hero-layer-2" data-src="" style="background: #111;"></div>
   {% endif %}
 
   {% comment %} UI Elements — positioned absolutely, parallax + inversion {% endcomment %}

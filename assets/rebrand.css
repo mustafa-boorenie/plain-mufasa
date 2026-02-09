@@ -63,25 +63,37 @@
   object-position: center;
 }
 
-/* Layer 2 is beneath layer 1 */
-.hero-layer-2 {
+/* Layer 1 is the base — always visible */
+.hero-layer-1 {
   z-index: 1;
 }
 
-/* Layer 1 sits on top — the reveal canvas masks parts of this to show layer 2 */
-.hero-layer-1 {
-  z-index: 2;
+/* Layer 2 is hidden — we draw it onto the reveal canvas via JS */
+.hero-layer-2 {
+  z-index: 0;
+  visibility: hidden;
 }
 
-/* The reveal canvas composites on top */
+/* Reveal canvas: draws Layer 2 pixels only within the spotlight regions */
 .hero-reveal-canvas {
-  z-index: 3;
-  mix-blend-mode: multiply;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
 }
 
-/* Grid canvas */
+/* Grid canvas — opacity controlled by JS CONFIG.grid.opacity */
 .hero-grid-canvas {
-  z-index: 4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
 }
 
 /* --- Hero UI Elements --- */
