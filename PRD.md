@@ -237,7 +237,7 @@ The original v1 approach (canvas overlay with `mix-blend-mode: multiply` + `dest
 - [ ] Mobile touch interaction testing
 - [ ] Cross-browser testing
 
-### Phase 2: Commerce (Week 2) ← CURRENT
+### Phase 2: Commerce (Week 2)
 - [x] Editorial collection page — 2-col grid, fixed header, scroll animations
 - [x] Editorial PDP — split layout (gallery + details), variant selection, AJAX add-to-cart, thumbnails, accordions, related products
 - [x] Footer on all rebranded pages (dark variant for homepage, light for others)
@@ -245,6 +245,21 @@ The original v1 approach (canvas overlay with `mix-blend-mode: multiply` + `dest
 - [x] `product.json` replaced with `product.liquid` for full template control
 - [ ] Cart redesign (cart drawer or page)
 - [ ] Mobile optimization for hero interaction
+
+### Phase 2.5: Dark Editorial Rebrand (Week 2) ← CURRENT
+- [x] **Homepage v3** — Full dark editorial redesign inspired by Juun.J "Persona" campaign
+  - Campaign Statement: massive 17vw italic typography "Roots / Reimagined" with stacked overlapping lines
+  - Highlights Grid: asymmetric 2-col editorial grid (large left + 2 stacked right) with hover zoom + name/price overlay
+  - Brand Manifesto: full-width centered italic serif quote with radial gradient texture, "Every thread carries a memory..."
+  - All Looks: horizontal scroll product carousel with dark backgrounds
+  - Previous Collections: archive section with ELEMENTICS, NEOLITHIUM, FORSAN, GENESIS, GILGAMESH
+  - Expanded Footer: 4-column grid (brand, navigate, connect, newsletter signup)
+- [x] **Collection page v3** — Dark theme variant matching homepage (dark header, dark grid, dark footer)
+- [x] **CSS organized** with clear section comments, all new sections in rebrand.css
+- [x] **Klaviyo popup suppressed** on all rebranded pages
+- [x] **No white sections** — entire below-fold is #0a0a0a with generous 10-15vh spacing
+- [ ] Product page dark theme update
+- [ ] Cross-browser/mobile testing
 
 ### Phase 3: Polish (Week 3)
 - [ ] Scroll animations + transitions
