@@ -9,7 +9,15 @@
 
 <header class="prntd-header prntd-header--pdp" id="prntd-header">
   <div class="prntd-header-inner">
-    <a href="{{ routes.root_url }}" class="prntd-header-logo">P.</a>
+    <a href="{{ routes.root_url }}" class="prntd-header-logo">
+        {% if settings.product_screen_logo %}
+          <img src="{{ settings.product_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
+        {% elsif settings.shop_screen_logo %}
+          <img src="{{ settings.shop_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
+        {% else %}
+          P.
+        {% endif %}
+      </a>
     <nav class="prntd-header-nav">
       <a href="/collections/all">Shop</a>
       <a href="/cart" class="prntd-cart-link">Bag (<span class="cart-count">{{ cart.item_count }}</span>)</a>

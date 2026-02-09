@@ -43,7 +43,13 @@
 
   {% comment %} Logo — Top Left {% endcomment %}
   <div class="hero-ui hero-logo" data-hero-ui>
-    <a href="{{ routes.root_url }}">P.</a>
+    <a href="{{ routes.root_url }}">
+      {% if settings.enter_screen_logo %}
+        <img src="{{ settings.enter_screen_logo | image_url: width: 300 }}" alt="PRNTD" class="hero-logo-img">
+      {% else %}
+        P.
+      {% endif %}
+    </a>
   </div>
 
   {% comment %} Nav — Top Right {% endcomment %}

@@ -187,6 +187,20 @@
   text-decoration: none;
   letter-spacing: -0.02em;
   transition: color var(--prntd-transition);
+  display: flex;
+  align-items: center;
+}
+
+.hero-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  transition: filter var(--prntd-transition);
+}
+
+.hero-logo.hero-inverted .hero-logo-img {
+  filter: brightness(0);
 }
 
 .hero-logo.hero-inverted a {
@@ -532,6 +546,14 @@
   color: var(--prntd-black);
   text-decoration: none;
   letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+}
+
+.prntd-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
 .prntd-header-nav {

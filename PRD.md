@@ -237,10 +237,13 @@ The original v1 approach (canvas overlay with `mix-blend-mode: multiply` + `dest
 - [ ] Mobile touch interaction testing
 - [ ] Cross-browser testing
 
-### Phase 2: Commerce (Week 2)
-- [ ] Editorial collection page
-- [ ] Editorial PDP
-- [ ] Cart redesign
+### Phase 2: Commerce (Week 2) ← CURRENT
+- [x] Editorial collection page — 2-col grid, fixed header, scroll animations
+- [x] Editorial PDP — split layout (gallery + details), variant selection, AJAX add-to-cart, thumbnails, accordions, related products
+- [x] Footer on all rebranded pages (dark variant for homepage, light for others)
+- [x] Theme routing updated — collection + product bypass old layout, old footer suppressed
+- [x] `product.json` replaced with `product.liquid` for full template control
+- [ ] Cart redesign (cart drawer or page)
 - [ ] Mobile optimization for hero interaction
 
 ### Phase 3: Polish (Week 3)
@@ -282,4 +285,4 @@ The original v1 approach (canvas overlay with `mix-blend-mode: multiply` + `dest
 
 ---
 
-*Last updated: 2026-02-09 17:15 UTC*
+*Last updated: 2026-02-09 18:50 UTC*
