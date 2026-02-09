@@ -1,0 +1,236 @@
+{% comment %}
+  PRNTD — Editorial Product Detail Page
+  Rebrand v2 — February 2026
+{% endcomment %}
+
+{% comment %} ============================================================
+   HEADER — Minimal Navigation
+   ============================================================ {% endcomment %}
+
+<header class="prntd-header prntd-header--pdp" id="prntd-header">
+  <div class="prntd-header-inner">
+    <a href="{{ routes.root_url }}" class="prntd-header-logo">P.</a>
+    <nav class="prntd-header-nav">
+      <a href="/collections/all">Shop</a>
+      <a href="/cart" class="prntd-cart-link">Bag (<span class="cart-count">{{ cart.item_count }}</span>)</a>
+    </nav>
+  </div>
+</header>
+
+{% comment %} ============================================================
+   PRODUCT HERO — Split Layout
+   ============================================================ {% endcomment %}
+
+<section class="pdp-editorial">
+  <div class="pdp-hero">
+
+    {% comment %} Gallery — Left Side {% endcomment %}
+    <div class="pdp-gallery">
+      <div class="pdp-gallery-main">
+        {% if product.featured_image %}
+          <img 
+            id="pdp-main-image"
+            src="{{ product.featured_image | image_url: width: 1200 }}" 
+            alt="{{ product.title | escape }}"
+            loading="eager"
+            fetchpriority="high"
+          >
+        {% endif %}
+      </div>
+      {% if product.images.size > 1 %}
+        <div class="pdp-gallery-thumbs">
+          {% for image in product.images %}
+            <button 
+              class="pdp-thumb{% if forloop.first %} active{% endif %}"
+              data-image-url="{{ image | image_url: width: 1200 }}"
+              data-index="{{ forloop.index0 }}"
+              aria-label="View image {{ forloop.index }}"
+            >
+              <img 
+                src="{{ image | image_url: width: 200 }}" 
+                alt="{{ product.title | escape }} - {{ forloop.index }}" 
+                loading="lazy"
+              >
+            </button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% comment %} Details — Right Side {% endcomment %}
+    <div class="pdp-details">
+      <span class="pdp-collection-tag prntd-ui-text">
+        {{ product.type | default: 'PRNTD' }}
+      </span>
+      
+      <h1 class="prntd-brand-text">{{ product.title }}</h1>
+      
+      <p class="pdp-price">
+        {% if product.compare_at_price > product.price %}
+          <span class="pdp-price-compare">{{ product.compare_at_price | money }}</span>
+        {% endif %}
+        {{ product.price | money }}
+      </p>
+
+      {% if product.description != blank %}
+        <div class="pdp-story">{{ product.description }}</div>
+      {% endif %}
+
+      {% comment %} Product Form {% endcomment %}
+      {% form 'product', product %}
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            <div class="pdp-option">
+              <label class="pdp-option-label">{{ option.name }}</label>
+              <div class="pdp-option-values">
+                {% for value in option.values %}
+                  <button 
+                    type="button"
+                    class="pdp-option-btn{% if option.selected_value == value %} selected{% endif %}"
+                    data-option-index="{{ forloop.parentloop.index0 }}"
+                    data-value="{{ value }}"
+                  >
+                    {{ value }}
+                  </button>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endunless %}
+
+        <select name="id" id="product-select" class="visually-hidden" aria-label="Product variant">
+          {% for variant in product.variants %}
+            <option 
+              value="{{ variant.id }}"
+              {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
+              {% unless variant.available %}disabled{% endunless %}
+              data-options='{{ variant.options | json }}'
+              data-price="{{ variant.price | money }}"
+              data-compare-price="{{ variant.compare_at_price | money }}"
+              data-available="{{ variant.available }}"
+              data-image-url="{% if variant.image %}{{ variant.image | image_url: width: 1200 }}{% endif %}"
+            >
+              {{ variant.title }} — {{ variant.price | money }}
+            </option>
+          {% endfor %}
+        </select>
+
+        <div class="pdp-actions">
+          <button 
+            type="submit" 
+            class="pdp-add-to-bag prntd-btn"
+            {% unless product.available %}disabled{% endunless %}
+          >
+            {% if product.available %}
+              Add to Bag
+            {% else %}
+              Sold Out
+            {% endif %}
+          </button>
+        </div>
+      {% endform %}
+
+      {% comment %} Accordions {% endcomment %}
+      <div class="pdp-accordions">
+        {% if product.description != blank %}
+          <details class="pdp-accordion">
+            <summary>Details</summary>
+            <div class="pdp-accordion-content">{{ product.description }}</div>
+          </details>
+        {% endif %}
+
+        {% if product.metafields.custom.care_instructions %}
+          <details class="pdp-accordion">
+            <summary>Care Instructions</summary>
+            <div class="pdp-accordion-content">{{ product.metafields.custom.care_instructions.value }}</div>
+          </details>
+        {% endif %}
+        
+        {% if product.metafields.custom.shipping_info %}
+          <details class="pdp-accordion">
+            <summary>Shipping</summary>
+            <div class="pdp-accordion-content">{{ product.metafields.custom.shipping_info | metafield_tag }}</div>
+          </details>
+        {% endif %}
+
+        <details class="pdp-accordion">
+          <summary>Returns</summary>
+          <div class="pdp-accordion-content">
+            We accept returns within 14 days of delivery. Items must be unworn, unwashed, and in original packaging.
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% comment %} ============================================================
+   RELATED PRODUCTS
+   ============================================================ {% endcomment %}
+
+{% assign related_collection = product.collections.first %}
+{% if related_collection and related_collection.products.size > 1 %}
+  <section class="pdp-related">
+    <div class="editorial-header" data-animate="fade-up">
+      <p class="prntd-ui-text">You May Also Like</p>
+    </div>
+    <div class="collection-grid pdp-related-grid">
+      {% for rec in related_collection.products limit: 5 %}
+        {% unless rec.handle == product.handle %}
+          <a href="{{ rec.url }}" class="collection-product" data-animate="fade-up">
+            <div class="collection-product-image">
+              {% if rec.featured_image %}
+                <img 
+                  src="{{ rec.featured_image | image_url: width: 600 }}" 
+                  alt="{{ rec.title | escape }}" 
+                  loading="lazy"
+                  width="600"
+                  height="800"
+                >
+              {% endif %}
+            </div>
+            <div class="collection-product-info">
+              <h3>{{ rec.title }}</h3>
+              <span class="product-price">{{ rec.price | money }}</span>
+            </div>
+          </a>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% comment %} ============================================================
+   FOOTER
+   ============================================================ {% endcomment %}
+
+<footer class="prntd-footer">
+  <span>© {{ 'now' | date: '%Y' }} PRNTD</span>
+  <div class="prntd-footer-links">
+    <a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://x.com/prntdbybdq" target="_blank" rel="noopener">X</a>
+  </div>
+</footer>
+
+{% comment %} ============================================================
+   SCRIPTS
+   ============================================================ {% endcomment %}
+
+<script src="{{ 'scroll-animations.js' | asset_url }}" defer></script>
+<script src="{{ 'product-page.js' | asset_url }}" defer></script>
+<script>
+  // Header scroll effect
+  (function() {
+    var header = document.getElementById('prntd-header');
+    if (!header) return;
+    var scrolled = false;
+    window.addEventListener('scroll', function() {
+      var shouldScroll = window.scrollY > 40;
+      if (shouldScroll !== scrolled) {
+        scrolled = shouldScroll;
+        header.classList.toggle('scrolled', scrolled);
+      }
+    }, { passive: true });
+  })();
+</script>

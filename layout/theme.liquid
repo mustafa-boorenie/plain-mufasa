@@ -94,7 +94,7 @@
     d3503khivhk343="{{ settings.3593809343bfibhiddsfh_relfe3252_fdfg }}"
   >
     <main style="{% if request.page_type == 'password' %}  height: 100%; width: 100%; {% endif %}">
-      {% if template.name == 'index' or headerSnippetPath or template == 'product' %}
+      {% if template.name == 'index' or template.name == 'collection' or template.name == 'product' or headerSnippetPath %}
         {{ content_for_layout }}
       {% else %}
         {% include 'backup-layout' %}
@@ -110,6 +110,8 @@
           {% if settings.show_footer_on_collection %}
             {% section 'other-footer' %}
           {% endif %}
+        {% when 'product' %}
+          {% comment %} PRNTD rebrand: product page has its own footer {% endcomment %}
         {% when 'password' %}
 
         {% else %}
