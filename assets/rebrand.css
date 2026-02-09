@@ -134,14 +134,13 @@ body.klaviyo-prevent-body-scrolling {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50%;
+  height: 30%;
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(245,245,243,0.05) 20%,
-    rgba(245,245,243,0.2) 40%,
-    rgba(245,245,243,0.5) 60%,
-    rgba(245,245,243,0.8) 80%,
+    rgba(245,245,243,0.15) 25%,
+    rgba(245,245,243,0.45) 50%,
+    rgba(245,245,243,0.8) 75%,
     #f5f5f3 100%
   );
   z-index: 5;
