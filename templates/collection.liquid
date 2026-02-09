@@ -1,28 +1,24 @@
 {% comment %}
-  PRNTD — Editorial Collection Page
-  Rebrand v2 — February 2026
+  PRNTD — Editorial Collection Page (Dark Theme)
+  Rebrand v3 — February 2026
 {% endcomment %}
 
-{%- assign headerSnippetPath = 'header-index' -%}
-{%- assign wfPage = '640ec1b9bae1c5c5ee03fef7' -%}
-{%- assign bodyClasses = '' -%}
-
 {% comment %} ============================================================
-   HEADER — Minimal Navigation
+   HEADER — Dark Navigation
    ============================================================ {% endcomment %}
 
-<header class="prntd-header" id="prntd-header">
+<header class="prntd-header prntd-header--dark" id="prntd-header">
   <div class="prntd-header-inner">
-    <a href="{{ routes.root_url }}" class="prntd-header-logo">
-        {% if settings.collection_screen_logo %}
-          <img src="{{ settings.collection_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
-        {% elsif settings.shop_screen_logo %}
-          <img src="{{ settings.shop_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
-        {% else %}
-          P.
-        {% endif %}
-      </a>
-    <nav class="prntd-header-nav">
+    <a href="{{ routes.root_url }}" class="prntd-header-logo prntd-header-logo--dark">
+      {% if settings.collection_screen_logo %}
+        <img src="{{ settings.collection_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img prntd-logo-img--dark">
+      {% elsif settings.shop_screen_logo %}
+        <img src="{{ settings.shop_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img prntd-logo-img--dark">
+      {% else %}
+        P.
+      {% endif %}
+    </a>
+    <nav class="prntd-header-nav prntd-header-nav--dark">
       <a href="/collections/all">Shop</a>
       {% if cart.item_count > 0 %}
         <a href="/cart" class="prntd-cart-link">Bag ({{ cart.item_count }})</a>
@@ -32,10 +28,10 @@
 </header>
 
 {% comment %} ============================================================
-   COLLECTION HERO
+   COLLECTION — Dark Editorial
    ============================================================ {% endcomment %}
 
-<section class="collection-editorial">
+<section class="collection-editorial collection-editorial--dark">
   <div class="collection-header" data-animate="fade-up">
     <p class="prntd-ui-text">{{ collection.products_count }} Piece{% if collection.products_count != 1 %}s{% endif %}</p>
     <h1 class="prntd-brand-text">{{ collection.title }}</h1>
@@ -57,7 +53,7 @@
               height="1067"
             >
           {% else %}
-            <div style="width: 100%; height: 100%; background: #e5e5e5;"></div>
+            <div style="width: 100%; height: 100%; background: #1a1a1a;"></div>
           {% endif %}
         </div>
         <div class="collection-product-info">
@@ -70,11 +66,10 @@
 
   {% if collection.products.size == 0 %}
     <div style="text-align: center; padding: 4rem 2rem;">
-      <p class="prntd-ui-text" style="color: #888;">No pieces in this collection yet.</p>
+      <p class="prntd-ui-text" style="color: #555;">No pieces in this collection yet.</p>
     </div>
   {% endif %}
 
-  {% comment %} Pagination {% endcomment %}
   {% if paginate %}
     {% if paginate.pages > 1 %}
       <nav class="collection-pagination" data-animate="fade-up">
@@ -93,21 +88,47 @@
    FOOTER
    ============================================================ {% endcomment %}
 
-<footer class="prntd-footer">
-  <span>© {{ 'now' | date: '%Y' }} PRNTD</span>
-  <div class="prntd-footer-links">
-    <a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://x.com/prntdbybdq" target="_blank" rel="noopener">X</a>
+<footer class="prntd-footer-full">
+  <div class="prntd-footer-full__inner">
+    <div class="prntd-footer-full__col prntd-footer-full__brand">
+      <span class="prntd-footer-full__logo prntd-brand-text">P.</span>
+      <p class="prntd-footer-full__tagline">Heritage woven into the modern world.</p>
+    </div>
+    <div class="prntd-footer-full__col">
+      <h4 class="prntd-footer-full__heading prntd-ui-text">Navigate</h4>
+      <ul class="prntd-footer-full__list">
+        <li><a href="/collections/all">Shop</a></li>
+        <li><a href="/pages/about">About</a></li>
+        <li><a href="/pages/lookbook">Lookbook</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="prntd-footer-full__col">
+      <h4 class="prntd-footer-full__heading prntd-ui-text">Connect</h4>
+      <ul class="prntd-footer-full__list">
+        <li><a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://x.com/prntdbybdq" target="_blank" rel="noopener">X / Twitter</a></li>
+        <li><a href="mailto:info@prntdbybdq.com">info@prntdbybdq.com</a></li>
+      </ul>
+    </div>
+    <div class="prntd-footer-full__col prntd-footer-full__newsletter">
+      <h4 class="prntd-footer-full__heading prntd-ui-text">Stay in the Loop</h4>
+      <p class="prntd-footer-full__newsletter-text">New drops. Exclusive access. No noise.</p>
+      <form class="prntd-footer-full__form" action="/contact#contact_form" method="post">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email" name="contact[email]" placeholder="Email address" required class="prntd-footer-full__input">
+        <button type="submit" class="prntd-footer-full__submit prntd-ui-text">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="prntd-footer-full__bottom">
+    <span>© {{ 'now' | date: '%Y' }} PRNTD. All rights reserved.</span>
   </div>
 </footer>
 
-{% comment %} ============================================================
-   SCRIPTS
-   ============================================================ {% endcomment %}
-
 <script src="{{ 'scroll-animations.js' | asset_url }}" defer></script>
 <script>
-  // Header scroll effect
   (function() {
     var header = document.getElementById('prntd-header');
     if (!header) return;

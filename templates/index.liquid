@@ -1,47 +1,35 @@
 {% comment %}
   PRNTD — Immersive Homepage
-  Rebrand v2 — February 2026
+  Rebrand v3 — February 2026
+  Inspired by: Juun.J Persona, Acne Studios, The Row
   
   Structure:
   1. Full-screen hero with circular reveal interaction
-  2. Editorial product showcase (current drop)
-  3. Storytelling divider
-  4. Archive teaser
-  5. Minimal footer
+  2. Campaign statement — massive typography
+  3. Highlights — asymmetric editorial grid
+  4. Brand philosophy — manifesto section
+  5. All Looks — collection preview
+  6. Archive — previous collections carousel
+  7. Footer — full utility footer
 {% endcomment %}
 
 {% comment %} ============================================================
-   SECTION 1: IMMERSIVE HERO
+   SECTION 1: IMMERSIVE HERO (unchanged)
    ============================================================ {% endcomment %}
 
 <section id="prntd-hero">
-  {% comment %} 
-    Layer Architecture (v2):
-    - Layer 1 (base): Always visible, z-index 1
-    - Layer 2 (reveal): Hidden in DOM, loaded by JS as Image object, 
-      drawn onto reveal canvas only within spotlight regions
-    - Reveal Canvas: z-index 2, draws Layer 2 pixels in spotlight areas
-    - Grid Canvas: z-index 3, subtle animated grid
-    - UI Elements: z-index 10, parallax + inversion
-  {% endcomment %}
-
-  {% comment %} Layer 1 — Base image, always visible {% endcomment %}
   {% if settings.hero_layer_1 %}
     <img class="hero-layer-1" src="{{ settings.hero_layer_1 | image_url: width: 2000 }}" alt="PRNTD" loading="eager" fetchpriority="high">
   {% else %}
     <img class="hero-layer-1" src="{{ 'prntd-hero-layer-1.png' | asset_url }}" alt="PRNTD" loading="eager" fetchpriority="high">
   {% endif %}
 
-  {% comment %} Layer 2 — Hidden in DOM, loaded by hero-interaction.js for canvas drawing {% endcomment %}
   {% if settings.hero_layer_2 %}
     <img class="hero-layer-2" src="{{ settings.hero_layer_2 | image_url: width: 2000 }}" alt="" loading="eager" aria-hidden="true">
   {% else %}
     <img class="hero-layer-2" src="{{ 'prntd-hero-layer-2.png' | asset_url }}" alt="" loading="eager" aria-hidden="true">
   {% endif %}
 
-  {% comment %} UI Elements — positioned absolutely, parallax + inversion {% endcomment %}
-
-  {% comment %} Logo — Top Left {% endcomment %}
   <div class="hero-ui hero-logo" data-hero-ui>
     <a href="{{ routes.root_url }}">
       {% if settings.enter_screen_logo %}
@@ -52,12 +40,10 @@
     </a>
   </div>
 
-  {% comment %} Nav — Top Right {% endcomment %}
   <div class="hero-ui hero-nav" data-hero-ui>
     <a href="/collections/all">Shop</a>
   </div>
 
-  {% comment %} Social — Bottom Right {% endcomment %}
   <div class="hero-ui hero-social" data-hero-ui>
     <a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener" aria-label="Instagram">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -71,92 +57,199 @@
     </a>
   </div>
 
-  {% comment %} Scroll Hint — Bottom Center {% endcomment %}
   <div class="hero-ui hero-scroll-hint" data-hero-ui>
     <span>Scroll to explore</span>
   </div>
 </section>
 
 {% comment %} ============================================================
-   SECTION 2: SEASON TWO — EDITORIAL SHOWCASE
+   SECTION 2: CAMPAIGN STATEMENT — Massive Typography
    ============================================================ {% endcomment %}
 
-<section class="editorial-section">
-  <div class="editorial-header" data-animate="fade-up">
-    <p>Season Two</p>
-    <h2>Roots Reimagined</h2>
+<section class="campaign-statement">
+  <div class="campaign-statement-inner">
+    <div class="campaign-label" data-animate="fade-up">
+      <span class="prntd-ui-text">Fall / Winter 2026</span>
+    </div>
+    <h2 class="campaign-title" data-animate="fade-up">
+      <span class="campaign-title-line">Roots</span>
+      <span class="campaign-title-line">Reimagined</span>
+    </h2>
+    <div class="campaign-desc" data-animate="fade-up">
+      <p>Where heritage meets the avant-garde. Season Two draws from Levantine textile traditions — tatriz embroidery, keffiyeh weaves, ancient pattern languages — and reframes them for a new generation.</p>
+    </div>
   </div>
+</section>
 
-  <div class="editorial-grid">
-    {% for product in collections['all'].products limit: 6 %}
-      <div class="editorial-item" data-animate="fade-up" data-animate-delay="{{ forloop.index | times: 100 }}">
-        <div class="editorial-item-image">
+{% comment %} ============================================================
+   SECTION 3: HIGHLIGHTS — Asymmetric Editorial Grid
+   ============================================================ {% endcomment %}
+
+<section class="highlights-section">
+  <div class="highlights-header" data-animate="fade-up">
+    <span class="prntd-ui-text">The Collection</span>
+  </div>
+  
+  <div class="highlights-grid">
+    {% for product in collections['all'].products limit: 4 %}
+      <a href="{{ product.url }}" class="highlights-item highlights-item--{{ forloop.index }}" data-animate="fade-up" data-animate-delay="{{ forloop.index | times: 100 }}">
+        <div class="highlights-item-image">
           {% if product.featured_image %}
-            <a href="{{ product.url }}">
-              <img 
-                src="{{ product.featured_image | image_url: width: 800 }}" 
-                alt="{{ product.title | escape }}"
-                loading="lazy"
-                width="800"
-                height="1067"
-              >
-            </a>
+            <img 
+              src="{{ product.featured_image | image_url: width: 900 }}" 
+              alt="{{ product.title | escape }}"
+              loading="lazy"
+            >
           {% endif %}
         </div>
-        <div class="editorial-item-content">
-          <span class="item-collection">{{ product.type | default: 'PRNTD' }}</span>
+        <div class="highlights-item-info">
           <h3>{{ product.title }}</h3>
-          <p class="item-description">{{ product.description | strip_html | truncate: 150 }}</p>
-          <div class="item-price">{{ product.price | money }}</div>
-          <a href="{{ product.url }}" class="prntd-btn">View Piece</a>
+          <span class="highlights-item-price">{{ product.price | money }}</span>
         </div>
-      </div>
+      </a>
     {% endfor %}
   </div>
 </section>
 
 {% comment %} ============================================================
-   SECTION 3: STORYTELLING DIVIDER
+   SECTION 4: BRAND PHILOSOPHY — Manifesto
    ============================================================ {% endcomment %}
 
-<section class="story-divider" data-animate="fade-in">
-  <blockquote>
-    Every thread carries a memory.<br>
-    Every pattern tells a story<br>
-    that was never meant to be forgotten.
-  </blockquote>
-  <div class="story-attribution">— PRNTD</div>
-</section>
-
-{% comment %} ============================================================
-   SECTION 4: CALL TO ACTION
-   ============================================================ {% endcomment %}
-
-<section class="editorial-section" style="padding: 6rem 2rem; text-align: center;">
-  <div data-animate="fade-up">
-    <p class="prntd-ui-text" style="color: #888; margin-bottom: 1rem;">The Collection</p>
-    <h2 class="prntd-brand-text" style="font-size: clamp(1.8rem, 4vw, 3rem); font-style: italic; margin-bottom: 2rem; color: #0a0a0a;">
-      Explore the Archive
-    </h2>
-    <a href="/collections/all" class="prntd-btn">Shop All</a>
+<section class="philosophy-section">
+  <div class="philosophy-inner" data-animate="fade-in">
+    <p class="philosophy-text">
+      <span class="philosophy-line">Every thread carries</span>
+      <span class="philosophy-line">a memory. Every pattern</span>
+      <span class="philosophy-line">tells a story that was</span>
+      <span class="philosophy-line">never meant to be</span>
+      <span class="philosophy-line philosophy-line--accent">forgotten.</span>
+    </p>
+    <div class="philosophy-credit">
+      <span class="prntd-ui-text">Design Philosophy</span>
+      <p>PRNTD channels the spirit of traditional craftsmanship — tatriz cross-stitch, Levantine textile arts, the symbolism woven into every thread — into contemporary silhouettes that refuse to let culture be erased.</p>
+    </div>
   </div>
 </section>
 
 {% comment %} ============================================================
-   SCRIPTS
+   SECTION 5: ALL LOOKS — Full Collection Preview
    ============================================================ {% endcomment %}
+
+<section class="all-looks-section">
+  <div class="all-looks-header" data-animate="fade-up">
+    <h2>All Looks</h2>
+    <a href="/collections/all" class="prntd-btn prntd-btn--light">View Collection</a>
+  </div>
+  
+  <div class="all-looks-grid">
+    {% for product in collections['all'].products limit: 8 %}
+      <a href="{{ product.url }}" class="all-looks-item" data-animate="fade-up" data-animate-delay="{{ forloop.index | times: 60 }}">
+        <div class="all-looks-item-image">
+          {% if product.featured_image %}
+            <img 
+              src="{{ product.featured_image | image_url: width: 600 }}" 
+              alt="{{ product.title | escape }}"
+              loading="lazy"
+            >
+          {% endif %}
+        </div>
+        <div class="all-looks-item-info">
+          <span class="all-looks-item-name">{{ product.title }}</span>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% comment %} ============================================================
+   SECTION 6: ARCHIVE — Previous Collections
+   ============================================================ {% endcomment %}
+
+<section class="archive-section">
+  <div class="archive-header" data-animate="fade-up">
+    <span class="prntd-ui-text">Previous Collections</span>
+  </div>
+  
+  <div class="archive-scroll" data-animate="fade-up">
+    <div class="archive-item">
+      <span class="archive-item-name">Elementics</span>
+      <span class="archive-item-season">Fall/Winter 2024</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-item-name">Neolithium</span>
+      <span class="archive-item-season">Spring/Summer 2024</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-item-name">Forsan</span>
+      <span class="archive-item-season">Fall/Winter 2023</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-item-name">Genesis</span>
+      <span class="archive-item-season">Spring/Summer 2023</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-item-name">Gilgamesh</span>
+      <span class="archive-item-season">Fall/Winter 2022</span>
+    </div>
+  </div>
+</section>
+
+{% comment %} ============================================================
+   SECTION 7: CTA
+   ============================================================ {% endcomment %}
+
+<section class="cta-section" data-animate="fade-up">
+  <h2 class="cta-text">Claim Your Style</h2>
+  <a href="/collections/all" class="cta-arrow" aria-label="Shop the collection">→</a>
+</section>
 
 {% comment %} ============================================================
    FOOTER
    ============================================================ {% endcomment %}
 
-<footer class="prntd-footer prntd-footer--dark">
-  <span>© {{ 'now' | date: '%Y' }} PRNTD</span>
-  <div class="prntd-footer-links">
-    <a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://x.com/prntdbybdq" target="_blank" rel="noopener">X</a>
+<footer class="prntd-footer-full">
+  <div class="footer-marquee">
+    <div class="footer-marquee-inner">
+      <span>From Heritage to Paris</span>
+      <span>·</span>
+      <span>From Heritage to Paris</span>
+      <span>·</span>
+      <span>From Heritage to Paris</span>
+      <span>·</span>
+      <span>From Heritage to Paris</span>
+      <span>·</span>
+      <span>From Heritage to Paris</span>
+      <span>·</span>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <div class="footer-col">
+      <span class="footer-col-title">Navigate</span>
+      <a href="/collections/all">Shop All</a>
+      <a href="/pages/about">About</a>
+      <a href="/pages/lookbook">Lookbook</a>
+      <a href="/pages/contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">Follow Us</span>
+      <a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/prntdbybdq" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">Contact</span>
+      <a href="mailto:info@prntdbybdq.com">info@prntdbybdq.com</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© {{ 'now' | date: '%Y' }} PRNTD. All rights reserved.</span>
   </div>
 </footer>
+
+{% comment %} ============================================================
+   SCRIPTS
+   ============================================================ {% endcomment %}
 
 <script src="{{ 'hero-interaction.js' | asset_url }}" defer></script>
 <script src="{{ 'scroll-animations.js' | asset_url }}" defer></script>
