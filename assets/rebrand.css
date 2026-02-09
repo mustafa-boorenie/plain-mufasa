@@ -2,6 +2,32 @@
    PRNTD Rebrand — Design System
    ============================================================ */
 
+/* --- Kill old theme custom cursor on rebrand pages --- */
+.template-index,
+.template-index * {
+  cursor: auto !important;
+}
+#prntd-hero,
+#prntd-hero * {
+  cursor: none !important;
+}
+@media (hover: none) {
+  #prntd-hero,
+  #prntd-hero * {
+    cursor: default !important;
+  }
+}
+
+/* --- Hide old theme elements on index --- */
+.template-index .announcement-bar,
+.template-index .logo-container,
+.template-index .site-container > .logo-container,
+.template-index .category-menu-container,
+.template-index .music-player-container,
+.template-index [class*="world-of"] {
+  display: none !important;
+}
+
 /* --- Reset & Base --- */
 :root {
   --prntd-black: #0a0a0a;

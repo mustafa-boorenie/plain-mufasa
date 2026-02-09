@@ -89,12 +89,12 @@
     {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
   {% endif %}
   <body
-    style="min-height: 100vh; display: flex; flex-direction: column; --scrollbar-thumb-radius:{{ settings.thumb_radius }}px; --scrollbar-track-color:{{ settings.track_color }}; --scrollbar-thumb-color:{{ settings.thumb_color }};   --custom-cursor: {{ settings.custom_cursor_img | img_url}};"
+    style="min-height: 100vh; display: flex; flex-direction: column; --scrollbar-thumb-radius:{{ settings.thumb_radius }}px; --scrollbar-track-color:{{ settings.track_color }}; --scrollbar-thumb-color:{{ settings.thumb_color }};"
     class="{{ bodyClasses }} {{ "template-" | append: request.page_type | handle }}"
     d3503khivhk343="{{ settings.3593809343bfibhiddsfh_relfe3252_fdfg }}"
   >
     <main style="{% if request.page_type == 'password' %}  height: 100%; width: 100%; {% endif %}">
-      {% if headerSnippetPath or template == 'product' %}
+      {% if template.name == 'index' or headerSnippetPath or template == 'product' %}
         {{ content_for_layout }}
       {% else %}
         {% include 'backup-layout' %}
@@ -116,8 +116,11 @@
           {% section 'other-footer' %}
       {% endcase %}
     {% endif %}
-    <script src="{{ 'music-player.js' | asset_url }}" type="text/javascript"></script>
-    <script src="{{ 'custom-cursor.js' | asset_url }}" type="text/javascript"></script>
+    {% unless template.name == 'index' %}
+      <script src="{{ 'music-player.js' | asset_url }}" type="text/javascript"></script>
+    {% endunless %}
+    {% comment %} Custom cursor disabled — replaced by hero spotlight interaction {% endcomment %}
+    {% comment %} <script src="{{ 'custom-cursor.js' | asset_url }}" type="text/javascript"></script> {% endcomment %}
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const timezone = '{{settings.timezone}}';

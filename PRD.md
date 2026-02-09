@@ -229,9 +229,13 @@ The original v1 approach (canvas overlay with `mix-blend-mode: multiply` + `dest
 - [x] New typography (Playfair Display brand + Inter UI) + color system (`rebrand.css`)
 - [x] Generate AI placeholder hero images (Layer 1 + Layer 2) via GPT Image 1
 - [x] Scroll animations (`scroll-animations.js`) — IntersectionObserver-based fade-ins
-- [ ] Set up development branch
-- [ ] Test hero interaction in live Shopify dev environment
+- [x] Embed hero images as flat theme assets (`assets/prntd-hero-layer-{1,2}.png`) with fallback
+- [x] **Fix layout:** Bypass old `__default-template` wrapper for index — hero now renders full viewport
+- [x] **Remove custom cursor:** Disabled old cartoon cursor globally, hero uses spotlight cursor
+- [x] **Hide old theme elements:** Announcement bar, old logo, date/time, "World of PRNTD" sidebar all hidden on index via CSS
+- [x] Verified via Playwright headless browser screenshots
 - [ ] Mobile touch interaction testing
+- [ ] Cross-browser testing
 
 ### Phase 2: Commerce (Week 2)
 - [ ] Editorial collection page
@@ -278,4 +282,4 @@ The original v1 approach (canvas overlay with `mix-blend-mode: multiply` + `dest
 
 ---
 
-*Last updated: 2026-02-09 06:10 UTC*
+*Last updated: 2026-02-09 17:15 UTC*
