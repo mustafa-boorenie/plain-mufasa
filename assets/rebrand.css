@@ -943,14 +943,8 @@ body.klaviyo-prevent-body-scrolling {
   width: auto;
   display: block;
   margin-bottom: 0.75rem;
-  /* Logo source is white — invert for light footers */
-  filter: brightness(0);
-}
-
-/* Keep footer logo white on dark-background pages */
-.about-page .prntd-footer-logo-img,
-.lb .prntd-footer-logo-img {
-  filter: none;
+  filter: brightness(0) invert(1);
+  mix-blend-mode: difference;
 }
 
 .prntd-footer-full__logo {
@@ -1121,10 +1115,10 @@ body.klaviyo-prevent-body-scrolling {
 }
 
 .prntd-header.scrolled {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
 }
 
 .prntd-header-inner {
@@ -1153,8 +1147,10 @@ body.klaviyo-prevent-body-scrolling {
   height: 32px;
   width: auto;
   display: block;
-  /* Logo source is white on transparent — invert to black for light pages */
-  filter: brightness(0);
+  /* Adaptive logo: always contrasts against whatever is behind it */
+  filter: brightness(0) invert(1); /* ensure white base */
+  mix-blend-mode: difference;
+  transition: filter 0.4s ease;
 }
 
 .prntd-header-nav {
@@ -1213,7 +1209,9 @@ body.klaviyo-prevent-body-scrolling {
 }
 
 .prntd-header--dark.scrolled {
-  background: rgba(10, 10, 10, 0.96);
+  background: rgba(10, 10, 10, 0.15);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
   box-shadow: 0 1px 0 rgba(255,255,255,0.04);
 }
 
@@ -1225,11 +1223,7 @@ body.klaviyo-prevent-body-scrolling {
   filter: brightness(0) invert(1);
 }
 
-/* Keep logo white on dark page backgrounds (source is already white) */
-.about-page .prntd-logo-img,
-.lb .prntd-logo-img {
-  filter: none;
-}
+/* mix-blend-mode: difference handles all page backgrounds automatically */
 
 .prntd-header-nav--dark a {
   color: var(--prntd-white);
