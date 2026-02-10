@@ -514,7 +514,7 @@ body.klaviyo-prevent-body-scrolling {
 
 .campaign-statement__line--indent {
   padding-left: clamp(2rem, 8vw, 12rem);
-  color: rgba(0,0,0,0.45);
+  color: rgba(0,0,0,0.55);
 }
 
 .campaign-statement__body {
@@ -571,6 +571,7 @@ body.klaviyo-prevent-body-scrolling {
   aspect-ratio: 3/4;
   overflow: hidden;
   background: #f0f0ee;
+  max-height: 500px;
 }
 
 .highlights-item__image img {
