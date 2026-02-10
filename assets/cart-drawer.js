@@ -35,8 +35,9 @@
         <div class="cart-drawer__body">
           <div class="cart-drawer__items"></div>
           <div class="cart-drawer__empty">
-            <p class="cart-drawer__empty-text">Your bag is empty</p>
-            <a href="/collections/all" class="prntd-btn cart-drawer__shop-btn">Explore Collection</a>
+            <p class="cart-drawer__empty-text">Nothing here yet</p>
+            <p class="cart-drawer__empty-sub">Every piece tells a story — find yours.</p>
+            <a href="/collections/all" class="prntd-btn cart-drawer__shop-btn">Explore the Collection</a>
           </div>
         </div>
         
@@ -103,7 +104,7 @@
       progress.classList.add('cart-drawer__shipping-progress--complete');
     } else {
       const remaining = FREE_SHIPPING_THRESHOLD - total;
-      text.innerHTML = `You're <strong>${formatMoney(remaining)}</strong> away from free shipping`;
+      text.innerHTML = `Spend <strong>${formatMoney(remaining)}</strong> more for free shipping`;
       const pct = Math.min((total / FREE_SHIPPING_THRESHOLD) * 100, 100);
       progress.style.width = pct + '%';
       progress.classList.remove('cart-drawer__shipping-progress--complete');
