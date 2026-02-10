@@ -329,9 +329,21 @@ body.klaviyo-prevent-body-scrolling {
     top: 1.2rem;
     right: 1.2rem;
   }
+  .hero-nav a {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    margin: -0.5rem;
+  }
   .hero-social {
     bottom: 1.2rem;
     right: 1.2rem;
+  }
+  .hero-social a {
+    padding: 0.5rem;
+  }
+  .hero-social svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -529,8 +541,11 @@ body.klaviyo-prevent-body-scrolling {
 
 @media (max-width: 768px) {
   .campaign-statement {
-    padding: 10vh 1.2rem;
-    min-height: 60vh;
+    padding: 6vh 1.2rem;
+    min-height: auto;
+  }
+  .campaign-statement__label {
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -691,8 +706,8 @@ body.klaviyo-prevent-body-scrolling {
 
 @media (max-width: 768px) {
   .brand-manifesto {
-    padding: 10vh 1.5rem;
-    min-height: 40vh;
+    padding: 8vh 1.5rem;
+    min-height: 35vh;
   }
 }
 
