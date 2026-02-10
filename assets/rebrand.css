@@ -514,7 +514,7 @@ body.klaviyo-prevent-body-scrolling {
 
 .campaign-statement__line--indent {
   padding-left: clamp(2rem, 8vw, 12rem);
-  color: rgba(0,0,0,0.55);
+  color: #888;
 }
 
 .campaign-statement__body {
@@ -556,8 +556,8 @@ body.klaviyo-prevent-body-scrolling {
 .highlights-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem 1.5rem;
-  max-width: 1200px;
+  gap: 1.5rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -571,7 +571,7 @@ body.klaviyo-prevent-body-scrolling {
   aspect-ratio: 3/4;
   overflow: hidden;
   background: #f0f0ee;
-  max-height: 500px;
+  max-height: 380px;
 }
 
 .highlights-item__image img {
