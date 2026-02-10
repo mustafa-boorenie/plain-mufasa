@@ -1,68 +1,363 @@
 {% comment %}
-  PRNTD — About Page
-  Editorial brand story
+  PRNTD — About Page (Street-Luxury Editorial)
+  Hatton Labs / LAIN Design Agency inspired
+  February 2026
 {% endcomment %}
 
 <style>
-  .page-about {
-    background: #f5f5f3;
+  /* ── RESET & BASE ── */
+  .about-page { background: #090909; color: #f5f5f3; min-height: 100vh; overflow-x: hidden; }
+  .about-page *, .about-page *::before, .about-page *::after { box-sizing: border-box; }
+
+  /* ── GRAIN SVG (hidden) ── */
+  .about-grain-svg { position: absolute; width: 0; height: 0; }
+
+  /* ── HERO ── */
+  .about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+  .about-hero__image-wrap {
+    position: relative;
+    grid-column: 1 / 3;
+    grid-row: 1;
     min-height: 100vh;
   }
-  .page-about__content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 6rem 2rem 4rem;
+  .about-hero__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.2);
+    transition: filter 0.6s ease;
   }
-  .page-about__eyebrow {
+  .about-hero__image-wrap:hover img {
+    filter: grayscale(0.3) contrast(1.1);
+  }
+  .about-hero__grain {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    filter: url(#aboutGrain);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .about-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(9,9,9,0.2) 0%, rgba(9,9,9,0.7) 70%, #090909 100%);
+    z-index: 3;
+  }
+  .about-hero__text {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    z-index: 4;
+    align-self: end;
+    padding: 0 5vw 8vh;
+    max-width: 90vw;
+  }
+  .about-hero__heading {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
+    font-weight: 700;
+    font-size: clamp(3rem, 10vw, 9rem);
+    line-height: 0.95;
     text-transform: uppercase;
-    color: #999;
-    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+    margin: 0;
   }
-  .page-about__title {
+  .about-hero__heading .accent { color: #8B3A2F; }
+  .about-hero__sub {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
-    color: #111;
-    line-height: 1.15;
-    margin-bottom: 3rem;
+    font-size: clamp(1rem, 2vw, 1.6rem);
+    color: rgba(245,245,243,0.5);
+    margin-top: 1.5rem;
+    letter-spacing: 0.02em;
   }
-  .page-about__body p {
+
+  /* ── THE STORY ── */
+  .about-story {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0;
+    min-height: 100vh;
+    padding: 8rem 5vw;
+    position: relative;
+  }
+  .about-story__vertical {
+    position: sticky;
+    top: 50%;
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,245,243,0.15);
+    height: fit-content;
+    align-self: start;
+  }
+  .about-story__content {
+    max-width: 640px;
+    padding-left: 3vw;
+  }
+  .about-story__content p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    line-height: 1.9;
+    color: rgba(245,245,243,0.7);
+    margin-bottom: 2.5rem;
+  }
+  .about-story__content p strong {
+    font-weight: 500;
+    color: #f5f5f3;
+  }
+  .about-story__inline-img {
+    width: 100%;
+    max-width: 480px;
+    margin: 2rem 0 3rem;
+    filter: grayscale(1) contrast(1.2);
+    transition: filter 0.5s ease;
+  }
+  .about-story__inline-img:hover {
+    filter: grayscale(0) contrast(1);
+  }
+  .about-story__divider {
+    width: 40px;
+    height: 1px;
+    background: #8B3A2F;
+    margin: 3rem 0;
+  }
+
+  /* ── FOUNDER ── */
+  .about-founder {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4vw;
+    padding: 8rem 5vw;
+    align-items: center;
+    position: relative;
+  }
+  .about-founder__quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    line-height: 1.2;
+    color: #f5f5f3;
+    margin: 0;
+    position: relative;
+  }
+  .about-founder__quote::before {
+    content: '"';
+    font-size: 8rem;
+    color: #8B3A2F;
+    position: absolute;
+    top: -3rem;
+    left: -1rem;
+    line-height: 1;
+    opacity: 0.4;
+  }
+  .about-founder__right {
+    padding-top: 3rem;
+  }
+  .about-founder__label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #8B3A2F;
+    margin-bottom: 1.5rem;
+  }
+  .about-founder__bio {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: 1.05rem;
     line-height: 1.85;
-    color: #444;
-    margin-bottom: 1.8rem;
+    color: rgba(245,245,243,0.65);
+    margin-bottom: 2rem;
   }
-  .page-about__body strong {
-    font-weight: 500;
-    color: #222;
+  .about-founder__image {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 2rem;
+    filter: grayscale(1) contrast(1.15);
+    transition: filter 0.5s ease;
+    transform: translateX(3vw);
   }
-  .page-about__divider {
-    width: 40px;
-    height: 1px;
-    background: #ccc;
-    margin: 3rem 0;
+  .about-founder__image:hover {
+    filter: grayscale(0) contrast(1);
   }
-  .page-about__section-label {
+
+  /* ── COLLECTIONS TIMELINE ── */
+  .about-timeline {
+    padding: 8rem 5vw;
+    position: relative;
+  }
+  .about-timeline__label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,245,243,0.3);
+    margin-bottom: 4rem;
+  }
+  .about-timeline__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    align-items: end;
+  }
+  .about-timeline__item {
+    text-align: left;
+  }
+  .about-timeline__item:nth-child(2) { transform: translateY(-2rem); }
+  .about-timeline__item:nth-child(3) { transform: translateY(-4rem); }
+  .about-timeline__item:nth-child(4) { transform: translateY(-1.5rem); }
+  .about-timeline__item:nth-child(5) { transform: translateY(-5rem); }
+  .about-timeline__item:nth-child(6) { transform: translateY(-2.5rem); }
+
+  .about-timeline__name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.8rem);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: rgba(245,245,243,0.25);
+    -webkit-text-stroke: 1px rgba(245,245,243,0.15);
+    margin: 0;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+  }
+  .about-timeline__name:hover {
+    color: #f5f5f3;
+  }
+  .about-timeline__item--active .about-timeline__name {
+    color: #8B3A2F;
+    -webkit-text-stroke: none;
+  }
+  .about-timeline__year {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: rgba(245,245,243,0.3);
+    margin-top: 0.4rem;
+  }
+  .about-timeline__line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245,245,243,0.1), transparent);
+    margin-bottom: 4rem;
+  }
+
+  /* ── MARQUEE CTA ── */
+  .about-marquee {
+    background: #8B3A2F;
+    padding: 3rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .about-marquee a {
+    text-decoration: none;
+    color: #f5f5f3;
+    display: block;
+  }
+  .about-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: aboutMarquee 18s linear infinite;
+  }
+  .about-marquee:hover .about-marquee__track {
+    animation-duration: 40s;
+  }
+  .about-marquee__text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 4.5rem);
     text-transform: uppercase;
-    color: #aaa;
-    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    padding: 0 3vw;
+  }
+  @keyframes aboutMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── OUTLINED TEXT DECORATIVE ── */
+  .about-outline-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(4rem, 12vw, 12rem);
+    text-transform: uppercase;
+    -webkit-text-stroke: 1px rgba(245,245,243,0.06);
+    color: transparent;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    user-select: none;
+    overflow: hidden;
+    padding: 2rem 5vw 0;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .about-hero { grid-template-columns: 1fr; min-height: 90vh; }
+    .about-hero__text { grid-column: 1; padding: 0 6vw 6vh; }
+    .about-hero__image-wrap { grid-column: 1; }
+    .about-hero__heading { font-size: clamp(2.5rem, 12vw, 4.5rem); }
+
+    .about-story {
+      grid-template-columns: 1fr;
+      padding: 4rem 6vw;
+    }
+    .about-story__vertical {
+      position: relative;
+      top: auto;
+      transform: none;
+      writing-mode: horizontal-tb;
+      color: rgba(245,245,243,0.25);
+      margin-bottom: 2rem;
+      font-size: 0.65rem;
+    }
+    .about-story__content { padding-left: 0; }
+
+    .about-founder {
+      grid-template-columns: 1fr;
+      padding: 4rem 6vw;
+    }
+    .about-founder__image { transform: none; }
+
+    .about-timeline__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem 1rem;
+    }
+    .about-timeline__item:nth-child(n) { transform: none; }
+    .about-timeline__item:nth-child(odd) { transform: translateY(-1rem); }
   }
 </style>
 
-<div class="page-about">
-  <!-- HEADER -->
-  <header class="prntd-header" id="prntd-header" style="background: #f5f5f3;">
+<!-- Grain SVG filter -->
+<svg class="about-grain-svg" xmlns="http://www.w3.org/2000/svg">
+  <filter id="aboutGrain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+</svg>
+
+<div class="about-page">
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="prntd-header" id="prntd-header">
     <div class="prntd-header-inner">
       <a href="{{ routes.root_url }}" class="prntd-header-logo">
         {% if settings.collection_screen_logo %}
@@ -82,42 +377,101 @@
     </div>
   </header>
 
-  <!-- CONTENT -->
-  <div class="page-about__content">
-    <p class="page-about__eyebrow" data-animate="fade-up">The Story</p>
-    <h1 class="page-about__title" data-animate="fade-up">Heritage woven<br>into the modern world.</h1>
-
-    <div class="page-about__body">
-      <p data-animate="fade-up">PRNTD was born from a simple, stubborn belief: that the patterns our grandmothers stitched by hand — the geometry of tatriz embroidery, the rhythm of keffiyeh weave, the weight of Arabic calligraphy — deserve more than a glass case in a museum. They deserve to live on skin. In motion. On the street.</p>
-
-      <p data-animate="fade-up">Every thread in the Levantine textile tradition carries a story. The cross-stitch motifs of Palestinian tatriz mapped villages, families, status. The black-and-white grid of the keffiyeh became a symbol before it became a scarf. These patterns aren't decoration. They're language.</p>
-
-      <div class="page-about__divider" data-animate="fade-up"></div>
-      <p class="page-about__section-label" data-animate="fade-up">The Mission</p>
-
-      <p data-animate="fade-up">We build clothing that carries cultural identity forward — not as nostalgia, but as presence. PRNTD translates ancestral craft into contemporary streetwear: hoodies that reference centuries-old embroidery, silhouettes that honor where we come from while moving toward where we're going.</p>
-
-      <p data-animate="fade-up">This isn't fusion for the sake of novelty. It's preservation through evolution. When heritage only exists in archives, it dies. When it's worn, shared, argued about, remixed — it survives.</p>
-
-      <div class="page-about__divider" data-animate="fade-up"></div>
-      <p class="page-about__section-label" data-animate="fade-up">The Founder</p>
-
-      <p data-animate="fade-up"><strong>Mustafa Boorenie</strong> splits his life between two vocations — internal medicine and fashion design. By day, he's a resident physician. By night, he's drafting patterns, sourcing fabrics, and building a brand rooted in the culture he grew up in.</p>
-
-      <p data-animate="fade-up">PRNTD isn't a side project. It's an act of reclamation. Growing up between worlds — Levantine roots, Western upbringing — Mustafa watched cultural identity flatten into costume or disappear entirely. PRNTD is his answer: make it wearable, make it beautiful, make it impossible to ignore.</p>
-
-      <div class="page-about__divider" data-animate="fade-up"></div>
-      <p class="page-about__section-label" data-animate="fade-up">The Craft</p>
-
-      <p data-animate="fade-up">Each collection begins with research — archival embroidery patterns, historical textile techniques, the geometry embedded in Levantine art and architecture. These references are then reinterpreted through modern design: screen printing, cut-and-sew construction, contemporary silhouettes.</p>
-
-      <p data-animate="fade-up">From <strong>ELEMENTICS</strong> to <strong>NEOLITHIUM</strong>, <strong>FORSAN</strong> to <strong>GENESIS</strong>, and <strong>GILGAMESH</strong> — every collection is a chapter. Each one digs deeper into the archive and pushes the design further forward.</p>
-
-      <p data-animate="fade-up">The name says it all. <strong>PRNTD</strong> — printed, imprinted, permanent. Culture doesn't fade when you wear it.</p>
+  <!-- ═══════════ IMMERSIVE HERO ═══════════ -->
+  <section class="about-hero">
+    <div class="about-hero__image-wrap">
+      <img src="{{ 'campaign-editorial-01.png' | asset_url }}" alt="PRNTD Heritage Editorial" loading="eager">
+      <div class="about-hero__grain"></div>
+      <div class="about-hero__overlay"></div>
     </div>
-  </div>
+    <div class="about-hero__text" data-animate="fade-up">
+      <h1 class="about-hero__heading">
+        <span class="accent">Heritage</span><br>
+        woven<br>
+        into now.
+      </h1>
+      <p class="about-hero__sub">Where tradition meets the street</p>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
+  <!-- ═══════════ DECORATIVE OUTLINE ═══════════ -->
+  <div class="about-outline-text" aria-hidden="true">PRNTD</div>
+
+  <!-- ═══════════ THE STORY ═══════════ -->
+  <section class="about-story">
+    <div class="about-story__vertical">The Heritage</div>
+    <div class="about-story__content">
+      <p data-animate="fade-up"><strong>PRNTD was born from a simple, stubborn belief:</strong> that the patterns our grandmothers stitched by hand — tatriz embroidery, keffiyeh weave, Arabic calligraphy — deserve more than a museum case. They deserve to live. On skin. In motion. On the street.</p>
+
+      <div class="about-story__divider" data-animate="fade-up"></div>
+
+      <img src="{{ 'campaign-texture-01.png' | asset_url }}" alt="Embroidered fabric detail" class="about-story__inline-img" data-animate="fade-up" loading="lazy">
+
+      <p data-animate="fade-up">We build clothing that carries cultural identity forward — not as nostalgia, but as <strong>presence.</strong></p>
+
+      <p data-animate="fade-up">Every piece begins with a pattern that has survived centuries — then gets reinterpreted for the world we actually live in. Technical fabrics. Modern silhouettes. Ancient meaning.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ THE FOUNDER ═══════════ -->
+  <section class="about-founder">
+    <div data-animate="fade-up">
+      <blockquote class="about-founder__quote">
+        This isn't a side project. It's an act of reclamation.
+      </blockquote>
+    </div>
+    <div class="about-founder__right" data-animate="fade-up">
+      <p class="about-founder__label">The Founder</p>
+      <p class="about-founder__bio">Mustafa Boorenie splits his life between two vocations — internal medicine and fashion design. By day, a resident physician. By night, drafting patterns, sourcing fabrics, building something permanent.</p>
+      <img src="{{ 'campaign-editorial-wide-01.png' | asset_url }}" alt="PRNTD Editorial" class="about-founder__image" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ═══════════ COLLECTIONS TIMELINE ═══════════ -->
+  <section class="about-timeline">
+    <p class="about-timeline__label" data-animate="fade-up">The Collections</p>
+    <div class="about-timeline__line"></div>
+    <div class="about-timeline__grid" data-animate="fade-up">
+      <div class="about-timeline__item">
+        <p class="about-timeline__name">Gilgamesh</p>
+        <p class="about-timeline__year">2023</p>
+      </div>
+      <div class="about-timeline__item">
+        <p class="about-timeline__name">Genesis</p>
+        <p class="about-timeline__year">2023</p>
+      </div>
+      <div class="about-timeline__item">
+        <p class="about-timeline__name">Forsan</p>
+        <p class="about-timeline__year">2024</p>
+      </div>
+      <div class="about-timeline__item">
+        <p class="about-timeline__name">Neolithium</p>
+        <p class="about-timeline__year">2024</p>
+      </div>
+      <div class="about-timeline__item">
+        <p class="about-timeline__name">Elementics</p>
+        <p class="about-timeline__year">2025</p>
+      </div>
+      <div class="about-timeline__item about-timeline__item--active">
+        <p class="about-timeline__name">Season Two</p>
+        <p class="about-timeline__year">March 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ MARQUEE CTA ═══════════ -->
+  <section class="about-marquee">
+    <a href="/collections/all">
+      <div class="about-marquee__track">
+        <span class="about-marquee__text">Explore the Collection →</span>
+        <span class="about-marquee__text">Explore the Collection →</span>
+        <span class="about-marquee__text">Explore the Collection →</span>
+        <span class="about-marquee__text">Explore the Collection →</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
   <footer class="prntd-footer-full">
     <div class="prntd-footer-full__inner">
       <div class="prntd-footer-full__col prntd-footer-full__brand">
@@ -160,9 +514,11 @@
       <span>© {{ 'now' | date: '%Y' }} PRNTD. All rights reserved.</span>
     </div>
   </footer>
+
 </div>
 
 <script src="{{ 'scroll-animations.js' | asset_url }}" defer></script>
+<script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
 <script>
   (function() {
     var header = document.getElementById('prntd-header');
