@@ -94,7 +94,11 @@
 <footer class="prntd-footer-full">
   <div class="prntd-footer-full__inner">
     <div class="prntd-footer-full__col prntd-footer-full__brand">
-      <span class="prntd-footer-full__logo prntd-brand-text">P.</span>
+      {% if settings.enter_screen_logo %}
+        <img src="{{ settings.enter_screen_logo | image_url: width: 160 }}" alt="PRNTD" class="prntd-footer-logo-img" style="height: 40px; width: auto;">
+      {% else %}
+        <span class="prntd-footer-full__logo prntd-brand-text">P.</span>
+      {% endif %}
       <p class="prntd-footer-full__tagline">Heritage woven into the modern world.</p>
     </div>
     <div class="prntd-footer-full__col">
