@@ -1,6 +1,6 @@
 # PRD.md — PRNTD Website Rebrand & Launch
 
-**Version:** 2.0
+**Version:** 2.1
 **Date:** 2026-02-10
 **Owner:** Mustafa Boorenie
 **Target Launch:** March 11, 2026 (29 days out)
@@ -162,8 +162,36 @@ Homepage hero features dual-layer image reveal:
 - [x] 7 AI campaign images generated (OpenAI GPT Image 1)
 - [x] 3 deployed to theme assets (portrait, wide landscape, texture close-up)
 - [x] 15 reference images analyzed from prntd-assets/
+- [x] About page: 3 dedicated editorial images generated (hero, texture detail, founder portrait)
+- [x] About page image bug fixed (.png vs .jpg extension mismatch was causing 404s)
+
+**About Page: ✅ LIVE (confirmed by Mustafa)**
+- [x] Page created in Shopify admin + template assigned
+- [x] Images loading (3 new dedicated images generated via OpenAI)
+- [x] Hatton Labs editorial style: hero, heritage story, founder section, collections timeline, marquee CTA
+
+**Lookbook Page: ✅ LIVE (confirmed by Mustafa)**
+- [x] Contact and Lookbook pages created in Shopify admin
 
 ### 🔧 REMAINING (Pre-Launch Checklist)
+
+#### Critical Refinements (Mustafa Review — Feb 10)
+
+**Images & Photography:**
+- [ ] **Replace AI images with actual product/campaign photos from Google Drive** — Current images don't reflect real designs
+- [ ] **Product image background removal** — White backgrounds need to be transparent (rembg or OpenAI edit)
+- [ ] **High-quality photos of actual Season 1 + Season 2 clothes only** — No generic/AI fashion models wearing non-PRNTD clothes
+
+**Immersive Experience:**
+- [ ] **Music / SFX / VFX / Animation integration** — Site needs audio-visual storytelling, not just static pages. Ambient music, hover sound effects, page transition animations, scroll-triggered VFX
+- [ ] **Lookbook Season 2 promo image** — "Out of this world masterpiece" at the bottom where "Coming Soon" section is
+
+**Typography & Branding:**
+- [ ] **Title font replacement** — Current Playfair Display not working. Switch to blocky sans-serif that resembles the PRNTD logo font (e.g., Monument Extended, PP Neue Montreal, or custom)
+- [ ] **Logo adaptive color / pixel mapping** — Logo should invert against its background (CSS mix-blend-mode: difference/exclusion with gradient overlay) so it's always visible regardless of section color
+
+**Copy:**
+- [ ] **Major copy rewrite across all pages** — Current copy is placeholder-quality. Needs to be punchy, evocative, brand-aligned editorial copy
 
 #### P0 — Must ship before March 11
 1. [x] ~~Wire cart drawer~~ — ✅ Working, tested end-to-end
@@ -387,4 +415,29 @@ snippets/
 
 ---
 
-*Last updated: 2026-02-10 05:00 UTC*
+---
+
+## 10. Refinement Pass (v2.1 — Feb 10 Review)
+
+### What Was Done
+- About page images fixed (extension mismatch .png/.jpg causing 404s)
+- 3 new dedicated About page images generated via OpenAI GPT Image 1:
+  - `about-hero-editorial.png` — Model in embroidered keffiyeh hoodie, concrete corridor, cinematic side light
+  - `about-texture-detail.png` — Macro tatriz embroidery, terracotta + gold thread on black
+  - `about-founder-editorial.png` — Warehouse portrait, golden light shafts, contemplative pose
+- Cart drawer confirmed working end-to-end via Playwright
+- Lookbook page deployed and live (Stussy brutalist broken masonry)
+- Content pages (About, Shipping, Contact) templates deployed
+- Mustafa confirmed About and Lookbook pages live in Shopify admin
+
+### Mustafa's Feedback (Prioritized)
+1. **P0 — Logo visibility:** White-on-white / dark-on-dark is ugly. Implement adaptive logo with CSS mix-blend-mode or gradient overlay inversion.
+2. **P0 — Title font:** Replace Playfair Display with blocky sans-serif resembling PRNTD logo font.
+3. **P0 — Real product photography:** All images must be actual PRNTD clothes. Get Google Drive photos integrated.
+4. **P0 — Transparent product backgrounds:** Remove white backdrop from product images.
+5. **P1 — Immersive media:** Add music, sound effects, VFX, animation to convey brand story. Static pages aren't enough.
+6. **P1 — Season 2 lookbook promo:** Generate a masterpiece hero image for the "Coming Soon" section.
+7. **P1 — Copy overhaul:** All page copy needs significant improvement — punchy, evocative, editorial.
+8. **P2 — Background music:** Ambient audio player for brand immersion.
+
+*Last updated: 2026-02-10 06:00 UTC*
