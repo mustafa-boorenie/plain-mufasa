@@ -2139,3 +2139,248 @@ body.klaviyo-prevent-body-scrolling {
   transform-origin: left center;
   will-change: transform, filter;
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE FIXES — 390px audit (Feb 10, 2026)
+   ============================================================ */
+
+@media (max-width: 480px) {
+  /* --- HERO: Safe area + touch targets --- */
+  .hero-scroll-hint {
+    bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    opacity: 0.7;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  }
+
+  .hero-social {
+    bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .hero-social a {
+    padding: 10px;
+    margin: -10px;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-nav a {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* --- CAMPAIGN STATEMENT: tighter spacing, prevent overflow --- */
+  .campaign-statement {
+    padding: 4vh 1rem;
+    min-height: auto;
+  }
+
+  .campaign-statement__title {
+    font-size: clamp(3rem, 14vw, 5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .campaign-statement__line--indent {
+    padding-left: clamp(1rem, 5vw, 3rem);
+  }
+
+  .campaign-statement__label {
+    margin-bottom: 1rem;
+  }
+
+  .campaign-statement__body {
+    font-size: 0.85rem;
+  }
+
+  /* --- EDITORIAL FULLBLEED: taller aspect on mobile, center face --- */
+  .editorial-fullbleed__image {
+    aspect-ratio: 3/4;
+  }
+
+  .editorial-fullbleed__image img {
+    object-position: center 25%;
+  }
+
+  /* --- EDITORIAL SPLIT: tighten text padding --- */
+  .editorial-split__text {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .editorial-split__image {
+    aspect-ratio: 4/5;
+  }
+
+  .editorial-split__title {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  /* --- HIGHLIGHTS: uniform cards, tighter spacing --- */
+  .highlights-section {
+    padding: 4vh 0.75rem;
+  }
+
+  .highlights-header {
+    margin-bottom: 2rem;
+  }
+
+  .highlights-grid {
+    gap: 0.5rem;
+  }
+
+  .highlights-item__image {
+    aspect-ratio: 3/4;
+  }
+
+  .highlights-item__image img {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .highlights-item__info {
+    padding: 0.4rem 0;
+  }
+
+  .highlights-item__name {
+    font-size: 0.72rem;
+  }
+
+  .highlights-item__price {
+    font-size: 0.65rem;
+  }
+
+  /* --- BRAND MANIFESTO: readable text --- */
+  .brand-manifesto__text {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    padding: 0 1rem;
+  }
+
+  /* --- ALL LOOKS: fix right-column clipping --- */
+  .all-looks {
+    padding: 3vh 0 2vh 0.75rem;
+  }
+
+  .all-looks__header {
+    padding-right: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .all-looks__item {
+    width: 160px;
+  }
+
+  .all-looks__image {
+    aspect-ratio: 3/4;
+  }
+
+  /* --- ARCHIVE: compact --- */
+  .archive-section {
+    padding: 2vh 0.75rem;
+  }
+
+  .archive-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .archive-item {
+    min-width: 140px;
+    padding: 1.5rem 1rem;
+  }
+
+  .archive-item__name {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+
+  /* --- FOOTER: compact on small screens --- */
+  .prntd-footer-full {
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .prntd-footer-full__inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .prntd-footer-full__bottom {
+    margin-top: 2rem;
+  }
+
+  /* --- COLLECTION PAGE: tighter grid, less whitespace --- */
+  .editorial-collection-header {
+    padding-top: 4.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .editorial-collection-header h1 {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .editorial-collection-grid {
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+  }
+
+  /* --- PDP: price visible above fold --- */
+  .pdp-gallery-main {
+    aspect-ratio: 1/1;
+  }
+
+  .pdp-details {
+    padding: 1rem 1rem;
+  }
+
+  .pdp-details h1 {
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
+    margin-bottom: 0.3rem;
+  }
+
+  .pdp-price {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pdp-collection-tag {
+    margin-bottom: 0.3rem;
+    font-size: 0.65rem;
+  }
+
+  .pdp-story {
+    margin-bottom: 0.75rem;
+  }
+
+  .pdp-option {
+    margin-bottom: 0.75rem;
+  }
+
+  .pdp-gallery-thumbs {
+    padding: 0.3rem 0.5rem;
+    gap: 0.3rem;
+  }
+
+  .pdp-thumb {
+    width: 44px;
+    height: 56px;
+  }
+
+  /* --- SHARED HEADER: compact on mobile --- */
+  .prntd-header {
+    padding: 1rem 1rem;
+  }
+
+  .prntd-header .prntd-logo-img {
+    height: 28px;
+  }
+
+  .prntd-header nav a {
+    font-size: 0.7rem;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
