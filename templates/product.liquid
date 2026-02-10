@@ -242,3 +242,35 @@
     }, { passive: true });
   })();
 </script>
+
+{% comment %} ============================================================
+   STRUCTURED DATA — Google Shopping / Rich Results
+   ============================================================ {% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "image": [
+    {% for image in product.images limit: 5 %}
+      {{ image | image_url: width: 1200 | json }}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  "description": {{ product.description | strip_html | truncate: 500 | json }},
+  "brand": {
+    "@type": "Brand",
+    "name": "PRNTD"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ shop.url }}{{ product.url }}",
+    "priceCurrency": "{{ cart.currency.iso_code }}",
+    "price": "{{ product.price | money_without_currency | strip }}",
+    "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "seller": {
+      "@type": "Organization",
+      "name": "PRNTD"
+    }
+  }
+}
+</script>

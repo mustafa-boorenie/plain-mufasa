@@ -1,0 +1,179 @@
+{% comment %}
+  PRNTD — About Page
+  Editorial brand story
+{% endcomment %}
+
+<style>
+  .page-about {
+    background: #f5f5f3;
+    min-height: 100vh;
+  }
+  .page-about__content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+  }
+  .page-about__eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 1.5rem;
+  }
+  .page-about__title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    color: #111;
+    line-height: 1.15;
+    margin-bottom: 3rem;
+  }
+  .page-about__body p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #444;
+    margin-bottom: 1.8rem;
+  }
+  .page-about__body strong {
+    font-weight: 500;
+    color: #222;
+  }
+  .page-about__divider {
+    width: 40px;
+    height: 1px;
+    background: #ccc;
+    margin: 3rem 0;
+  }
+  .page-about__section-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 1.5rem;
+  }
+</style>
+
+<div class="page-about">
+  <!-- HEADER -->
+  <header class="prntd-header" id="prntd-header" style="background: #f5f5f3;">
+    <div class="prntd-header-inner">
+      <a href="{{ routes.root_url }}" class="prntd-header-logo">
+        {% if settings.collection_screen_logo %}
+          <img src="{{ settings.collection_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
+        {% elsif settings.shop_screen_logo %}
+          <img src="{{ settings.shop_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
+        {% else %}
+          P.
+        {% endif %}
+      </a>
+      <nav class="prntd-header-nav">
+        <a href="/collections/all">Shop</a>
+        {% if cart.item_count > 0 %}
+          <a href="/cart" class="prntd-cart-link">Bag ({{ cart.item_count }})</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="page-about__content">
+    <p class="page-about__eyebrow" data-animate="fade-up">The Story</p>
+    <h1 class="page-about__title" data-animate="fade-up">Heritage woven<br>into the modern world.</h1>
+
+    <div class="page-about__body">
+      <p data-animate="fade-up">PRNTD was born from a simple, stubborn belief: that the patterns our grandmothers stitched by hand — the geometry of tatriz embroidery, the rhythm of keffiyeh weave, the weight of Arabic calligraphy — deserve more than a glass case in a museum. They deserve to live on skin. In motion. On the street.</p>
+
+      <p data-animate="fade-up">Every thread in the Levantine textile tradition carries a story. The cross-stitch motifs of Palestinian tatriz mapped villages, families, status. The black-and-white grid of the keffiyeh became a symbol before it became a scarf. These patterns aren't decoration. They're language.</p>
+
+      <div class="page-about__divider" data-animate="fade-up"></div>
+      <p class="page-about__section-label" data-animate="fade-up">The Mission</p>
+
+      <p data-animate="fade-up">We build clothing that carries cultural identity forward — not as nostalgia, but as presence. PRNTD translates ancestral craft into contemporary streetwear: hoodies that reference centuries-old embroidery, silhouettes that honor where we come from while moving toward where we're going.</p>
+
+      <p data-animate="fade-up">This isn't fusion for the sake of novelty. It's preservation through evolution. When heritage only exists in archives, it dies. When it's worn, shared, argued about, remixed — it survives.</p>
+
+      <div class="page-about__divider" data-animate="fade-up"></div>
+      <p class="page-about__section-label" data-animate="fade-up">The Founder</p>
+
+      <p data-animate="fade-up"><strong>Mustafa Boorenie</strong> splits his life between two vocations — internal medicine and fashion design. By day, he's a resident physician. By night, he's drafting patterns, sourcing fabrics, and building a brand rooted in the culture he grew up in.</p>
+
+      <p data-animate="fade-up">PRNTD isn't a side project. It's an act of reclamation. Growing up between worlds — Levantine roots, Western upbringing — Mustafa watched cultural identity flatten into costume or disappear entirely. PRNTD is his answer: make it wearable, make it beautiful, make it impossible to ignore.</p>
+
+      <div class="page-about__divider" data-animate="fade-up"></div>
+      <p class="page-about__section-label" data-animate="fade-up">The Craft</p>
+
+      <p data-animate="fade-up">Each collection begins with research — archival embroidery patterns, historical textile techniques, the geometry embedded in Levantine art and architecture. These references are then reinterpreted through modern design: screen printing, cut-and-sew construction, contemporary silhouettes.</p>
+
+      <p data-animate="fade-up">From <strong>ELEMENTICS</strong> to <strong>NEOLITHIUM</strong>, <strong>FORSAN</strong> to <strong>GENESIS</strong>, and <strong>GILGAMESH</strong> — every collection is a chapter. Each one digs deeper into the archive and pushes the design further forward.</p>
+
+      <p data-animate="fade-up">The name says it all. <strong>PRNTD</strong> — printed, imprinted, permanent. Culture doesn't fade when you wear it.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="prntd-footer-full">
+    <div class="prntd-footer-full__inner">
+      <div class="prntd-footer-full__col prntd-footer-full__brand">
+        {% if settings.enter_screen_logo %}
+          <img src="{{ settings.enter_screen_logo | image_url: width: 160 }}" alt="PRNTD" class="prntd-footer-logo-img" style="height: 40px; width: auto;">
+        {% else %}
+          <span class="prntd-footer-full__logo prntd-brand-text">P.</span>
+        {% endif %}
+        <p class="prntd-footer-full__tagline">Heritage woven into the modern world.</p>
+      </div>
+      <div class="prntd-footer-full__col">
+        <h4 class="prntd-footer-full__heading prntd-ui-text">Navigate</h4>
+        <ul class="prntd-footer-full__list">
+          <li><a href="/collections/all">Shop</a></li>
+          <li><a href="/pages/about">About</a></li>
+          <li><a href="/pages/lookbook">Lookbook</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="prntd-footer-full__col">
+        <h4 class="prntd-footer-full__heading prntd-ui-text">Connect</h4>
+        <ul class="prntd-footer-full__list">
+          <li><a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://x.com/prntdbybdq" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="mailto:info@prntdbybdq.com">info@prntdbybdq.com</a></li>
+        </ul>
+      </div>
+      <div class="prntd-footer-full__col prntd-footer-full__newsletter">
+        <h4 class="prntd-footer-full__heading prntd-ui-text">Stay in the Loop</h4>
+        <p class="prntd-footer-full__newsletter-text">New drops. Exclusive access. No noise.</p>
+        <form class="prntd-footer-full__form" action="/contact#contact_form" method="post">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input type="email" name="contact[email]" placeholder="Email address" required class="prntd-footer-full__input">
+          <button type="submit" class="prntd-footer-full__submit prntd-ui-text">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="prntd-footer-full__bottom">
+      <span>© {{ 'now' | date: '%Y' }} PRNTD. All rights reserved.</span>
+    </div>
+  </footer>
+</div>
+
+<script src="{{ 'scroll-animations.js' | asset_url }}" defer></script>
+<script>
+  (function() {
+    var header = document.getElementById('prntd-header');
+    if (!header) return;
+    var scrolled = false;
+    window.addEventListener('scroll', function() {
+      var shouldScroll = window.scrollY > 40;
+      if (shouldScroll !== scrolled) {
+        scrolled = shouldScroll;
+        header.classList.toggle('scrolled', scrolled);
+      }
+    }, { passive: true });
+  })();
+</script>
