@@ -4,34 +4,59 @@
    ============================================================
    Effects:
    1. Scale down on scroll (1.0 → 0.85)
-   2. Section-aware contrast morphing (dark bg → white logo, light bg → dark logo)
-   3. Subtle parallax float when idle (CSS class toggle)
+   2. Section-aware contrast (dark sections → white logo, light → dark)
+   3. Subtle parallax float when idle
    4. Entrance fade-in on page load
    ============================================================ */
 
 (function () {
   'use strict';
 
-  const SCALE_START = 1.0;
-  const SCALE_END = 0.85;
-  const SCROLL_RANGE = 300; // px over which scale transition completes
-  const SAMPLE_OFFSET_Y = 60; // where to sample bg color (header vertical center-ish)
-  const LUMINANCE_THRESHOLD = 0.45;
-  const IDLE_DELAY = 150; // ms after last scroll to resume float
+  var SCALE_START = 1.0;
+  var SCALE_END = 0.85;
+  var SCROLL_RANGE = 300;
+  var IDLE_DELAY = 150;
+  var LOGO_SAMPLE_Y = 40; // px from top of viewport to check which section
 
-  let logo, header, scrollTicking, idleTimer, isScrolling, lastDark;
+  var logo, header, navLinks, scrollTicking, idleTimer, isScrolling, lastDark;
+  var darkSections = []; // sections that should trigger white logo
 
   function init() {
     logo = document.querySelector('.prntd-header .prntd-logo-img');
     header = document.querySelector('.prntd-header');
     if (!logo || !header) return;
 
+    navLinks = header.querySelectorAll('nav a, .prntd-header-nav a, a[href*="collections"], a[href*="shop"]');
+
+    // Register known dark sections by selector
+    var darkSelectors = [
+      '#prntd-hero',
+      '.brand-manifesto',
+      '.prntd-header--dark',
+      '[data-theme="dark"]'
+    ];
+
+    darkSelectors.forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (el) darkSections.push(el);
+    });
+
+    // Also detect sections with explicit dark backgrounds
+    document.querySelectorAll('section, div').forEach(function (el) {
+      var bg = getComputedStyle(el).backgroundColor;
+      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+        var c = parseBgColor(bg);
+        if (c && luminance(c) < 0.2) {
+          darkSections.push(el);
+        }
+      }
+    });
+
     // Entrance animation
     logo.classList.add('logo-entrance');
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         logo.classList.add('logo-entrance--active');
-        // After entrance, enable float
         logo.addEventListener('transitionend', function onEnd(e) {
           if (e.propertyName === 'opacity') {
             logo.removeEventListener('transitionend', onEnd);
@@ -41,7 +66,7 @@
       });
     });
 
-    // Scroll listener (passive for perf)
+    // Scroll listener
     scrollTicking = false;
     isScrolling = false;
     lastDark = null;
@@ -52,7 +77,6 @@
   }
 
   function onScroll() {
-    // Pause float while scrolling
     if (!isScrolling) {
       isScrolling = true;
       logo.classList.remove('logo-float');
@@ -80,59 +104,31 @@
     var scale = SCALE_START + (SCALE_END - SCALE_START) * t;
     logo.style.transform = 'scale(' + scale + ')';
 
-    // 2. Section-aware contrast
-    sampleAndAdapt();
-  }
-
-  function sampleAndAdapt() {
-    // Sample the element directly behind the logo center
-    var rect = logo.getBoundingClientRect();
-    var cx = rect.left + rect.width / 2;
-    var cy = rect.top + rect.height / 2;
-
-    // Hide logo momentarily to sample behind it
-    var prev = logo.style.visibility;
-    logo.style.visibility = 'hidden';
-    var el = document.elementFromPoint(cx, cy);
-    logo.style.visibility = prev;
-
-    if (!el) return;
-
-    var bg = getEffectiveBgColor(el);
-    if (!bg) return;
-
-    var lum = luminance(bg);
-    var dark = lum < LUMINANCE_THRESHOLD;
+    // 2. Section-aware contrast — check which section occupies the logo area
+    var dark = isOverDarkSection();
 
     if (dark !== lastDark) {
       lastDark = dark;
-      // dark bg → white logo (invert), light bg → dark logo (no invert)
       if (dark) {
         logo.style.filter = 'brightness(0) invert(1)';
-        header.querySelectorAll('.prntd-header-nav a').forEach(function (a) {
-          a.style.color = '#f5f5f3';
-        });
+        navLinks.forEach(function (a) { a.style.color = '#f5f5f3'; });
       } else {
         logo.style.filter = 'brightness(0)';
-        header.querySelectorAll('.prntd-header-nav a').forEach(function (a) {
-          a.style.color = '';
-        });
+        navLinks.forEach(function (a) { a.style.color = ''; });
       }
     }
   }
 
-  function getEffectiveBgColor(el) {
-    var max = 10;
-    while (el && max-- > 0) {
-      var style = getComputedStyle(el);
-      var bg = style.backgroundColor;
-      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
-        return parseBgColor(bg);
+  function isOverDarkSection() {
+    // Check if any dark section covers the logo sampling point
+    for (var i = 0; i < darkSections.length; i++) {
+      var rect = darkSections[i].getBoundingClientRect();
+      // Section covers the sampling y-position (near top of viewport)
+      if (rect.top <= LOGO_SAMPLE_Y && rect.bottom > LOGO_SAMPLE_Y) {
+        return true;
       }
-      el = el.parentElement;
     }
-    // Fallback: light page
-    return { r: 245, g: 245, b: 243 };
+    return false;
   }
 
   function parseBgColor(str) {
@@ -142,9 +138,7 @@
   }
 
   function luminance(c) {
-    // Relative luminance (simplified sRGB)
-    var rs = c.r / 255, gs = c.g / 255, bs = c.b / 255;
-    return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+    return 0.2126 * (c.r / 255) + 0.7152 * (c.g / 255) + 0.0722 * (c.b / 255);
   }
 
   // Boot
