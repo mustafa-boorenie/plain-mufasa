@@ -1,130 +1,65 @@
 {% comment %}
-  PRNTD — Contact Page
+  PRNTD — Shipping & Returns Page
 {% endcomment %}
 
 <style>
-  .page-contact {
+  .page-shipping {
     background: #f5f5f3;
     min-height: 100vh;
   }
-  .page-contact__content {
+  .page-shipping__content {
     max-width: 800px;
     margin: 0 auto;
     padding: 6rem 2rem 4rem;
   }
-  .page-contact__title {
+  .page-shipping__title {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-weight: 400;
     font-size: clamp(2rem, 4vw, 3rem);
     color: #111;
     line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-  .page-contact__subtitle {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 1.05rem;
-    color: #666;
-    line-height: 1.7;
     margin-bottom: 3rem;
   }
-  .page-contact__form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  .page-shipping__section {
     margin-bottom: 3rem;
   }
-  .page-contact__field label {
-    display: block;
+  .page-shipping__heading {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 0.7rem;
+    font-weight: 500;
+    font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #999;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.2rem;
   }
-  .page-contact__field input,
-  .page-contact__field textarea {
-    width: 100%;
-    padding: 0.9rem 1rem;
+  .page-shipping__body p,
+  .page-shipping__body li {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
-    font-size: 0.95rem;
-    color: #333;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 0;
-    outline: none;
-    transition: border-color 0.2s;
-    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 1rem;
   }
-  .page-contact__field input:focus,
-  .page-contact__field textarea:focus {
-    border-color: #333;
+  .page-shipping__body ul {
+    list-style: none;
+    padding: 0;
   }
-  .page-contact__field textarea {
-    min-height: 160px;
-    resize: vertical;
+  .page-shipping__body ul li::before {
+    content: '—';
+    margin-right: 0.75rem;
+    color: #bbb;
   }
-  .page-contact__submit {
-    align-self: flex-start;
-    padding: 0.9rem 2.5rem;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #fff;
-    background: #111;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .page-contact__submit:hover {
-    background: #333;
-  }
-  .page-contact__divider {
+  .page-shipping__divider {
     width: 40px;
     height: 1px;
     background: #ccc;
     margin: 2.5rem 0;
   }
-  .page-contact__info-heading {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #999;
-    margin-bottom: 1rem;
-  }
-  .page-contact__info p,
-  .page-contact__info a {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.8;
-    text-decoration: none;
-  }
-  .page-contact__info a:hover {
-    color: #111;
-  }
-  .page-contact__social {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 0.5rem;
-  }
-  .page-contact__social a {
-    font-weight: 400;
-    color: #333;
-    text-decoration: underline;
-  }
 </style>
 
-<div class="page-contact">
+<div class="page-shipping">
   <!-- HEADER -->
   <header class="prntd-header" id="prntd-header" style="background: #f5f5f3;">
     <div class="prntd-header-inner">
@@ -147,51 +82,51 @@
   </header>
 
   <!-- CONTENT -->
-  <div class="page-contact__content">
-    <h1 class="page-contact__title" data-animate="fade-up">Get in Touch</h1>
-    <p class="page-contact__subtitle" data-animate="fade-up">Questions, collaborations, or just want to say hello — we'd love to hear from you.</p>
+  <div class="page-shipping__content">
+    <h1 class="page-shipping__title" data-animate="fade-up">Shipping & Returns</h1>
 
-    {% form 'contact' %}
-      {% if form.posted_successfully? %}
-        <p style="font-family: 'Inter', sans-serif; font-weight: 400; color: #222; padding: 1rem; background: #e8f5e9; margin-bottom: 2rem;" data-animate="fade-up">Message sent. We'll be in touch soon.</p>
-      {% endif %}
-      {% if form.errors %}
-        <div style="font-family: 'Inter', sans-serif; font-weight: 400; color: #c62828; padding: 1rem; background: #fce4ec; margin-bottom: 2rem;">
-          {{ form.errors | default_errors }}
-        </div>
-      {% endif %}
-
-      <div class="page-contact__form" data-animate="fade-up">
-        <div class="page-contact__field">
-          <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" name="contact[name]" placeholder="Your name" required>
-        </div>
-        <div class="page-contact__field">
-          <label for="contact-email">Email</label>
-          <input type="email" id="contact-email" name="contact[email]" placeholder="your@email.com" required>
-        </div>
-        <div class="page-contact__field">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="contact[body]" placeholder="What's on your mind?" required></textarea>
-        </div>
-        <button type="submit" class="page-contact__submit">Send Message</button>
+    <div class="page-shipping__section" data-animate="fade-up">
+      <h2 class="page-shipping__heading">Shipping</h2>
+      <div class="page-shipping__body">
+        <ul>
+          <li>Domestic orders ship within 3–7 business days</li>
+          <li>International orders ship within 7–14 business days</li>
+          <li>All orders include tracking information via email</li>
+          <li><strong style="font-weight: 500; color: #222;">Free shipping on orders over $150</strong></li>
+        </ul>
+        <p>Shipping times are estimates and may vary depending on location and carrier conditions. PRNTD is not responsible for delays caused by customs or local postal services.</p>
       </div>
-    {% endform %}
-
-    <div class="page-contact__divider" data-animate="fade-up"></div>
-
-    <div class="page-contact__info" data-animate="fade-up">
-      <h2 class="page-contact__info-heading">Email</h2>
-      <p><a href="mailto:info@prntdbybdq.com">info@prntdbybdq.com</a></p>
     </div>
 
-    <div class="page-contact__divider" data-animate="fade-up"></div>
+    <div class="page-shipping__divider" data-animate="fade-up"></div>
 
-    <div class="page-contact__info" data-animate="fade-up">
-      <h2 class="page-contact__info-heading">Follow</h2>
-      <div class="page-contact__social">
-        <a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://x.com/prntdbybdq" target="_blank" rel="noopener">X / Twitter</a>
+    <div class="page-shipping__section" data-animate="fade-up">
+      <h2 class="page-shipping__heading">Returns</h2>
+      <div class="page-shipping__body">
+        <ul>
+          <li>Returns accepted within 14 days of delivery</li>
+          <li>Items must be unworn, unwashed, and in original condition with tags attached</li>
+          <li>Sale items are final sale and cannot be returned</li>
+        </ul>
+        <p>To initiate a return, email <a href="mailto:info@prntdbybdq.com" style="color: #222; text-decoration: underline;">info@prntdbybdq.com</a> with your order number and reason for return. We'll send you a return shipping label within 48 hours.</p>
+      </div>
+    </div>
+
+    <div class="page-shipping__divider" data-animate="fade-up"></div>
+
+    <div class="page-shipping__section" data-animate="fade-up">
+      <h2 class="page-shipping__heading">Exchanges</h2>
+      <div class="page-shipping__body">
+        <p>We currently do not offer direct exchanges. To exchange an item, please return your original order and place a new one. We'll prioritize processing your return.</p>
+      </div>
+    </div>
+
+    <div class="page-shipping__divider" data-animate="fade-up"></div>
+
+    <div class="page-shipping__section" data-animate="fade-up">
+      <h2 class="page-shipping__heading">Questions?</h2>
+      <div class="page-shipping__body">
+        <p>Reach out at <a href="mailto:info@prntdbybdq.com" style="color: #222; text-decoration: underline;">info@prntdbybdq.com</a> — we typically respond within 24 hours.</p>
       </div>
     </div>
   </div>
