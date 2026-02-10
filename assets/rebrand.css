@@ -2106,3 +2106,36 @@ body.klaviyo-prevent-body-scrolling {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
 }
+
+/* ============================================================
+   LOGO ADAPTIVE — Scroll animation styles
+   ============================================================ */
+
+/* Entrance: start invisible, drift up */
+.prntd-logo-img.logo-entrance {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.prntd-logo-img.logo-entrance--active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Parallax float — gentle breathing when idle */
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0) var(--logo-scale, scale(1)); }
+  50%      { transform: translateY(-3px) var(--logo-scale, scale(1)); }
+}
+
+.prntd-logo-img.logo-float {
+  animation: logo-float 4s ease-in-out infinite;
+}
+
+/* Scale transition for scroll — handled inline by JS but smooth via transition */
+.prntd-logo-img {
+  transform-origin: left center;
+  will-change: transform, filter;
+}
