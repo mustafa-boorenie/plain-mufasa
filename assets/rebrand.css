@@ -454,7 +454,6 @@ body.klaviyo-prevent-body-scrolling {
   font-family: var(--prntd-font-brand);
   font-size: clamp(1.8rem, 3.5vw, 3rem);
   font-weight: 400;
-  font-style: italic;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--prntd-black);
@@ -511,8 +510,7 @@ body.klaviyo-prevent-body-scrolling {
 .campaign-statement__title {
   font-family: var(--prntd-font-brand);
   font-size: clamp(4rem, 17vw, 18rem);
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 700;
   line-height: 0.85;
   letter-spacing: -0.04em;
   margin: 0 0 3rem;
@@ -692,7 +690,6 @@ body.klaviyo-prevent-body-scrolling {
   font-family: var(--prntd-font-brand);
   font-size: clamp(1.6rem, 4vw, 3.5rem);
   font-weight: 400;
-  font-style: italic;
   line-height: 1.4;
   letter-spacing: -0.01em;
   margin: 0 0 3rem;
@@ -702,7 +699,6 @@ body.klaviyo-prevent-body-scrolling {
 
 .brand-manifesto__text em {
   color: #ffffff;
-  font-style: italic;
 }
 
 .brand-manifesto__rule {
@@ -746,7 +742,6 @@ body.klaviyo-prevent-body-scrolling {
 
 .all-looks__title {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-style: italic;
   font-weight: 400;
   margin: 0;
 }
@@ -854,7 +849,6 @@ body.klaviyo-prevent-body-scrolling {
 
 .archive-title {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-style: italic;
   font-weight: 400;
   margin: 0;
 }
@@ -901,7 +895,6 @@ body.klaviyo-prevent-body-scrolling {
   font-family: var(--prntd-font-brand);
   font-size: clamp(1.2rem, 2vw, 1.8rem);
   font-weight: 400;
-  font-style: italic;
   margin: 0 0 0.5rem;
   letter-spacing: 0.02em;
 }
@@ -1146,8 +1139,6 @@ body.klaviyo-prevent-body-scrolling {
   height: 32px;
   width: auto;
   display: block;
-  mix-blend-mode: difference;
-  filter: brightness(0) invert(1);
 }
 
 .prntd-header-nav {
@@ -1218,6 +1209,12 @@ body.klaviyo-prevent-body-scrolling {
   filter: brightness(0) invert(1);
 }
 
+/* Auto-invert logo on dark page backgrounds */
+.about-page .prntd-logo-img,
+.lb .prntd-logo-img {
+  filter: brightness(0) invert(1);
+}
+
 .prntd-header-nav--dark a {
   color: var(--prntd-white);
 }
@@ -1230,8 +1227,9 @@ body.klaviyo-prevent-body-scrolling {
 .collection-header h1 {
   font-family: var(--prntd-font-brand);
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
   margin: 0.5rem 0 0;
   color: #0a0a0a;
 }
@@ -1455,7 +1453,6 @@ body.klaviyo-prevent-body-scrolling {
   font-family: var(--prntd-font-brand);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-weight: 400;
-  font-style: italic;
   margin: 0 0 0.5rem;
   letter-spacing: -0.01em;
   color: #0a0a0a;
@@ -1785,7 +1782,6 @@ body.klaviyo-prevent-body-scrolling {
   font-family: var(--prntd-font-brand);
   font-size: 1.3rem;
   font-weight: 400;
-  font-style: italic;
   margin: 0;
   color: #0a0a0a;
 }
@@ -1880,7 +1876,6 @@ body.klaviyo-prevent-body-scrolling {
 .cart-drawer__item-title {
   font-family: var(--prntd-font-brand);
   font-size: 0.9rem;
-  font-style: italic;
   font-weight: 400;
   color: #0a0a0a;
   text-decoration: none;
@@ -1975,7 +1970,6 @@ body.klaviyo-prevent-body-scrolling {
 .cart-drawer__empty-text {
   font-family: var(--prntd-font-brand);
   font-size: 1.3rem;
-  font-style: italic;
   color: #0a0a0a;
   margin: 0;
 }
