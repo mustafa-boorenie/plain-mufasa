@@ -128,14 +128,35 @@ Homepage hero features dual-layer image reveal:
 - [x] rebrand.css design system (1400+ lines)
 - [x] hero-interaction.js, scroll-animations.js, product-page.js
 
-**Cart Drawer (BUILT, NOT WIRED):**
-- [x] cart-drawer.js — slide-out AJAX cart overlay
-- [x] Shipping progress bar (free shipping at $150)
-- [x] Quantity controls, remove buttons
-- [x] Add-to-cart interception
-- [x] window.PRNTDCart API (.open(), .close(), .refresh())
-- [x] CSS in rebrand.css (Playfair italic titles, Inter UI)
-- [ ] **NOT loaded in theme.liquid yet** — needs script tag
+**Cart Drawer: ✅ WORKING**
+- [x] cart-drawer.js loaded in theme.liquid for index/collection/product/page templates
+- [x] Slide-out AJAX cart overlay with shipping progress bar ($150 threshold)
+- [x] Quantity controls, remove buttons, item thumbnails
+- [x] Add-to-cart interception + PRNTDCart.open() from PDP
+- [x] Tested: add item → drawer opens with product, variant, price, checkout button
+- [x] Empty state: "Nothing here yet" + "Explore the Collection" CTA
+
+**SEO & Structured Data:**
+- [x] JSON-LD Product schema on PDP (Google Shopping rich results)
+- [x] Shopify SEO/social meta tags rendering via built-in snippets
+
+**Content Pages (Templates deployed — need Shopify Pages created in admin):**
+- [x] About page (page.about) — Hatton Labs-style street-luxury editorial: immersive hero with grain overlay, outlined PRNTD text, sticky vertical "THE HERITAGE", founder section, collections timeline, marquee CTA
+- [x] Shipping & Returns page (page.shipping) — Clean policy layout, free shipping $150+, 14-day returns
+- [x] Contact page (page.contact) — Shopify native contact form + email + socials
+- [ ] **⚠️ Mustafa needs to create Pages in Shopify admin and assign templates**
+
+**Lookbook Page: ✅ LIVE**
+- [x] Stussy-style brutalist lookbook (page.lookbook) — broken masonry grid, heavy 2.5px black borders, SVG grain overlay, numbered counters, vertical text labels ("ELEMENTICS F/W 2024"), product name overlays
+- [x] All photos labeled as previous collection (ELEMENTICS archive)
+- [x] Season Two teaser section at bottom ("Coming Soon — March 2026")
+- [x] Mobile responsive (1-col phone, 2-col tablet, 4-col desktop)
+
+**Remotion Video Skill: ✅ BUILT**
+- [x] 6 composition templates (TextReveal, TweetCard, ProductShowcase, ClipAssembly, VoiceoverVideo, TrendingTopic)
+- [x] All 9:16 vertical (1080×1920) at 30fps
+- [x] Scripts: render.sh, setup.sh, generate_voiceover.py (ElevenLabs), fetch_tweets.py, trending.py
+- [x] Test render successful
 
 **Campaign Images:**
 - [x] 7 AI campaign images generated (OpenAI GPT Image 1)
@@ -145,32 +166,34 @@ Homepage hero features dual-layer image reveal:
 ### 🔧 REMAINING (Pre-Launch Checklist)
 
 #### P0 — Must ship before March 11
-1. [ ] **Wire cart drawer** — Add cart-drawer.js to theme.liquid, test full add-to-cart flow
+1. [x] ~~Wire cart drawer~~ — ✅ Working, tested end-to-end
 2. [ ] **Season Two products** — Create in Shopify admin with photography, descriptions, pricing
 3. [ ] **Real campaign photography** — Replace AI placeholders with actual editorial shots
 4. [ ] **Mobile responsive audit** — Full pass at 390px on all pages
 5. [ ] **Checkout flow test** — End-to-end: browse → add to bag → checkout → payment
-6. [ ] **Domain/SEO** — Meta titles, descriptions, Open Graph images, sitemap
-7. [ ] **About page** — Brand story, heritage narrative, founder bio
-8. [ ] **Shipping & Returns pages** — Policy content
-9. [ ] **Contact page** — Form or email link
-10. [ ] **Privacy Policy / Terms** — Legal pages
+6. [x] ~~SEO structured data~~ — ✅ JSON-LD on PDP
+7. [x] ~~About page~~ — ✅ Template deployed (Hatton Labs style)
+8. [x] ~~Shipping & Returns pages~~ — ✅ Template deployed
+9. [x] ~~Contact page~~ — ✅ Template deployed
+10. [ ] **Create Shopify Pages in admin** — Assign templates to About, Shipping, Contact
+11. [ ] **Privacy Policy / Terms** — Legal pages
+12. [ ] **Domain/SEO** — Meta titles, descriptions, Open Graph images
 
 #### P1 — Should ship before March 11
-11. [ ] **Typography audit** — Ensure only Inter + Playfair Display render site-wide
-12. [ ] **Image optimization** — Compression, proper srcset, lazy loading below fold
-13. [ ] **Core Web Vitals** — LCP < 2.5s, FID < 100ms, CLS < 0.1
-14. [ ] **Collection page editorial header** — Hero image or campaign banner at top
-15. [ ] **Footer links wired** — About, Shipping, Returns, Contact all linked
-16. [ ] **Newsletter integration** — Klaviyo or Shopify email for footer signup form
-17. [ ] **Favicon + social sharing image** — PRNTD branded
+13. [ ] **Typography audit** — Ensure only Inter + Playfair Display render site-wide
+14. [ ] **Image optimization** — Compression, proper srcset, lazy loading below fold
+15. [ ] **Core Web Vitals** — LCP < 2.5s, FID < 100ms, CLS < 0.1
+16. [ ] **Collection page editorial header** — Hero image or campaign banner at top
+17. [ ] **Newsletter integration** — Klaviyo or Shopify email for footer signup form
+18. [ ] **Favicon + social sharing image** — PRNTD branded
+19. [ ] **Voice clone** — ElevenLabs setup with Mustafa's voice sample
 
 #### P2 — Nice to have for launch
-18. [ ] **Lookbook page** — Full-screen editorial imagery gallery
-19. [ ] **Product page related products** — Verify section renders, style to match
-20. [ ] **404 page** — Branded, not default Shopify
-21. [ ] **Loading state** — Branded page transition or skeleton screens
-22. [ ] **Announcement bar** — "Season Two drops March 11" or "Free shipping over $150"
+20. [x] ~~Lookbook page~~ — ✅ Stussy-style brutalist grid, live
+21. [ ] **Product page related products** — Verify section renders, style to match
+22. [ ] **404 page** — Branded, not default Shopify
+23. [ ] **Loading state** — Branded page transition or skeleton screens
+24. [ ] **Announcement bar** — "Season Two drops March 11" or "Free shipping over $150"
 
 ---
 
@@ -186,20 +209,24 @@ Homepage hero features dual-layer image reveal:
 ### 5.2 File Map
 ```
 layout/
-  theme.liquid          — Routes index/collection/product to custom templates, others to old layout
+  theme.liquid          — Routes index/collection/product/page to custom templates, others to old layout
 
 templates/
   index.liquid          — Full editorial homepage with hero interaction
   collection.liquid     — Light editorial product grid
-  product.liquid        — Split-layout PDP with AJAX cart
+  product.liquid        — Split-layout PDP with AJAX cart + JSON-LD structured data
   cart.liquid           — Redirects to /collections/all (cart drawer handles cart)
+  page.about.liquid     — Street-luxury About page (Hatton Labs style)
+  page.shipping.liquid  — Shipping & Returns policy page
+  page.contact.liquid   — Contact form page
+  page.lookbook.liquid  — Brutalist lookbook (Stussy style, broken masonry grid)
 
 assets/
-  rebrand.css           — Full design system (1400+ lines)
+  rebrand.css           — Full design system (1500+ lines)
   hero-interaction.js   — Dual-layer circular reveal with source-in compositing
   scroll-animations.js  — IntersectionObserver fade-in animations
   product-page.js       — Gallery, variants, AJAX add-to-cart, accordions
-  cart-drawer.js        — Slide-out AJAX cart (NOT YET LOADED)
+  cart-drawer.js        — Slide-out AJAX cart drawer (loaded on all rebranded pages)
   campaign-editorial-01.png      — AI portrait (tatriz hoodie model)
   campaign-editorial-wide-01.png — AI landscape (desert scene)
   campaign-texture-01.png        — AI texture (embroidered fabric close-up)
@@ -360,4 +387,4 @@ snippets/
 
 ---
 
-*Last updated: 2026-02-10 03:47 UTC*
+*Last updated: 2026-02-10 05:00 UTC*
