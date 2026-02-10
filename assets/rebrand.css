@@ -94,7 +94,7 @@ body.klaviyo-prevent-body-scrolling {
   --prntd-gray-subtle: #ccc;
   --prntd-bg: #f5f5f3;
   --prntd-text: #0a0a0a;
-  --prntd-font-brand: 'DM Sans', 'Inter', sans-serif;
+  --prntd-font-brand: 'Bebas Neue', 'Impact', sans-serif;
   --prntd-font-ui: 'Inter', 'Helvetica Neue', sans-serif;
   --prntd-transition: 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
@@ -103,7 +103,8 @@ body.klaviyo-prevent-body-scrolling {
 .prntd-brand-text {
   font-family: var(--prntd-font-brand);
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .prntd-ui-text {
@@ -220,10 +221,11 @@ body.klaviyo-prevent-body-scrolling {
 .hero-logo a {
   font-family: var(--prntd-font-brand);
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--prntd-white);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   transition: color var(--prntd-transition);
   display: flex;
   align-items: center;
@@ -511,9 +513,9 @@ body.klaviyo-prevent-body-scrolling {
   font-family: var(--prntd-font-brand);
   font-size: clamp(4rem, 17vw, 18rem);
   font-weight: 400;
-  font-style: italic;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   margin: 0 0 3rem;
   color: var(--prntd-black);
 }
@@ -953,7 +955,9 @@ body.klaviyo-prevent-body-scrolling {
 
 .prntd-footer-full__logo {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   display: block;
   margin-bottom: 0.75rem;
 }
@@ -1134,10 +1138,11 @@ body.klaviyo-prevent-body-scrolling {
 .prntd-header-logo {
   font-family: var(--prntd-font-brand);
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--prntd-black);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   position: relative;
@@ -1238,9 +1243,9 @@ body.klaviyo-prevent-body-scrolling {
 .collection-header h1 {
   font-family: var(--prntd-font-brand);
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
   margin: 0.5rem 0 0;
   color: #0a0a0a;
 }
