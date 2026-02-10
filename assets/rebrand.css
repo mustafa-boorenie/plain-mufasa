@@ -390,8 +390,8 @@ body.klaviyo-prevent-body-scrolling {
 }
 
 .editorial-fullbleed__caption .prntd-ui-text {
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  color: rgba(255,255,255,0.8);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
 @media (max-width: 768px) {
@@ -480,11 +480,11 @@ body.klaviyo-prevent-body-scrolling {
 .campaign-statement {
   background: var(--prntd-bg);
   color: var(--prntd-black);
-  padding: 15vh 2rem;
+  padding: 10vh 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
+  min-height: 60vh;
 }
 
 .campaign-statement__inner {
@@ -493,8 +493,8 @@ body.klaviyo-prevent-body-scrolling {
 }
 
 .campaign-statement__label {
-  color: #999;
-  margin: 0 0 2rem;
+  color: #777;
+  margin: 0 0 3rem;
 }
 
 .campaign-statement__title {
@@ -514,7 +514,7 @@ body.klaviyo-prevent-body-scrolling {
 
 .campaign-statement__line--indent {
   padding-left: clamp(2rem, 8vw, 12rem);
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.45);
 }
 
 .campaign-statement__body {
@@ -541,7 +541,7 @@ body.klaviyo-prevent-body-scrolling {
 .highlights-section {
   background: var(--prntd-bg);
   color: var(--prntd-black);
-  padding: 10vh 2rem;
+  padding: 8vh 2rem;
 }
 
 .highlights-header {
@@ -550,54 +550,34 @@ body.klaviyo-prevent-body-scrolling {
 }
 
 .highlights-header .prntd-ui-text {
-  color: #999;
+  color: #777;
 }
 
 .highlights-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  grid-template-rows: auto auto;
-  gap: 1rem;
-  max-width: 1400px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* First item: large, spans 2 rows */
-.highlights-item--0 {
-  grid-row: 1 / 3;
-}
-
 .highlights-item {
-  position: relative;
-  overflow: hidden;
   display: block;
   text-decoration: none;
   color: var(--prntd-black);
 }
 
 .highlights-item__image {
-  width: 100%;
-  height: 100%;
-  min-height: 300px;
+  aspect-ratio: 3/4;
   overflow: hidden;
   background: #f0f0ee;
-}
-
-.highlights-item--0 .highlights-item__image {
-  aspect-ratio: auto;
-  height: 100%;
-}
-
-.highlights-item--1 .highlights-item__image,
-.highlights-item--2 .highlights-item__image {
-  aspect-ratio: 4/5;
 }
 
 .highlights-item__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .highlights-item:hover .highlights-item__image img {
@@ -605,7 +585,7 @@ body.klaviyo-prevent-body-scrolling {
 }
 
 .highlights-item__info {
-  padding: 0.8rem 0;
+  padding: 0.75rem 0;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -613,7 +593,7 @@ body.klaviyo-prevent-body-scrolling {
 
 .highlights-item__name {
   font-family: var(--prntd-font-brand);
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-size: 1rem;
   font-style: italic;
   font-weight: 400;
   color: var(--prntd-black);
@@ -626,24 +606,10 @@ body.klaviyo-prevent-body-scrolling {
   color: #999;
 }
 
-/* Second row: items 3-5 in 3 columns */
-.highlights-grid .highlights-item:nth-child(n+4) {
-  grid-column: auto;
-}
-
 @media (max-width: 768px) {
   .highlights-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  .highlights-item--0 {
-    grid-row: auto;
-  }
-
-  .highlights-item__image {
-    aspect-ratio: 3/4 !important;
-    height: auto !important;
+    gap: 2rem;
   }
 
   .highlights-section {
@@ -756,13 +722,20 @@ body.klaviyo-prevent-body-scrolling {
 }
 
 .all-looks__link {
-  color: #999;
+  color: #777;
   text-decoration: none;
   transition: color var(--prntd-transition);
 }
 
 .all-looks__link:hover {
   color: var(--prntd-black);
+}
+
+/* Last card peeks off edge to hint scrollability */
+.all-looks__scroll::after {
+  content: '';
+  flex-shrink: 0;
+  width: 1px;
 }
 
 .all-looks__scroll {
@@ -832,7 +805,7 @@ body.klaviyo-prevent-body-scrolling {
 .archive-section {
   background: var(--prntd-bg);
   color: var(--prntd-black);
-  padding: 12vh 2rem;
+  padding: 8vh 2rem;
   border-top: 1px solid rgba(0,0,0,0.06);
 }
 
@@ -842,7 +815,7 @@ body.klaviyo-prevent-body-scrolling {
 }
 
 .archive-header .prntd-ui-text {
-  color: #999;
+  color: #777;
   margin: 0 0 0.5rem;
 }
 
@@ -902,6 +875,7 @@ body.klaviyo-prevent-body-scrolling {
 
 .archive-item__year {
   color: #999;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
