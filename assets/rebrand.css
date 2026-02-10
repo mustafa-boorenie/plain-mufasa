@@ -940,6 +940,14 @@ body.klaviyo-prevent-body-scrolling {
   width: auto;
   display: block;
   margin-bottom: 0.75rem;
+  /* Logo source is white — invert for light footers */
+  filter: brightness(0);
+}
+
+/* Keep footer logo white on dark-background pages */
+.about-page .prntd-footer-logo-img,
+.lb .prntd-footer-logo-img {
+  filter: none;
 }
 
 .prntd-footer-full__logo {
@@ -1139,6 +1147,8 @@ body.klaviyo-prevent-body-scrolling {
   height: 32px;
   width: auto;
   display: block;
+  /* Logo source is white on transparent — invert to black for light pages */
+  filter: brightness(0);
 }
 
 .prntd-header-nav {
@@ -1209,10 +1219,10 @@ body.klaviyo-prevent-body-scrolling {
   filter: brightness(0) invert(1);
 }
 
-/* Auto-invert logo on dark page backgrounds */
+/* Keep logo white on dark page backgrounds (source is already white) */
 .about-page .prntd-logo-img,
 .lb .prntd-logo-img {
-  filter: brightness(0) invert(1);
+  filter: none;
 }
 
 .prntd-header-nav--dark a {
