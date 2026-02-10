@@ -154,21 +154,15 @@
           addToCartBtn.textContent = 'Added ✓';
           addToCartBtn.classList.add('added');
 
-          // Update cart count in header
-          fetch('/cart.js')
-            .then(function (r) { return r.json(); })
-            .then(function (cart) {
-              var countEls = document.querySelectorAll('.cart-count');
-              countEls.forEach(function (el) {
-                el.textContent = cart.item_count;
-              });
-            });
-
+          // Open cart drawer after adding
           setTimeout(function () {
+            if (window.PRNTDCart) {
+              window.PRNTDCart.open();
+            }
             addToCartBtn.disabled = false;
             addToCartBtn.textContent = originalText;
             addToCartBtn.classList.remove('added');
-          }, 2500);
+          }, 600);
         })
         .catch(function () {
           addToCartBtn.disabled = false;

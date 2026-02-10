@@ -78,11 +78,7 @@
         window.location.href = "{{ collections['all'].url }}";
       </script>
     {% endif %}
-    {% if template == 'cart' %}
-      <script>
-        window.location.href = "{{ collections['all'].url }}";
-      </script>
-    {% endif %}
+    {% comment %} Cart redirect removed — using cart drawer instead {% endcomment %}
   </head>
   {{ content_for_header }}
   {% if template contains 'customers' %}
@@ -117,6 +113,9 @@
         {% else %}
           {% section 'other-footer' %}
       {% endcase %}
+    {% endif %}
+    {% if template.name == 'index' or template.name == 'collection' or template.name == 'product' %}
+      <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
     {% endif %}
     {% unless template.name == 'index' %}
       <script src="{{ 'music-player.js' | asset_url }}" type="text/javascript"></script>
