@@ -41,10 +41,16 @@
   .lb-pname { position: absolute; bottom: 14px; left: 14px; font-family: 'Space Grotesk', sans-serif;  font-size: 14px; color: var(--white); z-index: 3; text-shadow: 0 1px 4px rgba(0,0,0,0.6); letter-spacing: 0.04em; }
 
   /* ——— TEASER ——— */
-  .lb-teaser { background: var(--black); color: var(--white); padding: 120px 24px; text-align: center; border-top: var(--border); }
-  .lb-teaser h2 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(48px, 12vw, 160px); line-height: 0.9; letter-spacing: -0.04em; margin: 0; }
-  .lb-teaser .lb-teaser-sub { font-family: 'Space Grotesk', sans-serif;  font-size: clamp(16px, 2.5vw, 28px); margin-top: 20px; color: var(--gray); letter-spacing: 0.15em; }
-  .lb-teaser .lb-teaser-tag { font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; margin-top: 48px; color: #555; }
+  .lb-teaser { position: relative; overflow: hidden; border-top: var(--border); min-height: 80vh; display: flex; align-items: center; justify-content: center; }
+  .lb-teaser__bg { position: absolute; inset: 0; z-index: 0; }
+  .lb-teaser__bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6) contrast(1.2); }
+  .lb-teaser__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.95) 100%); z-index: 1; }
+  .lb-teaser__content { position: relative; z-index: 2; text-align: center; padding: 60px 24px; color: var(--white); }
+  .lb-teaser h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(48px, 14vw, 180px); line-height: 0.85; letter-spacing: -0.04em; margin: 0; text-transform: uppercase; text-shadow: 0 4px 40px rgba(0,0,0,0.5); }
+  .lb-teaser .lb-teaser-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(16px, 2.5vw, 28px); margin-top: 24px; color: rgba(245,245,243,0.7); letter-spacing: 0.15em; }
+  .lb-teaser .lb-teaser-tag { font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 20px; color: rgba(245,245,243,0.5); }
+  .lb-teaser .lb-teaser-cta { display: inline-block; margin-top: 40px; padding: 16px 48px; border: 1px solid rgba(245,245,243,0.3); color: var(--white); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease; }
+  .lb-teaser .lb-teaser-cta:hover { background: var(--white); color: var(--black); border-color: var(--white); }
 
   /* ——— MOBILE ——— */
   @media (max-width: 768px) {
@@ -54,7 +60,7 @@
     .lb-cell { min-height: 300px; }
     .lb-cell.span-2c.span-2r { min-height: 400px; }
     .lb-hero { padding: 100px 16px 40px; }
-    .lb-teaser { padding: 80px 16px; }
+    .lb-teaser { min-height: 60vh; }
   }
   @media (min-width: 769px) and (max-width: 1024px) {
     .lb-grid { grid-template-columns: repeat(2, 1fr); }
@@ -120,9 +126,16 @@
 
   <!-- SEASON TWO TEASER -->
   <section class="lb-teaser" data-animate="fade-up">
-    <div class="lb-teaser-tag">Coming Soon</div>
-    <h2>SEASON TWO</h2>
-    <div class="lb-teaser-sub">March 2026</div>
+    <div class="lb-teaser__bg">
+      <img src="{{ 'season-two-promo-03.png' | asset_url }}" alt="PRNTD Season Two" loading="lazy">
+    </div>
+    <div class="lb-teaser__overlay"></div>
+    <div class="lb-teaser__content">
+      <div class="lb-teaser-tag">Coming March 11, 2026</div>
+      <h2>Season<br>Two</h2>
+      <div class="lb-teaser-sub">Nothing is forgotten.</div>
+      <a href="/collections/all" class="lb-teaser-cta">Get Notified</a>
+    </div>
   </section>
 
   <footer class="prntd-footer-full" style="border-top: 2.5px solid #000;">
@@ -133,7 +146,7 @@
         {% else %}
           <span class="prntd-footer-full__logo prntd-brand-text">P.</span>
         {% endif %}
-        <p class="prntd-footer-full__tagline">Heritage woven into the modern world.</p>
+        <p class="prntd-footer-full__tagline">Ancient craft. Modern rebellion.</p>
       </div>
       <div class="prntd-footer-full__col">
         <h4 class="prntd-footer-full__heading prntd-ui-text">Navigate</h4>
