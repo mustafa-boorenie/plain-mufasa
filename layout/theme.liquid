@@ -117,6 +117,7 @@
     {% endif %}
     {% if template.name == 'index' or template.name == 'collection' or template.name == 'product' or template.name == 'page' %}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
+      <script src="{{ 'logo-adaptive.js' | asset_url }}" defer></script>
     {% endif %}
     {% unless template.name == 'index' %}
       <script src="{{ 'music-player.js' | asset_url }}" type="text/javascript"></script>

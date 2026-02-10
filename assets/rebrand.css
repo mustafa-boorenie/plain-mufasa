@@ -943,8 +943,14 @@ body.klaviyo-prevent-body-scrolling {
   width: auto;
   display: block;
   margin-bottom: 0.75rem;
+  filter: brightness(0); /* dark by default on light footers */
+  transition: filter 0.5s ease;
+}
+
+/* White logo on dark-bg page footers */
+.about-page .prntd-footer-logo-img,
+.lb .prntd-footer-logo-img {
   filter: brightness(0) invert(1);
-  mix-blend-mode: difference;
 }
 
 .prntd-footer-full__logo {
@@ -1147,10 +1153,9 @@ body.klaviyo-prevent-body-scrolling {
   height: 32px;
   width: auto;
   display: block;
-  /* Adaptive logo: always contrasts against whatever is behind it */
-  filter: brightness(0) invert(1); /* ensure white base */
-  mix-blend-mode: difference;
-  transition: filter 0.4s ease;
+  /* Adaptive: JS tracks background and toggles filter */
+  filter: brightness(0); /* default dark for light pages */
+  transition: filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .prntd-header-nav {
@@ -1166,7 +1171,7 @@ body.klaviyo-prevent-body-scrolling {
   text-transform: uppercase;
   color: var(--prntd-black);
   text-decoration: none;
-  transition: opacity var(--prntd-transition);
+  transition: opacity var(--prntd-transition), color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .prntd-header-nav a:hover {
