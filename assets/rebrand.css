@@ -94,7 +94,7 @@ body.klaviyo-prevent-body-scrolling {
   --prntd-gray-subtle: #ccc;
   --prntd-bg: #f5f5f3;
   --prntd-text: #0a0a0a;
-  --prntd-font-brand: 'Space Grotesk', 'Inter', sans-serif;
+  --prntd-font-brand: 'DM Sans', 'Inter', sans-serif;
   --prntd-font-ui: 'Inter', 'Helvetica Neue', sans-serif;
   --prntd-transition: 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
@@ -510,7 +510,8 @@ body.klaviyo-prevent-body-scrolling {
 .campaign-statement__title {
   font-family: var(--prntd-font-brand);
   font-size: clamp(4rem, 17vw, 18rem);
-  font-weight: 700;
+  font-weight: 400;
+  font-style: italic;
   line-height: 0.85;
   letter-spacing: -0.04em;
   margin: 0 0 3rem;
