@@ -1,0 +1,45 @@
+{% comment %} PRNTD Mobile Hamburger Menu — shared across all templates {% endcomment %}
+
+<!-- Hamburger Button -->
+<button class="prntd-hamburger" id="prntd-hamburger" aria-label="Open menu" aria-expanded="false">
+  <span class="prntd-hamburger__line"></span>
+  <span class="prntd-hamburger__line"></span>
+  <span class="prntd-hamburger__line"></span>
+</button>
+
+<!-- Full-screen overlay menu -->
+<div class="prntd-mobile-menu" id="prntd-mobile-menu" aria-hidden="true">
+  <nav class="prntd-mobile-menu__nav">
+    <a href="/collections/all" class="prntd-mobile-menu__link">Shop</a>
+    <a href="/pages/about" class="prntd-mobile-menu__link">About</a>
+    <a href="/pages/lookbook" class="prntd-mobile-menu__link">Lookbook</a>
+    <a href="/pages/contact" class="prntd-mobile-menu__link">Contact</a>
+  </nav>
+  <div class="prntd-mobile-menu__footer">
+    <a href="/cart" class="prntd-mobile-menu__bag">Bag ({{ cart.item_count }})</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var btn = document.getElementById('prntd-hamburger');
+  var menu = document.getElementById('prntd-mobile-menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function() {
+    var open = btn.classList.toggle('is-open');
+    menu.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open);
+    menu.setAttribute('aria-hidden', !open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      btn.classList.remove('is-open');
+      menu.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>

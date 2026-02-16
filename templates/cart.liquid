@@ -1,2 +1,100 @@
-{% comment %} 
+{% comment %}
+  PRNTD — Custom Cart Page (Dark Theme)
+  Replaces default Shopify cart with branded dark template
 {% endcomment %}
+
+{%- assign headerSnippetPath = 'header-index' -%}
+{%- assign bodyClasses = '' -%}
+
+{% comment %} ============================================================
+   HEADER
+   ============================================================ {% endcomment %}
+
+<header class="prntd-header" id="prntd-header">
+  <div class="prntd-header-inner">
+    <a href="{{ routes.root_url }}" class="prntd-header-logo">
+      {% if settings.shop_screen_logo %}
+        <img src="{{ settings.shop_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
+      {% else %}
+        P.
+      {% endif %}
+    </a>
+    <nav class="prntd-header-nav">
+      <a href="/collections/all">Shop</a>
+      {% render 'mobile-menu' %}
+    </nav>
+  </div>
+</header>
+
+{% comment %} ============================================================
+   CART CONTENT
+   ============================================================ {% endcomment %}
+
+<div class="prntd-cart-page">
+  <div class="prntd-cart-page__inner">
+    <h1 class="prntd-brand-text prntd-cart-page__title">Your Bag</h1>
+
+    {% if cart.item_count == 0 %}
+      <div class="prntd-cart-page__empty">
+        <p class="prntd-ui-text">Your bag is empty</p>
+        <a href="/collections/all" class="prntd-btn">Continue Shopping</a>
+      </div>
+    {% else %}
+      <form action="/cart" method="post" novalidate>
+        <div class="prntd-cart-page__items">
+          {% for item in cart.items %}
+            <div class="prntd-cart-page__item">
+              <a href="{{ item.url }}" class="prntd-cart-page__item-image">
+                {% if item.image %}
+                  <img src="{{ item.image | image_url: width: 300 }}" alt="{{ item.title | escape }}" loading="lazy">
+                {% endif %}
+              </a>
+              <div class="prntd-cart-page__item-details">
+                <a href="{{ item.url }}" class="prntd-cart-page__item-title prntd-brand-text">{{ item.product.title }}</a>
+                {% unless item.variant.title == 'Default Title' %}
+                  <span class="prntd-cart-page__item-variant prntd-ui-text">{{ item.variant.title }}</span>
+                {% endunless %}
+                <div class="prntd-cart-page__item-bottom">
+                  <div class="prntd-cart-page__qty">
+                    <label class="visually-hidden" for="updates_{{ item.key }}">Qty</label>
+                    <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" class="prntd-cart-page__qty-input">
+                  </div>
+                  <span class="prntd-cart-page__item-price">{{ item.final_line_price | money }}</span>
+                </div>
+              </div>
+              <a href="/cart/change?id={{ item.key }}&quantity=0" class="prntd-cart-page__item-remove" aria-label="Remove {{ item.title }}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="prntd-cart-page__footer">
+          <div class="prntd-cart-page__subtotal">
+            <span class="prntd-ui-text">Subtotal</span>
+            <span class="prntd-cart-page__subtotal-amount">{{ cart.total_price | money }}</span>
+          </div>
+          <p class="prntd-cart-page__tax-note prntd-ui-text">Shipping & taxes calculated at checkout</p>
+          <div class="prntd-cart-page__actions">
+            <button type="submit" name="update" class="prntd-btn prntd-cart-page__update">Update</button>
+            <button type="submit" name="checkout" class="prntd-cart-page__checkout">Checkout</button>
+          </div>
+          <a href="/collections/all" class="prntd-cart-page__continue prntd-ui-text">Continue Shopping</a>
+        </div>
+      </form>
+    {% endif %}
+  </div>
+</div>
+
+{% comment %} ============================================================
+   FOOTER
+   ============================================================ {% endcomment %}
+
+<footer class="prntd-footer">
+  <span>&copy; {{ 'now' | date: '%Y' }} PRNTD</span>
+  <div class="prntd-footer-links">
+    <a href="/pages/shipping">Shipping</a>
+    <a href="/policies/refund-policy">Returns</a>
+    <a href="/pages/contact">Contact</a>
+  </div>
+</footer>

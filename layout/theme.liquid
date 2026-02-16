@@ -91,7 +91,7 @@
     d3503khivhk343="{{ settings.3593809343bfibhiddsfh_relfe3252_fdfg }}"
   >
     <main style="{% if request.page_type == 'password' %}  height: 100%; width: 100%; {% endif %}">
-      {% if template.name == 'index' or template.name == 'collection' or template.name == 'product' or template.name == 'page' or headerSnippetPath %}
+      {% if template.name == 'index' or template.name == 'collection' or template.name == 'product' or template.name == 'page' or template.name == 'cart' or headerSnippetPath %}
         {{ content_for_layout }}
       {% else %}
         {% include 'backup-layout' %}
@@ -115,7 +115,7 @@
           {% section 'other-footer' %}
       {% endcase %}
     {% endif %}
-    {% if template.name == 'index' or template.name == 'collection' or template.name == 'product' or template.name == 'page' %}
+    {% if template.name == 'index' or template.name == 'collection' or template.name == 'product' or template.name == 'page' or template.name == 'cart' %}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
       <script src="{{ 'logo-adaptive.js' | asset_url }}" defer></script>
     {% endif %}
