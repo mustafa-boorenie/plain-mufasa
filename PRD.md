@@ -1,7 +1,7 @@
 # PRD.md — PRNTD Website Rebrand & Launch
 
-**Version:** 2.1
-**Date:** 2026-02-10
+**Version:** 2.2
+**Date:** 2026-02-16
 **Owner:** Mustafa Boorenie
 **Target Launch:** March 11, 2026 (29 days out)
 **Live URL:** prntdbybdq.com
@@ -440,4 +440,30 @@ snippets/
 7. **P1 — Copy overhaul:** All page copy needs significant improvement — punchy, evocative, editorial.
 8. **P2 — Background music:** Ambient audio player for brand immersion.
 
-*Last updated: 2026-02-10 06:00 UTC*
+### v2.2 Updates (2026-02-16)
+
+**Completed since v2.1:**
+- [x] Rich product description styling in accordions (CSS for h3/h4/ul/li with em-dash bullets)
+- [x] Smooth scrolling + font smoothing added globally (`scroll-behavior: smooth`, `-webkit-font-smoothing: antialiased`)
+- [x] 404 page completely restyled to PRNTD brand
+- [x] Product page: full 4-column footer with newsletter signup
+- [x] Collection page: better empty state with "Coming Soon" CTA
+- [x] Broken image refs fixed on homepage All Looks section
+- [x] About page dark footer colors fixed
+- [x] 18 editorial images uploaded to Season Two products via Shopify API
+- [x] Homepage hero + campaign sections updated with editorial shots
+- [x] All Looks carousel swapped to Season Two editorial images
+- [x] Mobile hamburger menu added (responsive nav)
+- [x] Inter font override globally (killed Inconsolata leak from old theme)
+- [x] Cart page dark theme
+- [x] Season One products: 6 products enriched with rich SEO descriptions via Shopify API (MOON Hoodie, NOOR Tee, PRNTD Hoodie, PRNTD Pants, QAMAR Tee, SUN Hoodie — all ~1200-1400 chars with h3/p/ul markup)
+
+**Remaining TODO:**
+- [ ] Mobile responsive deep audit (all pages at 390px)
+- [ ] Typography audit (ensure only Inter + Playfair Display render)
+- [ ] Image optimization + Core Web Vitals (LCP < 2.5s, CLS < 0.1)
+- [ ] Privacy Policy / Terms of Service pages
+- [ ] Real campaign photography (replace remaining AI placeholders)
+- [ ] Editorial images for remaining 4 Season Two products (Burning Night, Chaquet, Tatriz, Watermelon) — blocked on Gemini API key
+
+*Last updated: 2026-02-16 23:00 UTC*
