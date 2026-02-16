@@ -180,20 +180,55 @@
   </div>
   
   <div class="all-looks__scroll">
-    {% for product in collections['all'].products limit: 8 %}
-      <a href="{{ product.url }}" class="all-looks__item" data-animate="fade-up" data-animate-delay="{{ forloop.index | times: 60 }}">
-        <div class="all-looks__image">
-          {% if product.featured_image %}
-            <img 
-              src="{{ product.featured_image | image_url: width: 600 }}" 
-              alt="{{ product.title | escape }}"
-              loading="lazy"
-            >
-          {% endif %}
-        </div>
-        <span class="all-looks__name">{{ product.title }}</span>
-      </a>
-    {% endfor %}
+    {% comment %} Editorial lookbook images — Season Two {% endcomment %}
+    <a href="/products/burning-night-shirt" class="all-looks__item" data-animate="fade-up" data-animate-delay="60">
+      <div class="all-looks__image">
+        <img src="{{ 'editorial-look-burning-night.jpg' | asset_url }}" alt="Burning Night Shirt — Editorial" loading="lazy">
+      </div>
+      <span class="all-looks__name">Burning Night Shirt</span>
+    </a>
+    <a href="/products/chaquet" class="all-looks__item" data-animate="fade-up" data-animate-delay="120">
+      <div class="all-looks__image">
+        <img src="{{ 'editorial-look-chaquet.jpg' | asset_url }}" alt="Chaquet — Editorial" loading="lazy">
+      </div>
+      <span class="all-looks__name">Chaquet</span>
+    </a>
+    <a href="/products/tatriz-top" class="all-looks__item" data-animate="fade-up" data-animate-delay="180">
+      <div class="all-looks__image">
+        <img src="{{ 'editorial-look-tatriz.jpg' | asset_url }}" alt="Tatriz Top — Editorial" loading="lazy">
+      </div>
+      <span class="all-looks__name">Tatriz Top</span>
+    </a>
+    <a href="/products/keffiyeh-dress" class="all-looks__item" data-animate="fade-up" data-animate-delay="240">
+      <div class="all-looks__image">
+        <img src="{{ 'editorial-look-keffiyeh-bw.jpg' | asset_url }}" alt="Keffiyeh Dress — Editorial" loading="lazy">
+      </div>
+      <span class="all-looks__name">Keffiyeh Dress</span>
+    </a>
+    <a href="/products/keffiyeh-dress" class="all-looks__item" data-animate="fade-up" data-animate-delay="300">
+      <div class="all-looks__image">
+        <img src="{{ 'editorial-look-keffiyeh-red.jpg' | asset_url }}" alt="Keffiyeh Dress Red — Editorial" loading="lazy">
+      </div>
+      <span class="all-looks__name">Keffiyeh Dress — Red</span>
+    </a>
+    <a href="/products/watermelon-print-t-shirt" class="all-looks__item" data-animate="fade-up" data-animate-delay="360">
+      <div class="all-looks__image">
+        <img src="{{ 'editorial-look-watermelon.jpg' | asset_url }}" alt="Watermelon Print T-Shirt — Editorial" loading="lazy">
+      </div>
+      <span class="all-looks__name">Watermelon Print T-Shirt</span>
+    </a>
+    <a href="/collections/all" class="all-looks__item" data-animate="fade-up" data-animate-delay="420">
+      <div class="all-looks__image">
+        <img src="{{ 'editorial-look-burning-night-med.jpg' | asset_url }}" alt="Burning Night Shirt — Mediterranean" loading="lazy">
+      </div>
+      <span class="all-looks__name">Burning Night — Mediterranean</span>
+    </a>
+    <a href="/collections/all" class="all-looks__item" data-animate="fade-up" data-animate-delay="480">
+      <div class="all-looks__image">
+        <img src="{{ 'editorial-look-tatriz-med.jpg' | asset_url }}" alt="Tatriz Top — Mediterranean" loading="lazy">
+      </div>
+      <span class="all-looks__name">Tatriz — Mediterranean</span>
+    </a>
   </div>
 </section>
 
