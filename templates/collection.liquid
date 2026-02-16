@@ -69,8 +69,12 @@
   </div>
 
   {% if collection.products.size == 0 %}
-    <div style="text-align: center; padding: 4rem 2rem;">
-      <p class="prntd-ui-text" style="color: #555;">No pieces in this collection yet.</p>
+    <div class="collection-empty">
+      <p class="collection-empty__text prntd-ui-text">This collection is coming soon.</p>
+      <div class="collection-empty__cta">
+        <a href="/collections/all" class="prntd-btn">Shop All Pieces</a>
+        <a href="/pages/about" class="prntd-btn">Our Story</a>
+      </div>
     </div>
   {% endif %}
 

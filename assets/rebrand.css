@@ -2,6 +2,13 @@
    PRNTD Rebrand — Design System
    ============================================================ */
 
+/* --- Global Polish --- */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* --- Kill Klaviyo popup on rebranded pages --- */
 .template-index .klaviyo-form,
 .template-index [class*="klaviyo-form"],
@@ -2753,4 +2760,199 @@ body *:not(.prntd-brand-text):not(h1):not(h2):not(h3):not(.hero-logo a):not(.prn
     display: inline-flex;
     align-items: center;
   }
+}
+
+/* ============================================================
+   404 PAGE — Editorial Restyle
+   ============================================================ */
+
+.template-404 .announcement-bar,
+.template-404 .announcement-bar-wrapper,
+.template-404 [class*="announcement"],
+.template-404 .logo-container,
+.template-404 .category-menu-container,
+.template-404 .music-player-container,
+.template-404 [class*="world-of"],
+.template-404 .email-modal,
+.template-404 [class*="email-popup"],
+.template-404 .nav-link-wrapper,
+.template-404 .other-footer {
+  display: none !important;
+}
+
+.prntd-404 {
+  background: var(--prntd-bg, #f5f5f3);
+  color: var(--prntd-black, #0a0a0a);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  font-family: var(--prntd-font-ui, 'Inter', sans-serif);
+}
+
+.prntd-404__code {
+  font-family: var(--prntd-font-brand, 'Bebas Neue', sans-serif);
+  font-size: clamp(6rem, 20vw, 14rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: rgba(0,0,0,0.06);
+  margin: 0;
+}
+
+.prntd-404__title {
+  font-family: var(--prntd-font-brand, 'Bebas Neue', sans-serif);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.prntd-404__message {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: #888;
+  line-height: 1.6;
+  max-width: 380px;
+  margin: 0 0 2.5rem;
+}
+
+.prntd-404__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ============================================================
+   ABOUT PAGE — Footer color fix (dark bg context)
+   ============================================================ */
+
+.about-page .prntd-footer-full {
+  background: #0a0a0a;
+  color: #f5f5f3;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.about-page .prntd-footer-full__tagline,
+.about-page .prntd-footer-full__newsletter-text {
+  color: rgba(245,245,243,0.5);
+}
+
+.about-page .prntd-footer-full__heading {
+  color: rgba(245,245,243,0.3);
+}
+
+.about-page .prntd-footer-full__list a {
+  color: rgba(245,245,243,0.5);
+}
+
+.about-page .prntd-footer-full__list a:hover {
+  color: #f5f5f3;
+}
+
+.about-page .prntd-footer-full__input {
+  border-color: rgba(255,255,255,0.15);
+  color: #f5f5f3;
+}
+
+.about-page .prntd-footer-full__input::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+.about-page .prntd-footer-full__submit {
+  border-color: rgba(255,255,255,0.15);
+  color: #f5f5f3;
+}
+
+.about-page .prntd-footer-full__submit:hover {
+  background: #f5f5f3;
+  color: #0a0a0a;
+}
+
+.about-page .prntd-footer-full__bottom {
+  border-top-color: rgba(255,255,255,0.06);
+  color: rgba(245,245,243,0.2);
+}
+
+/* About header — white nav on dark */
+.about-page .prntd-header-nav a {
+  color: #f5f5f3;
+}
+
+.about-page .prntd-logo-img {
+  filter: brightness(0) invert(1);
+}
+
+/* ============================================================
+   COLLECTION — Empty state polish
+   ============================================================ */
+
+.collection-empty {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.collection-empty__text {
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.collection-empty__cta {
+  display: inline-flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ============================================================
+   PDP — Kill dead space below when few/no related products
+   ============================================================ */
+
+.pdp-editorial {
+  min-height: auto;
+}
+
+.pdp-related:empty {
+  display: none;
+}
+
+/* Product page: upgrade to full footer */
+.template-product .prntd-footer {
+  display: none;
+}
+
+/* ============================================================
+   GLOBAL — Image broken state (hide broken images gracefully)
+   ============================================================ */
+
+img {
+  border-radius: 0;
+}
+
+img[src=""],
+img:not([src]) {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+
+/* ============================================================
+   HOMEPAGE — All Looks fallback for missing images
+   ============================================================ */
+
+.all-looks__image img[src*="asset_url"] {
+  display: none;
+}
+
+/* ============================================================
+   GLOBAL — Consistent link underline removal
+   ============================================================ */
+
+a {
+  text-decoration: none;
 }
