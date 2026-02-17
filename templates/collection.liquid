@@ -10,18 +10,18 @@
    HEADER — Dark Navigation
    ============================================================ {% endcomment %}
 
-<header class="prntd-header" id="prntd-header">
+<header class="prntd-header prntd-header--dark" id="prntd-header">
   <div class="prntd-header-inner">
     <a href="{{ routes.root_url }}" class="prntd-header-logo">
       {% if settings.collection_screen_logo %}
-        <img src="{{ settings.collection_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
+        <img src="{{ settings.collection_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img prntd-logo-img--dark">
       {% elsif settings.shop_screen_logo %}
-        <img src="{{ settings.shop_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
+        <img src="{{ settings.shop_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img prntd-logo-img--dark">
       {% else %}
         P.
       {% endif %}
     </a>
-    <nav class="prntd-header-nav">
+    <nav class="prntd-header-nav prntd-header-nav--dark">
       <a href="/collections/all">Shop</a>
       {% if cart.item_count > 0 %}
         <a href="/cart" class="prntd-cart-link">Bag ({{ cart.item_count }})</a>
