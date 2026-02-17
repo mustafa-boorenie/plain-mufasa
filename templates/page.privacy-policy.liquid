@@ -1,0 +1,265 @@
+{% comment %}
+  PRNTD — Privacy Policy
+  February 2026
+{% endcomment %}
+
+<style>
+  .legal-page { background: #090909; color: #f5f5f3; min-height: 100vh; }
+  .legal-page *, .legal-page *::before, .legal-page *::after { box-sizing: border-box; }
+
+  .legal-hero {
+    padding: 12rem 5vw 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .legal-hero__heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 0;
+  }
+  .legal-hero__heading .accent { color: #8B3A2F; }
+  .legal-hero__updated {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: rgba(245,245,243,0.4);
+    margin-top: 1.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .legal-content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 5vw 8rem;
+  }
+  .legal-content h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #f5f5f3;
+    margin: 3.5rem 0 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(139,58,47,0.3);
+  }
+  .legal-content h2:first-child { margin-top: 0; }
+  .legal-content p, .legal-content li {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(245,245,243,0.7);
+    margin-bottom: 1.2rem;
+  }
+  .legal-content ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .legal-content li { margin-bottom: 0.5rem; }
+  .legal-content strong {
+    font-weight: 500;
+    color: #f5f5f3;
+  }
+  .legal-content a {
+    color: #8B3A2F;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .legal-content a:hover { color: #f5f5f3; }
+  .legal-divider {
+    width: 40px;
+    height: 1px;
+    background: #8B3A2F;
+    margin: 3rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .legal-hero { padding: 10rem 6vw 3rem; }
+    .legal-content { padding: 2rem 6vw 6rem; }
+  }
+</style>
+
+<div class="legal-page">
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="prntd-header" id="prntd-header">
+    <div class="prntd-header-inner">
+      <a href="{{ routes.root_url }}" class="prntd-header-logo">
+        {% if settings.collection_screen_logo %}
+          <img src="{{ settings.collection_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
+        {% elsif settings.shop_screen_logo %}
+          <img src="{{ settings.shop_screen_logo | image_url: width: 200 }}" alt="PRNTD" class="prntd-logo-img">
+        {% else %}
+          P.
+        {% endif %}
+      </a>
+      <nav class="prntd-header-nav">
+        <a href="/collections/all">Shop</a>
+        {% if cart.item_count > 0 %}
+          <a href="/cart" class="prntd-cart-link">Bag ({{ cart.item_count }})</a>
+        {% endif %}
+        {% render 'mobile-menu' %}
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="legal-hero">
+    <h1 class="legal-hero__heading"><span class="accent">Privacy</span> Policy</h1>
+    <p class="legal-hero__updated">Last Updated — February 17, 2026</p>
+  </section>
+
+  <!-- ═══════════ CONTENT ═══════════ -->
+  <div class="legal-content">
+
+    <h2>Who We Are</h2>
+    <p>PRNTD is a fashion brand operated by <strong>BDQ Holdings Limited</strong>, based in El Paso, Texas. When we say "we," "us," or "our," we mean BDQ Holdings Limited, the company behind <strong>prntdbybdq.com</strong>.</p>
+    <p>We take your privacy seriously — not because a lawyer told us to, but because respect is part of who we are.</p>
+
+    <div class="legal-divider"></div>
+
+    <h2>Information We Collect</h2>
+    <p>When you interact with our store, we may collect the following:</p>
+    <ul>
+      <li><strong>Order information:</strong> name, email, shipping and billing address, phone number, payment details (processed securely by Shopify Payments — we never see your full card number)</li>
+      <li><strong>Account information:</strong> email and password if you create an account</li>
+      <li><strong>Browsing data:</strong> IP address, browser type, pages visited, time on site, referring URL</li>
+      <li><strong>Communications:</strong> emails, contact form submissions, and any messages you send us</li>
+      <li><strong>Marketing preferences:</strong> email subscription status and engagement data</li>
+    </ul>
+
+    <h2>How We Use Your Information</h2>
+    <ul>
+      <li>Process and fulfill your orders</li>
+      <li>Communicate about your purchase (shipping updates, receipts)</li>
+      <li>Send marketing emails if you've opted in (new drops, exclusive access)</li>
+      <li>Improve our website and shopping experience</li>
+      <li>Prevent fraud and maintain security</li>
+      <li>Comply with legal obligations</li>
+    </ul>
+
+    <h2>Third-Party Services</h2>
+    <p>We work with trusted partners to run our store. Each has their own privacy practices:</p>
+    <ul>
+      <li><strong>Shopify</strong> — our e-commerce platform. Handles payment processing, hosting, and order management. <a href="https://www.shopify.com/legal/privacy" target="_blank" rel="noopener">Shopify Privacy Policy</a></li>
+      <li><strong>Klaviyo</strong> — our email marketing platform. Manages newsletters and automated email flows. <a href="https://www.klaviyo.com/legal/privacy" target="_blank" rel="noopener">Klaviyo Privacy Policy</a></li>
+      <li><strong>Google Analytics</strong> — helps us understand how visitors use our site. Collects anonymized browsing data. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+    </ul>
+    <p>We do not sell your personal information to third parties. Ever.</p>
+
+    <h2>Cookies</h2>
+    <p>We use cookies to keep your cart working, remember your preferences, and understand site traffic. These include:</p>
+    <ul>
+      <li><strong>Essential cookies:</strong> required for the store to function (cart, checkout, sessions)</li>
+      <li><strong>Analytics cookies:</strong> help us understand visitor behavior (Google Analytics)</li>
+      <li><strong>Marketing cookies:</strong> track email campaign effectiveness (Klaviyo)</li>
+    </ul>
+    <p>Most browsers let you control or disable cookies through their settings. Disabling essential cookies may affect your shopping experience.</p>
+
+    <h2>Data Retention</h2>
+    <p>We keep your order data for as long as necessary to fulfill our legal and business obligations — typically for tax and accounting purposes. If you'd like your data deleted, reach out and we'll handle it.</p>
+
+    <h2>Your Rights</h2>
+    <p>Depending on where you live, you may have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> the personal data we hold about you</li>
+      <li><strong>Correct</strong> inaccurate information</li>
+      <li><strong>Delete</strong> your personal data</li>
+      <li><strong>Opt out</strong> of marketing communications at any time</li>
+      <li><strong>Port</strong> your data to another service</li>
+    </ul>
+
+    <h3 style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1.1rem; color: #f5f5f3; margin: 2.5rem 0 1rem;">California Residents (CCPA)</h3>
+    <p>If you're a California resident, you have the right to know what personal information we collect, request its deletion, and opt out of its sale. We do not sell personal information. To exercise your rights, contact us at the email below.</p>
+
+    <h3 style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1.1rem; color: #f5f5f3; margin: 2.5rem 0 1rem;">European Visitors (GDPR)</h3>
+    <p>If you're in the EU/EEA, we process your data based on consent (marketing) and contractual necessity (order fulfillment). You have the right to withdraw consent, lodge a complaint with your local data protection authority, and request data portability or erasure.</p>
+
+    <h2>Security</h2>
+    <p>Your data is transmitted over SSL encryption. Payment processing is handled by Shopify Payments, which is PCI-DSS compliant. We don't store credit card details on our servers.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>Our store is not directed at anyone under 16. We don't knowingly collect personal information from minors.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this policy from time to time. When we do, we'll update the date at the top. We encourage you to check back occasionally.</p>
+
+    <div class="legal-divider"></div>
+
+    <h2>Contact Us</h2>
+    <p>Questions about your privacy? We're here.</p>
+    <p>
+      <strong>BDQ Holdings Limited</strong><br>
+      El Paso, TX, USA<br>
+      <a href="mailto:jarvis@bdqholdings.com">jarvis@bdqholdings.com</a>
+    </p>
+
+  </div>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="prntd-footer-full">
+    <div class="prntd-footer-full__inner">
+      <div class="prntd-footer-full__col prntd-footer-full__brand">
+        {% if settings.enter_screen_logo %}
+          <img src="{{ settings.enter_screen_logo | image_url: width: 160 }}" alt="PRNTD" class="prntd-footer-logo-img" style="height: 40px; width: auto;">
+        {% else %}
+          <span class="prntd-footer-full__logo prntd-brand-text">P.</span>
+        {% endif %}
+        <p class="prntd-footer-full__tagline">Heritage woven into the modern world.</p>
+      </div>
+      <div class="prntd-footer-full__col">
+        <h4 class="prntd-footer-full__heading prntd-ui-text">Navigate</h4>
+        <ul class="prntd-footer-full__list">
+          <li><a href="/collections/all">Shop</a></li>
+          <li><a href="/pages/about">About</a></li>
+          <li><a href="/pages/lookbook">Lookbook</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="prntd-footer-full__col">
+        <h4 class="prntd-footer-full__heading prntd-ui-text">Connect</h4>
+        <ul class="prntd-footer-full__list">
+          <li><a href="https://instagram.com/prntdbybdq" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://x.com/prntdbybdq" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="mailto:info@prntdbybdq.com">info@prntdbybdq.com</a></li>
+        </ul>
+      </div>
+      <div class="prntd-footer-full__col prntd-footer-full__newsletter">
+        <h4 class="prntd-footer-full__heading prntd-ui-text">Stay in the Loop</h4>
+        <p class="prntd-footer-full__newsletter-text">New drops. Exclusive access. No noise.</p>
+        <form class="prntd-footer-full__form" action="/contact#contact_form" method="post">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input type="email" name="contact[email]" placeholder="Email address" required class="prntd-footer-full__input">
+          <button type="submit" class="prntd-footer-full__submit prntd-ui-text">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="prntd-footer-full__bottom">
+      <span>© {{ 'now' | date: '%Y' }} PRNTD. All rights reserved.</span>
+    </div>
+  </footer>
+
+</div>
+
+<script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
+<script>
+  (function() {
+    var header = document.getElementById('prntd-header');
+    if (!header) return;
+    var scrolled = false;
+    window.addEventListener('scroll', function() {
+      var shouldScroll = window.scrollY > 40;
+      if (shouldScroll !== scrolled) {
+        scrolled = shouldScroll;
+        header.classList.toggle('scrolled', scrolled);
+      }
+    }, { passive: true });
+  })();
+</script>
