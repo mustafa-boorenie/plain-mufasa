@@ -69,8 +69,18 @@
   </div>
 
   {% if collection.products.size == 0 %}
-    <div class="collection-empty">
-      <p class="collection-empty__text prntd-ui-text">This collection is coming soon.</p>
+    <div class="collection-empty" data-animate="fade-up">
+      <p class="collection-empty__text prntd-ui-text">Coming Soon</p>
+      <p class="collection-empty__teaser prntd-brand-text">Something new is being crafted</p>
+      <div class="collection-empty__notify">
+        <p class="collection-empty__notify-label">Get notified when it drops</p>
+        <form class="collection-empty__notify-form" action="/contact#contact_form" method="post">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="contact[tags]" value="newsletter,notify-{{ collection.handle }}">
+          <input type="email" name="contact[email]" placeholder="Email address" required class="collection-empty__notify-input">
+          <button type="submit" class="collection-empty__notify-btn">Notify Me</button>
+        </form>
+      </div>
       <div class="collection-empty__cta">
         <a href="/collections/all" class="prntd-btn">Shop All Pieces</a>
         <a href="/pages/about" class="prntd-btn">Our Story</a>
