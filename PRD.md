@@ -466,4 +466,28 @@ snippets/
 - [ ] Real campaign photography (replace remaining AI placeholders)
 - [ ] Editorial images for remaining 4 Season Two products (Burning Night, Chaquet, Tatriz, Watermelon) — blocked on Gemini API key
 
-*Last updated: 2026-02-16 23:00 UTC*
+*Last updated: 2026-03-04 07:10 UTC*
+
+---
+
+## v2.3 Updates (2026-03-04)
+
+### Mobile Responsive Fixes (COMPLETE ✅)
+- [x] Cart drawer full-width on mobile (100vw, right: 0)
+- [x] Cart quantity & remove buttons — 44px touch targets
+- [x] Hamburger menu — 44px tap target
+- [x] Footer link tap targets — 44px minimum
+- [x] Cart drawer font sizes bumped to readable (14px minimum)
+- [x] Product option buttons — 44px height
+- [x] Carousel overflow hidden
+- [x] Small text fixes (highlights, prices, campaign statement)
+- [x] Legacy footer hidden
+
+### Season Two Products (COMPLETE ✅)
+- [x] All 5 Season Two products have XS-XL size options (previously only 1 size)
+- [x] Burning Night Shirt: $195, XS-XL
+- [x] Chaquet: $345, XS-XL
+- [x] Keffiyeh Dress: $285, XS-XL
+- [x] Tatriz Top: $245, XS-XL
+- [x] Watermelon Print T-Shirt: $85, XS-XL
+- [x] All 5 products have 7 images each
