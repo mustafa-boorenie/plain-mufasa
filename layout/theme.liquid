@@ -88,7 +88,7 @@
   <body
     style="min-height: 100vh; display: flex; flex-direction: column; --scrollbar-thumb-radius:{{ settings.thumb_radius }}px; --scrollbar-track-color:{{ settings.track_color }}; --scrollbar-thumb-color:{{ settings.thumb_color }};"
     class="{{ bodyClasses }} {{ "template-" | append: request.page_type | handle }}"
-    d3503khivhk343="{{ settings.3593809343bfibhiddsfh_relfe3252_fdfg }}"
+    d3503khivhk343="{{ settings['3593809343bfibhiddsfh_relfe3252_fdfg'] }}"
   >
     <main style="{% if request.page_type == 'password' %}  height: 100%; width: 100%; {% endif %}">
       {% if template.name == 'index' or template.name == 'collection' or template.name == 'product' or template.name == 'page' or template.name == 'cart' or headerSnippetPath %}
@@ -161,3 +161,13 @@
     </script>
   </body>
 </html>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ settings.3593809343bfibhiddsfh_relfe3252_fdfg }}"
+  to: "{{ settings['3593809343bfibhiddsfh_relfe3252_fdfg'] }}"
+  position: 4213..4267
+{% endcomment %}
